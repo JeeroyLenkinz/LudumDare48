@@ -6,6 +6,7 @@ public class AlienBase : MonoBehaviour, IUsable
 {
     private GameObject hand;
 
+    private Rigidbody2D rb;
     private Rigidbody2D handRB;
     private FixedJoint2D joint;
 
@@ -20,9 +21,13 @@ public class AlienBase : MonoBehaviour, IUsable
     private Sprite normalSprite;
     private Sprite grabSprite;
 
+    private Vector2 releaseVel;
+
     void Start()
     {
         hand = GameObject.FindGameObjectWithTag("hand");
+
+        rb = GetComponent<Rigidbody2D>();
 
         joint = GetComponent<FixedJoint2D>();
         joint.enabled = false;
@@ -43,8 +48,11 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnRelease()
     {
+        releaseVel = rb.velocity;
         transform.localScale = originalScale;
         joint.enabled = false;
+        Debug.Log(rb.velocity);
+        rb.velocity = releaseVel;
 
     }
 }
