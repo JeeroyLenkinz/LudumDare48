@@ -49,3 +49,8 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 106994063469dbb47873524455f630f9, type: 2}
+  mousePos:
+    _useConstant: 0
+    _constantValue: {x: 0, y: 0}
+    _variable: {fileID: 11400000, guid: a2f9f7fcf8b6e184ab98fa399e47c44f, type: 2}
+  cam: {fileID: 0}
