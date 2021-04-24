@@ -14,6 +14,7 @@ public class HandGrabber : MonoBehaviour
     private CapsuleCollider2D collider;
 
     private List<GameObject> collidingAliens = new List<GameObject>();
+    private GameObject grabbedObj;
 
     private void Start()
     {
@@ -39,7 +40,6 @@ public class HandGrabber : MonoBehaviour
     private void Grab()
     {
         sr.color = Color.black;
-        GameObject grabbedObj;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Interactable"));
         if(hit.collider != null)
@@ -56,5 +56,13 @@ public class HandGrabber : MonoBehaviour
     private void Release()
     {
         sr.color = Color.white;
+        if(grabbedObj == null)
+        {
+            return;
+        }
+        if (grabbedObj.CompareTag("alien"))
+        {
+            grabbedObj.GetComponent<AlienBase>().OnRelease();
+        }
     }
 }

@@ -63,15 +63,15 @@ FixedJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6082209198471129600}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.85, y: 0}
-  m_ConnectedAnchor: {x: 2.2975001, y: 4.05}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &849992611
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b13cd4b88aeb034ba96b4dc74f42142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 0}
-  squeezeScale: {x: 1.5, y: 0}
+  hand: {fileID: 5368958259185361340, guid: 631dc4d34376b95408738080b9de98da, type: 3}
+  squeezeScale: {x: 1.5, y: 0.75}
   squeezeHitbox: {x: 1.5, y: 1.75}
 --- !u!70 &849992610
 CapsuleCollider2D:

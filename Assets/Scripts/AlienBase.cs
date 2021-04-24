@@ -24,7 +24,8 @@ public class AlienBase : MonoBehaviour, IUsable
     void Start()
     {
         joint = GetComponent<FixedJoint2D>();
-        handRB = GetComponent<Rigidbody2D>();
+        joint.enabled = false;
+        //handRB = hand.GetComponent<Rigidbody2D>();
 
         originalScale = transform.localScale;
     }
@@ -33,12 +34,16 @@ public class AlienBase : MonoBehaviour, IUsable
     {
         transform.localScale = squeezeScale;
         // Change Art
-        joint.connectedBody = handRB;
+        joint.enabled = true;
+        joint.connectedBody = hand.GetComponent<Rigidbody2D>();
+        joint.connectedAnchor = Vector2.zero;
         // Change hitbox
     }
 
     public void OnRelease()
     {
         transform.localScale = originalScale;
+        joint.enabled = false;
+        joint.connectedBody = null;
     }
 }
