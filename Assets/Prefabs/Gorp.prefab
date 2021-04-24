@@ -334,6 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b13cd4b88aeb034ba96b4dc74f42142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jointHand: {fileID: 1282489137693663520}
+  jointMorp: []
   squeezeScale: {x: 1.5, y: 0.75}
   squeezeHitbox: {x: 1.5, y: 1.75}
 --- !u!70 &2520054362488814923
