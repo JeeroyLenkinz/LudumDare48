@@ -28,6 +28,8 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private List<GameObject> morpsConnected = new List<GameObject>();
 
+    private bool isAttached = false;
+
     void Start()
     {
         hand = GameObject.FindGameObjectWithTag("hand");
@@ -74,6 +76,22 @@ public class AlienBase : MonoBehaviour, IUsable
                 return;
             }
         }
+
+        if(jointMorp.Length == 0)
+        {
+            isAttached = false;
+        }
+    }
+
+    public bool GetAttached()
+    {
+        return isAttached;
+    }
+
+    // Should only be called by MultiMorp on spawn!
+    public void SetAttached()
+    {
+        isAttached = true;
     }
 
 }

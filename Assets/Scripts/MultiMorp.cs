@@ -10,7 +10,10 @@ public class MultiMorp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        foreach(GameObject morp in morpsConnected)
+        {
+            morp.GetComponent<AlienBase>().SetAttached();
+        }
     }
 
     public void SeperateMorps(GameObject morpOne, GameObject morpTwo, GameObject connector)
