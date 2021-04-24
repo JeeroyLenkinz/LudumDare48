@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/BubbaPlayground.unity
+    guid: b4724d3eaa8fc614e87dff6b963a3d84
   m_configObjects: {}
