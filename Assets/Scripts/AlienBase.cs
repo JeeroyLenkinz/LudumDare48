@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
-    [SerializeField]
     private GameObject hand;
 
     private Rigidbody2D handRB;
@@ -23,8 +22,11 @@ public class AlienBase : MonoBehaviour, IUsable
 
     void Start()
     {
+        hand = GameObject.FindGameObjectWithTag("hand");
+
         joint = GetComponent<FixedJoint2D>();
         joint.enabled = false;
+        joint.connectedBody = hand.GetComponent<Rigidbody2D>();
         //handRB = hand.GetComponent<Rigidbody2D>();
 
         originalScale = transform.localScale;
@@ -35,8 +37,7 @@ public class AlienBase : MonoBehaviour, IUsable
         transform.localScale = squeezeScale;
         // Change Art
         joint.enabled = true;
-        joint.connectedBody = hand.GetComponent<Rigidbody2D>();
-        joint.connectedAnchor = Vector2.zero;
+
         // Change hitbox
     }
 
@@ -44,6 +45,6 @@ public class AlienBase : MonoBehaviour, IUsable
     {
         transform.localScale = originalScale;
         joint.enabled = false;
-        joint.connectedBody = null;
+
     }
 }
