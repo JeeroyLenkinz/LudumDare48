@@ -102,7 +102,7 @@ public class Breather : MonoBehaviour
         }
     }
 
-    void checkBreathHit() {
+    private void checkBreathHit() {
         float markerLeftBound = breathMarkerRT.position.x - (breathMarkerRT.rect.width/2);
         float markerRightBound = breathMarkerRT.position.x + (breathMarkerRT.rect.width/2);
 
@@ -139,7 +139,7 @@ public class Breather : MonoBehaviour
         }
     }
 
-    void fullMiss() {
+    private void fullMiss() {
         if (inhaling) {
             exhaling = true;
             inhaling = false;
