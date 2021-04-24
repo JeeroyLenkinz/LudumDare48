@@ -32,6 +32,8 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private List<GameObject> morpsConnected = new List<GameObject>();
 
+    private bool isAttached = false;
+
     void Start()
     {
         hand = GameObject.FindGameObjectWithTag("hand");
@@ -74,6 +76,37 @@ public class AlienBase : MonoBehaviour, IUsable
 
         rb.velocity = releaseVel;
 
+    }
+
+    // Called by MultiMorp
+    public void DetachJoint(GameObject attachedMorp)
+    {
+        foreach(FixedJoint2D joint in jointMorp)
+        {
+            // If the joint in the list is attached to the parameter Morp
+            // Then it is the correct one to sever
+            if(joint.connectedBody.gameObject == attachedMorp)
+            {
+                joint.enabled = false;
+                return;
+            }
+        }
+
+        if(jointMorp.Length == 0)
+        {
+            isAttached = false;
+        }
+    }
+
+    public bool GetAttached()
+    {
+        return isAttached;
+    }
+
+    // Should only be called by MultiMorp on spawn!
+    public void SetAttached()
+    {
+        isAttached = true;
     }
 
 }
