@@ -8,13 +8,14 @@ public class IntTextChanger : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI healthText;
 
+    [SerializeField]
+    private IntReference healthSO;
 
-
-    public void e_ChangeMyTextInt(int score)
+    public void e_ChangeMyTextInt()
     {
-        scoreText.text = score.ToString();
+        healthText.text = healthSO.Value.ToString();
     }
 
 }
