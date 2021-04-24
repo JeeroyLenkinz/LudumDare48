@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - Interactable
-  - 
+  - Laser
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Morp
+    uniqueID: 3647710819
     locked: 0
   - name: Hand
     uniqueID: 4036791185

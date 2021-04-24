@@ -10,8 +10,6 @@ public class MorpConnector : MonoBehaviour
 
     private LineRenderer lr;
 
-    EdgeCollider2D edge;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +24,21 @@ public class MorpConnector : MonoBehaviour
         lr.SetPosition(1, morpTwo.transform.position);
 
         // Use Raycast not edge collider and check for collision
+        float distance = (morpTwo.transform.position - morpOne.transform.position).magnitude;
+        RaycastHit2D hit = Physics2D.Raycast(morpOne.transform.position, morpTwo.transform.position, distance, 1 << LayerMask.NameToLayer("Laser"));
+
+        if(hit.collider != null)
+        {
+            NotifyMultiMorp();
+        }
+    }
+
+
+
+    private void NotifyMultiMorp()
+    {
+        GetComponentInParent<MultiMorp>().SeperateMorps(morpOne, morpTwo, this.gameObject);
+        lr.enabled = false;
+        //Destroy(this.gameObject);
     }
 }

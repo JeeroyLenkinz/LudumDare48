@@ -61,4 +61,19 @@ public class AlienBase : MonoBehaviour, IUsable
 
     }
 
+    // Called by MultiMorp
+    public void DetachJoint(GameObject attachedMorp)
+    {
+        foreach(FixedJoint2D joint in jointMorp)
+        {
+            // If the joint in the list is attached to the parameter Morp
+            // Then it is the correct one to sever
+            if(joint.connectedBody.gameObject == attachedMorp)
+            {
+                joint.enabled = false;
+                return;
+            }
+        }
+    }
+
 }
