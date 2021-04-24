@@ -13,6 +13,12 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private BoolReference lClick;
 
+    [SerializeField]
+    private Vector2Reference mousePos;
+
+    [SerializeField]
+    private Camera cam;
+
     // Update is called once per frame
     void Update()
     {
@@ -35,5 +41,7 @@ public class InputManager : MonoBehaviour
         {
             lClick.Value = false;
         }
+
+        mousePos.Value = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 }
