@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5368958259185361339}
   m_Layer: 0
   m_Name: hand
-  m_TagString: Untagged
+  m_TagString: hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: a2f9f7fcf8b6e184ab98fa399e47c44f, type: 2}
-  smoothing: 0.035
+  smoothing: 0.08
 --- !u!50 &5368958259185361337
 Rigidbody2D:
   serializedVersion: 4
@@ -113,19 +113,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5368958259185361340}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5368958259185361336
 CircleCollider2D:
   m_ObjectHideFlags: 0

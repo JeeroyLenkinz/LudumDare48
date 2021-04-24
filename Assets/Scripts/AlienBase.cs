@@ -8,7 +8,10 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
-    private FixedJoint2D joint;
+    [SerializeField]
+    private FixedJoint2D jointHand;
+    [SerializeField]
+    private FixedJoint2D[] jointMorp;
 
     private Vector2 originalScale;
     private Vector2 originalHitbox;
@@ -23,25 +26,27 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private Vector2 releaseVel;
 
+    private List<GameObject> morpsConnected = new List<GameObject>();
+
     void Start()
     {
         hand = GameObject.FindGameObjectWithTag("hand");
 
         rb = GetComponent<Rigidbody2D>();
 
-        joint = GetComponent<FixedJoint2D>();
-        joint.enabled = false;
-        joint.connectedBody = hand.GetComponent<Rigidbody2D>();
+        jointHand.enabled = false;
+        jointHand.connectedBody = hand.GetComponent<Rigidbody2D>();
         //handRB = hand.GetComponent<Rigidbody2D>();
 
         originalScale = transform.localScale;
     }
 
+
     public void OnUse()
     {
         transform.localScale = squeezeScale;
         // Change Art
-        joint.enabled = true;
+        jointHand.enabled = true;
 
         // Change hitbox
     }
@@ -50,9 +55,10 @@ public class AlienBase : MonoBehaviour, IUsable
     {
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
-        joint.enabled = false;
-        Debug.Log(rb.velocity);
+        jointHand.enabled = false;
+
         rb.velocity = releaseVel;
 
     }
+
 }
