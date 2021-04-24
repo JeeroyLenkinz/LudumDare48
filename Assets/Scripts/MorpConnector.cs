@@ -25,7 +25,9 @@ public class MorpConnector : MonoBehaviour
 
         // Use Raycast not edge collider and check for collision
         float distance = (morpTwo.transform.position - morpOne.transform.position).magnitude;
-        RaycastHit2D hit = Physics2D.Raycast(morpOne.transform.position, morpTwo.transform.position, distance, 1 << LayerMask.NameToLayer("Laser"));
+        Vector2 dir = (morpTwo.transform.position - morpOne.transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(morpOne.transform.position, dir, distance, 1 << LayerMask.NameToLayer("Laser"));
+        //Debug.DrawRay(morpOne.transform.position, dir, Color.white, 1f, false);
 
         if(hit.collider != null)
         {
