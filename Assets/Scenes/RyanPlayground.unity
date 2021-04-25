@@ -1746,6 +1746,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 588340904012527814, guid: 3bd5ccd4956797b4089d545e17887f9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 588340904012527818, guid: 3bd5ccd4956797b4089d545e17887f9d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 588340904012527819, guid: 3bd5ccd4956797b4089d545e17887f9d, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1759,6 +1767,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 811224100}
     m_Modifications:
+    - target: {fileID: 2283855401392472364, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: fastMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283855401392472364, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: slowMultiplier
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283855401392472364, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: maxBreathSeconds
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283855401392472364, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: mediumMultiplier
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283855401392472364, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: slowestMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2283855401485322536, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
       propertyPath: m_Name
       value: BreatherUI

@@ -24,7 +24,7 @@ public class MultiMorp : MonoBehaviour
         animBasic = GetComponent<Animate_Basic>();
         foreach(GameObject morp in morpsConnected)
         {
-            morp.GetComponent<AlienBase>().SetAttached();
+            //morp.GetComponent<AlienBase>().SetAttached();
         }
 
         foreach(GameObject connector in connectors)
@@ -76,10 +76,13 @@ public class MultiMorp : MonoBehaviour
         if (morpOneDisconnected)
         {
             morpOne.transform.parent = null;
+            morpOne.GetComponent<AlienBase>().SetParentNull();
+            // Set parent null here
             morpsConnectedList.Remove(morpOne);
         }
         if (morpTwoDisconnected)
         {
+            morpTwo.GetComponent<AlienBase>().SetParentNull();
             morpTwo.transform.parent = null;
             morpsConnectedList.Remove(morpTwo);
         }
