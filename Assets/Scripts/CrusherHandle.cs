@@ -86,10 +86,10 @@ public class CrusherHandle : MonoBehaviour, IUsable
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ2, Vector2.zero, Vector2.zero);
         animBasicPistonB.Animate(AnimationTweenType.EndMove, pistonInPoint.transform.position, pistonOutPoint.transform.position);
-        yield return new WaitForSeconds(tweener.Duration()*0.75f);
-        GetComponent<CrusherCrush>().CrushAlien();
+        yield return new WaitForSeconds(tweener.Duration()*0.5f);
+        crusherCrushLogic.GetComponent<CrusherCrush>().CrushAlien();
         // PARTICLES HERE
-        yield return new WaitForSeconds(tweener.Duration() * 0.25f);
+        yield return new WaitForSeconds(tweener.Duration() * 0.5f);
         isAnimating = false;
         isPrimed = false;
     }

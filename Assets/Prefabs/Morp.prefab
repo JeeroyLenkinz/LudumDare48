@@ -130,7 +130,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.3531023
+  m_Mass: 0.4369361
   m_LinearDrag: 2
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b13cd4b88aeb034ba96b4dc74f42142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GorpLong: {fileID: 0}
+  GorpShort: {fileID: 0}
   jointHand: {fileID: 3689953343834113993}
   jointMorp:
   - {fileID: 0}
@@ -191,8 +193,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.75, y: 1.75}
+  m_Offset: {x: 0.013326889, y: 0.023322504}
+  m_Size: {x: 1.0170177, y: 0.9570532}
   m_Direction: 1
 --- !u!114 &6385803211862675165
 MonoBehaviour:

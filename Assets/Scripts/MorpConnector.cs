@@ -43,4 +43,10 @@ public class MorpConnector : MonoBehaviour
         lr.enabled = false;
         //Destroy(this.gameObject);
     }
+
+    public GameObject[] GetConnectedMorps()
+    {
+        GameObject[] morps = { morpOne, morpTwo };
+        return morps;
+    }
 }
