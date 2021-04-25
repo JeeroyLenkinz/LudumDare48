@@ -9,11 +9,15 @@ public class Breather : MonoBehaviour
     private bool exhaling;
     private bool hasStarted;
     private bool inactive;
+    private bool difficultyChanging;
     private float breathMarkerPosition;
     private float displayRangeScale;
     private float startOffset;
+    private Vector2 leftBandDestination;
+    private Vector2 rightBandDestination;
     private RectTransform breathMarkerRT;
     private AudioSource audioSource;
+    private float bandChangeTolerance = 0.05f;
 
     [SerializeField]
     private GameEvent breathMissEvent;
@@ -27,6 +31,14 @@ public class Breather : MonoBehaviour
     private RectTransform rightBreathBandRT;
     [SerializeField]
     private float maxBreathSeconds;
+    [SerializeField]
+    private float easyMultiplier;
+    [SerializeField]
+    private float mediumMultiplier;
+    [SerializeField]
+    private float hardMultiplier;
+    [SerializeField, Range(0.01f, 0.1f)]
+    private float bandChangeSmoothing;
     [SerializeField]
     private AudioClip inhaleSFX;
     [SerializeField]
@@ -43,6 +55,7 @@ public class Breather : MonoBehaviour
         inhaling = false;
         exhaling = false;
         hasStarted = false;
+        difficultyChanging = false;
         breathMarkerPosition = breathZoneRT.position.x - breathZoneRT.rect.width;
         startOffset = breathMarkerRT.rect.width/2;
         displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width;
@@ -77,11 +90,30 @@ public class Breather : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public void e_changeBreathBands(int difficulty) {
+        float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width)/2;
+        switch (difficulty) {
+            case 0: // Easy (aka long, slow breaths)
+                distance *= easyMultiplier;
+                break;
+            case 1: // Medium
+                distance *= mediumMultiplier;
+                break;
+            case 2: // Hard (aka short, fast breaths)
+                distance *= hardMultiplier;
+                break;
+            default:
+                return;
+        }
+        if (!difficultyChanging) {
+            leftBandDestination = new Vector2((breathZoneRT.position.x - distance), leftBreathBandRT.position.y);
+            rightBandDestination = new Vector2((breathZoneRT.position.x + distance), rightBreathBandRT.position.y);
+            difficultyChanging = true;
+        }
+    }
+
     void Update()
     {
-        // breathMarkerPosition will move between 0 and 1
-        // That will then be scaled upwards to the desired range on screen
         if (inhaling) {
             breathMarkerPosition += Time.deltaTime/maxBreathSeconds;
         }
@@ -108,6 +140,18 @@ public class Breather : MonoBehaviour
 
         if (hasStarted && (breathMarkerPosition >=1 || breathMarkerPosition <= 0)) {
             fullMiss();
+        }
+
+        if (difficultyChanging) {
+            leftBreathBandRT.position = Vector2.Lerp(leftBreathBandRT.position, leftBandDestination, bandChangeSmoothing);
+            rightBreathBandRT.position = Vector2.Lerp(rightBreathBandRT.position, rightBandDestination, bandChangeSmoothing);
+            bool leftDone = (leftBreathBandRT.position.x >= (leftBandDestination.x - bandChangeTolerance)) && (leftBreathBandRT.position.x <= (leftBandDestination.x + bandChangeTolerance));
+            bool rightDone = (rightBreathBandRT.position.x >= (rightBandDestination.x - bandChangeTolerance)) && (rightBreathBandRT.position.x <= (rightBandDestination.x + bandChangeTolerance));
+            if (leftDone || rightDone) {
+                leftBreathBandRT.position = leftBandDestination;
+                rightBreathBandRT.position = rightBandDestination;
+                difficultyChanging = false;
+            }
         }
     }
 

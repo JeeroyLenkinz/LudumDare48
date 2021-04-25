@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 2283855401392472363}
   - component: {fileID: 2283855401392472362}
   - component: {fileID: 1058203004}
+  - component: {fileID: 1058203011}
   m_Layer: 5
   m_Name: BreathMarker
   m_TagString: Untagged
@@ -247,6 +248,10 @@ MonoBehaviour:
   leftBreathBandRT: {fileID: 2283855401020190403}
   rightBreathBandRT: {fileID: 2283855402111057209}
   maxBreathSeconds: 3
+  easyMultiplier: 1
+  mediumMultiplier: 0.75
+  hardMultiplier: 0.5
+  bandChangeSmoothing: 0.03
   inhaleSFX: {fileID: 8300000, guid: 90f37f6df4205dd4d9bb46fd7179b0da, type: 3}
   exhaleSFX: {fileID: 8300000, guid: f73f20ce6be62c245b1781e6be1aef3c, type: 3}
 --- !u!114 &2283855401392472363
@@ -409,6 +414,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1058203011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283855401392472360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 6a3071e2158ebb44fa80629814864222, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2283855401392472364}
+        m_TargetAssemblyTypeName: Breather, Assembly-CSharp
+        m_MethodName: e_changeBreathBands
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &2283855401485322536
 GameObject:
   m_ObjectHideFlags: 0
