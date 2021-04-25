@@ -8,6 +8,9 @@ TagManager:
   - hand
   - Undefined
   - handle
+  - circleHole
+  - squareHole
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX

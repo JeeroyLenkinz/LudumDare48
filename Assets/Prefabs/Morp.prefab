@@ -175,6 +175,8 @@ MonoBehaviour:
   squeezeScale: {x: 1.5, y: 0.75}
   squeezeHitbox: {x: 1.5, y: 1.75}
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
+  shapeType: circleHole
+  incrementScore: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
 --- !u!70 &849992610
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

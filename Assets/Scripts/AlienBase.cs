@@ -36,8 +36,15 @@ public class AlienBase : MonoBehaviour, IUsable
     private bool isAttached = false;
     private bool isOnTable = true;
     private bool isHeld = false;
+    private bool isDropping = false;
     private GameObject myParent;
     private Animate_Basic animBasic;
+
+    [SerializeField]
+    private string shapeType;
+
+    [SerializeField]
+    private GameEvent incrementScore;
 
 
     void Start()
@@ -63,10 +70,20 @@ public class AlienBase : MonoBehaviour, IUsable
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Drop"));
             if(hit.collider != null)
             {
-                isOnTable = false;
-                triggerParentStatusCheck();
-                if (!isHeld && myParent == null) {
-                    StartCoroutine(dropAlien());
+                string dropTag = hit.transform.gameObject.tag;
+                if (dropTag == shapeType) {
+                    isOnTable = false;
+                    if (!isHeld && myParent == null && !isDropping) {
+                        incrementScore.Raise();
+                        StartCoroutine(dropAlien());
+                    }
+                }
+                else if (dropTag == "OutOfBounds") {
+                    isOnTable = false;
+                    triggerParentStatusCheck();
+                    if (!isHeld && myParent == null && !isDropping) {
+                        StartCoroutine(dropAlien());
+                    }
                 }
             }
             else {
@@ -146,6 +163,7 @@ public class AlienBase : MonoBehaviour, IUsable
     }
 
     private IEnumerator dropAlien() {
+        isDropping = true;
         Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
         yield return new WaitForSeconds(tweener.Duration()/3);
         alienDropped.Raise();
