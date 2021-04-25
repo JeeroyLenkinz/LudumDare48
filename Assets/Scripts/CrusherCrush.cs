@@ -16,7 +16,7 @@ public class CrusherCrush : MonoBehaviour
         
     }
 
-    private void CrushAlien()
+    public void CrushAlien()
     {
 
         GameObject grabbedObj;

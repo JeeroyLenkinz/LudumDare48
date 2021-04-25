@@ -25,6 +25,9 @@ public class CrusherHandle : MonoBehaviour, IUsable
     [SerializeField]
     Animate_Basic animBasicPistonB;
 
+    [SerializeField]
+    GameObject crusherCrushLogic;
+
 
     // Start is called before the first frame update
     void Start()
@@ -83,7 +86,10 @@ public class CrusherHandle : MonoBehaviour, IUsable
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ2, Vector2.zero, Vector2.zero);
         animBasicPistonB.Animate(AnimationTweenType.EndMove, pistonInPoint.transform.position, pistonOutPoint.transform.position);
-        yield return new WaitForSeconds(tweener.Duration());
+        yield return new WaitForSeconds(tweener.Duration()*0.75f);
+        GetComponent<CrusherCrush>().CrushAlien();
+        // PARTICLES HERE
+        yield return new WaitForSeconds(tweener.Duration() * 0.25f);
         isAnimating = false;
         isPrimed = false;
     }
