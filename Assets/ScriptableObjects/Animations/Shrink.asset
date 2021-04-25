@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb4cd026a00f0148922894abefc0a3e, type: 3}
   m_Name: Shrink
   m_EditorClassIdentifier: 
-  moveDuration: 1
+  moveDuration: 3
   startValue: 0.75
   endValue: 0
   moveEase: 18
