@@ -13,6 +13,7 @@ public class Breather : MonoBehaviour
     private float displayRangeScale;
     private float startOffset;
     private RectTransform breathMarkerRT;
+    private AudioSource audioSource;
 
     [SerializeField]
     private GameEvent breathMissEvent;
@@ -24,8 +25,12 @@ public class Breather : MonoBehaviour
     private RectTransform leftBreathBandRT;
     [SerializeField]
     private RectTransform rightBreathBandRT;
-
-    public float maxBreathSeconds;
+    [SerializeField]
+    private float maxBreathSeconds;
+    [SerializeField]
+    private AudioClip inhaleSFX;
+    [SerializeField]
+    private AudioClip exhaleSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,7 @@ public class Breather : MonoBehaviour
             Debug.LogError("No breath zone rect transform found!");
         }
         breathMarkerRT = GetComponent<RectTransform>();
+        audioSource = GetComponent<AudioSource>();
         inhaling = false;
         exhaling = false;
         hasStarted = false;
@@ -48,6 +54,8 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (exhaling) {
                 checkBreathHit();
+                audioSource.clip = inhaleSFX;
+                audioSource.Play();
             }
             hasStarted = true;
             inhaling = true;
@@ -60,6 +68,8 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (inhaling) {
                 checkBreathHit();
+                audioSource.clip = exhaleSFX;
+                audioSource.Play();
             }
             hasStarted = true;
             exhaling = true;
@@ -97,7 +107,6 @@ public class Breather : MonoBehaviour
         }
 
         if (hasStarted && (breathMarkerPosition >=1 || breathMarkerPosition <= 0)) {
-            checkBreathHit();
             fullMiss();
         }
     }
@@ -141,12 +150,10 @@ public class Breather : MonoBehaviour
 
     private void fullMiss() {
         if (inhaling) {
-            exhaling = true;
-            inhaling = false;
+            e_toggleExhale();
         }
         else if (exhaling) {
-            inhaling = true;
-            exhaling = false;
+            e_toggleInhale();
         }
         else {
             Debug.LogError("You are neither exhaling nor inhaling!!!");
