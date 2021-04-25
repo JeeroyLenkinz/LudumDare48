@@ -16,7 +16,7 @@ public class CrusherCrush : MonoBehaviour
         
     }
 
-    private void checkPresent()
+    private void CrushAlien()
     {
 
         GameObject grabbedObj;
@@ -27,7 +27,11 @@ public class CrusherCrush : MonoBehaviour
             grabbedObj = hit.collider.gameObject;
             if (grabbedObj.CompareTag("alien"))
             {
-                alienLogic = grabbedObj.GetComponent<AlienBase>().OnUse();
+                alienLogic = grabbedObj.GetComponent<AlienBase>();
+                if (alienLogic.Crushable())
+                {
+                    alienLogic.CrushMeDaddy();
+                }
             }
         }
     }
