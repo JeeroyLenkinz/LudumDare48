@@ -11,9 +11,12 @@ public enum AnimationTweenType
 {
     // Add new ones here to correspond to new SOs
     Move,
+    Move2,
     Scale,
     RotateZ,
+    RotateZ2,
     FadeOutText,
+    EndMove
 }
 
 public class Animate_Basic : MonoBehaviour
@@ -115,10 +118,14 @@ public class Animate_Basic : MonoBehaviour
         switch (localAnimationTweenType)
         {
             case AnimationTweenType.Move:
-                startPoint = checkVectVals(startPoint);
+                //startPoint = checkVectVals(startPoint);
                 return transform.DOMove(endPoint, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
                 break;
 
+            case AnimationTweenType.Move2:
+                //startPoint = checkVectVals(startPoint);
+                return transform.DOMove(endPoint, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
+                break;
 
             case AnimationTweenType.Scale:
                 transform.localScale = new Vector3(animSO.startValue, animSO.startValue, animSO.startValue);
@@ -128,13 +135,24 @@ public class Animate_Basic : MonoBehaviour
             case AnimationTweenType.RotateZ:
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, animSO.startValue);
                 Vector3 endValue = new Vector3(transform.rotation.x, transform.rotation.y, animSO.endValue);
-                return transform.DOLocalRotate(endValue, animSO.moveDuration);
+                return transform.DOLocalRotate(endValue, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
+                break;
+
+            case AnimationTweenType.RotateZ2:
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, animSO.startValue);
+                Vector3 endValue2 = new Vector3(transform.rotation.x, transform.rotation.y, animSO.endValue);
+                return transform.DOLocalRotate(endValue2, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
                 break;
 
 
             case AnimationTweenType.FadeOutText:
                 TextMeshProUGUI myText = GetComponent<TextMeshProUGUI>();
                 return myText.DOFade(0f, animSO.moveDuration).SetEase(animSO.moveEase);
+
+            case AnimationTweenType.EndMove:
+                //startPoint = checkVectVals(startPoint);
+                return transform.DOMove(endPoint, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
+                break;
 
             default:
                 return null;
