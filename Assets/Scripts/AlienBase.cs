@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -20,6 +21,9 @@ public class AlienBase : MonoBehaviour, IUsable
     private Vector2 squeezeScale;
     [SerializeField]
     private Vector2 squeezeHitbox;
+
+    [SerializeField]
+    private GameEvent alienDropped;
 
     private Sprite normalSprite;
     private Sprite grabSprite;
@@ -41,6 +45,17 @@ public class AlienBase : MonoBehaviour, IUsable
         //handRB = hand.GetComponent<Rigidbody2D>();
 
         originalScale = transform.localScale;
+    }
+
+    void FixedUpdate() {
+        if (rb.velocity.magnitude != 0) {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Drop"));
+            if(hit.collider != null)
+            {
+                Destroy(gameObject);
+                alienDropped.Raise();
+            }
+        }
     }
 
 

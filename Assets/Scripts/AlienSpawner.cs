@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class AlienSpawner : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class AlienSpawner : MonoBehaviour
     private Transform rightBound;
     [SerializeField]
     private GameObject[] alienPrefabs;
-    private int totalSpawnedAliens;
+    [SerializeField]
+    private IntReference currentActiveAliensSO;
     private float timeUntilSpawn;
     
     public float minAngle;
@@ -22,10 +24,15 @@ public class AlienSpawner : MonoBehaviour
     public int maxAllowableAliens;
 
     
+   public void e_alienDropped() {
+       currentActiveAliensSO.Value--;
+       timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
+   }
+   
     // Start is called before the first frame update
     void Start()
     {
-        totalSpawnedAliens = 0;
+        currentActiveAliensSO.Value = 0;
         timeUntilSpawn = minSpawnCooldown;
     }
 
@@ -33,11 +40,11 @@ public class AlienSpawner : MonoBehaviour
     void Update()
     {
         timeUntilSpawn -= Time.deltaTime;
-        if (timeUntilSpawn <= 0 && totalSpawnedAliens < maxAllowableAliens) {
+        if (timeUntilSpawn <= 0 && currentActiveAliensSO.Value < maxAllowableAliens) {
             GameObject chosenAlienType = chooseAlienType();
             spawnAlien(chosenAlienType);
             timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
-            totalSpawnedAliens++;
+            currentActiveAliensSO.Value++;
         }
     }
 

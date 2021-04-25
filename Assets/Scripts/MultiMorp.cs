@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MultiMorp : MonoBehaviour
 {
 
     public GameObject[] morpsConnected;
+    public GameObject[] connectors;
+    private List<GameObject> connectorList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +16,11 @@ public class MultiMorp : MonoBehaviour
         foreach(GameObject morp in morpsConnected)
         {
             morp.GetComponent<AlienBase>().SetAttached();
+        }
+
+        foreach(GameObject connector in connectors)
+        {
+            connectorList.Add(connector);
         }
     }
 
@@ -28,7 +36,12 @@ public class MultiMorp : MonoBehaviour
         morpTwo.transform.parent = null;
 
         // Destroy this and the connector
-        Destroy(this.gameObject);
+        Destroy(connector);
+        if(connectorList.Count == 0)
+        {
+            Destroy(this);
+        }
+        
 
 
     }
