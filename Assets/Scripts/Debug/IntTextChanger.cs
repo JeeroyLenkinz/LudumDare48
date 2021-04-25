@@ -13,9 +13,12 @@ public class IntTextChanger : MonoBehaviour
     [SerializeField]
     private IntReference intSO;
 
+    [SerializeField]
+    private string prefix;
+
     public void e_ChangeMyTextInt()
     {
-        displayText.text = intSO.Value.ToString();
+        displayText.text = prefix + intSO.Value.ToString();
     }
 
 }

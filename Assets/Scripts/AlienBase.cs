@@ -73,7 +73,7 @@ public class AlienBase : MonoBehaviour, IUsable
                 string dropTag = hit.transform.gameObject.tag;
                 if (dropTag == shapeType) {
                     isOnTable = false;
-                    if (!isHeld && myParent == null && !isDropping) {
+                    if (!isHeld && !isAttached && !isDropping) {
                         incrementScore.Raise();
                         StartCoroutine(dropAlien());
                     }
@@ -81,7 +81,7 @@ public class AlienBase : MonoBehaviour, IUsable
                 else if (dropTag == "OutOfBounds") {
                     isOnTable = false;
                     triggerParentStatusCheck();
-                    if (!isHeld && myParent == null && !isDropping) {
+                    if (!isHeld && !isAttached && !isDropping) {
                         StartCoroutine(dropAlien());
                     }
                 }
