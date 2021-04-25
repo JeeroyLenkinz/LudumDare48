@@ -42,6 +42,7 @@ public class NarrativeManager : MonoBehaviour
         }
     }
 
+    // HERE JAMES
     private IEnumerator NarrativeSteps() {
         displayStepText();
         switch (currentIndex) {

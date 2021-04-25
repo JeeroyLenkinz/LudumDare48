@@ -37,7 +37,6 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private List<GameObject> morpsConnected = new List<GameObject>();
 
-    private bool isAttached = false;
     private bool isOnTable = true;
     private bool isHeld = false;
     private bool isDropping = false;
@@ -80,7 +79,7 @@ public class AlienBase : MonoBehaviour, IUsable
                 string dropTag = hit.transform.gameObject.tag;
                 if (dropTag == shapeType) {
                     isOnTable = false;
-                    if (!isHeld && !isAttached && !isDropping) {
+                    if (!isHeld && myParent == null && !isDropping) {
                         if (shapeType == "circleHole") {
                             circleScored.Raise();
                         }
@@ -93,7 +92,7 @@ public class AlienBase : MonoBehaviour, IUsable
                 else if (dropTag == "OutOfBounds") {
                     isOnTable = false;
                     triggerParentStatusCheck();
-                    if (!isHeld && !isAttached && !isDropping) {
+                    if (!isHeld && myParent == null && !isDropping) {
                         StartCoroutine(dropAlien());
                     }
                 }
@@ -155,12 +154,6 @@ public class AlienBase : MonoBehaviour, IUsable
                 return;
             }
         }
-
-        if(jointMorp.Length == 0)
-        {
-            myParent = null;
-            isAttached = false;
-        }
     }
 
     private void CrushAlign()
@@ -178,15 +171,11 @@ public class AlienBase : MonoBehaviour, IUsable
 
     }
 
-    public bool GetAttached()
-    {
-        return isAttached;
-    }
 
-    // Should only be called by MultiMorp on spawn!
-    public void SetAttached()
+    // Severed by multiMorp
+    public void SetParentNull()
     {
-        isAttached = true;
+        myParent = null;
     }
 
     public bool getIsHeld() {
