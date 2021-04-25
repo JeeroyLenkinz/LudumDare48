@@ -42,6 +42,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     [SerializeField]
     private string shapeType;
+    private bool isCrushed = false;
 
     [SerializeField]
     private GameEvent incrementScore;
@@ -169,5 +170,22 @@ public class AlienBase : MonoBehaviour, IUsable
         yield return new WaitForSeconds(tweener.Duration()/3);
         alienDropped.Raise();
         Destroy(gameObject);
+    }
+
+    // Returns true if long Gorp
+    public bool Crushable()
+    {
+        if(shapeType == "sqaureHole" && isCrushed)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    public void CrushMeDaddy()
+    {
+        isCrushed = true;
     }
 }
