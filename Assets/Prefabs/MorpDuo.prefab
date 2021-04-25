@@ -233,7 +233,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
-  m_ConnectedAnchor: {x: -1.7699999, y: 0}
+  m_ConnectedAnchor: {x: -1.77, y: 0}
   m_DampingRatio: 0
   m_Frequency: 3
 --- !u!1 &7567807063699306622
@@ -285,6 +285,8 @@ MonoBehaviour:
   morpsConnected:
   - {fileID: 1710032872235680141}
   - {fileID: 1526167028013333070}
+  connectors: []
+  alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
 --- !u!1001 &4703536857325621326
 PrefabInstance:
   m_ObjectHideFlags: 0
