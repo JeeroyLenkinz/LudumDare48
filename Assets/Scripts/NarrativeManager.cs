@@ -97,18 +97,24 @@ public class NarrativeManager : MonoBehaviour
             case 6:
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
+                CameraShakeEvent.Raise(0);
+                EmergencySirenEvent.Raise(true);
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
             //Variable spawn rate of BlumbleB's and GrunksB's
             case 7:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                EmergencySirenEvent.Raise(false);
+                CameraShakeEvent.Raise(3);
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
+            //Summon BlumbleA's
             case 8:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
                 changeDifficulty(difficulty.Deep);
+
                 break;
             //Uhh sorry cadet! Our new intern broke our oxygen valve, breathe deeper while I fix this!
             //Breathe DEEP
@@ -122,7 +128,7 @@ public class NarrativeManager : MonoBehaviour
             case 10:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 10;
-                //CameraShakeEvent.Raise(ShakeType.Medium);
+                CameraShakeEvent.Raise(1);
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
@@ -147,6 +153,7 @@ public class NarrativeManager : MonoBehaviour
                 changeDifficulty(difficulty.Normal);
                 FlickerOn.Raise();
                 EmergencySirenEvent.Raise(false);
+                CameraShakeEvent.Raise(2);
                 break;
             //Crisis solved - Not today matey! Breath normally. Onwards to Deepest Space! Expect a lot of aliens...
             //Breath NORMAL
