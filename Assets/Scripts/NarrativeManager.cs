@@ -30,7 +30,7 @@ public class NarrativeManager : MonoBehaviour
     {
         if (!displayingText) {
             timeBetweenSteps -= Time.deltaTime;
-            if (timeBetweenSteps <= 0 && currentIndex <= narrativeObjects.Length) {
+            if (timeBetweenSteps <= 0 && currentIndex < narrativeObjects.Length) {
                 StartCoroutine(NarrativeSteps());
             }
         }
@@ -46,6 +46,10 @@ public class NarrativeManager : MonoBehaviour
         displayStepText();
         switch (currentIndex) {
             case 0:
+                textDisplayDuration = 5;
+                timeBetweenSteps = 10;
+                break;
+            case 1:
                 textDisplayDuration = 5;
                 timeBetweenSteps = 10;
                 break;
