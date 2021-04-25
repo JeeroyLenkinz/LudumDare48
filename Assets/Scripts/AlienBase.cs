@@ -164,7 +164,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private IEnumerator dropAlien() {
         isDropping = true;
-        rb.drag = 4;
+        rb.drag = 8;
         Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
         yield return new WaitForSeconds(tweener.Duration()/3);
         alienDropped.Raise();
