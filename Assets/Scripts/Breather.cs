@@ -65,6 +65,7 @@ public class Breather : MonoBehaviour
         startOffset = breathMarkerRT.rect.width/2;
         displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width;
         breathMarkerRT.position = new Vector2(breathMarkerPosition + startOffset, breathMarkerRT.position.y);
+        e_changeBreathBands(2);
     }
 
     // Raised by InputManager.cs

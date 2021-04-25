@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class NarrativeManager : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class NarrativeManager : MonoBehaviour
     private GameObject[] narrativeObjects;
     [SerializeField]
     private float initialTimeDelay;
-
+    [SerializeField]
+    private IntGameEvent changeDifficultyEvent;
+    private enum difficulty {Deepest, Deep, Normal, Quick};
 
     private int currentIndex;
     private float timeBetweenSteps;
@@ -96,12 +99,14 @@ public class NarrativeManager : MonoBehaviour
             case 8:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                changeDifficulty(difficulty.Deep);
                 break;
             //Uhh sorry cadet! Our new intern broke our oxygen valve, breathe deeper while I fix this!
             //Breathe DEEP
             case 9:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                changeDifficulty(difficulty.Normal);
                 break;
             //FIXED! You can breathe normally now - Ugh Interns are the worst sometimes.
             //Breath NORMAL
@@ -120,30 +125,35 @@ public class NarrativeManager : MonoBehaviour
             case 12:
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
+                changeDifficulty(difficulty.Quick);
                 break;
             //Oh no Pirates are attacking - everyone panic and breathe quickly! Intern help me EEK! 
             //Breath QUICKLY
             case 13:
                 textDisplayDuration = 9;
                 timeBetweenSteps = 10;
+                changeDifficulty(difficulty.Normal);
                 break;
             //Crisis solved - Not today matey! Breath normally. Onwards to Deepest Space! Expect a lot of aliens...
             //Breath NORMAL
             case 14:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
+                changeDifficulty(difficulty.Deep);
                 break;
             //Is that…a lavender scented candle? Nice! Everyone - Breath that in deeply!
             //Breath DEEPLY
             case 15:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
+                changeDifficulty(difficulty.Deepest);
                 break;
             //Whoa slow down - that’s not lavender - that’s eucalyptus - my favorite!! Breath as deep as you can!
             //Breath DEEPEST
             case 16:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
+                changeDifficulty(difficulty.Normal);
                 break;
             //Ahh that was nice... Alright - Breath normally
             //Breath NORMAL
@@ -151,15 +161,32 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
                 break;
-                //Great work cadet! We ventured to deepest space and cleansed the galaxy! Great job!
-
-
-
-
-
-
+            //Great work cadet! We ventured to deepest space and cleansed the galaxy! Great job!
         }
         yield return null;
+    }
+
+    private void changeDifficulty(difficulty diff) {
+        // 0 = Slowest/Deepest, 1 = Slow/Deep, 2 = Medium, 3 = Fast/Shallow
+        int diffInt;
+        switch (diff) {
+            case difficulty.Deepest:
+                diffInt = 0;
+                break;
+            case difficulty.Deep:
+                diffInt = 1;
+                break;
+            case difficulty.Normal:
+                diffInt = 2;
+                break;
+            case difficulty.Quick:
+                diffInt = 3;
+                break;
+            default:
+                diffInt = 2;
+                break;
+        }
+        changeDifficultyEvent.Raise(diffInt);
     }
 
     private void displayStepText() {

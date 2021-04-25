@@ -8792,7 +8792,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Watch the breath gauge!\n\nUse LEFT CTRL and RIGHT CTRL to inhale and
-    exhale while in the Yellow zone\rs\n\n\n"
+    exhale while in the yellow zone\rs\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7972989be31ea841a1903fceb3f76f9, type: 2}
   m_sharedMaterial: {fileID: -4001141592680612457, guid: c7972989be31ea841a1903fceb3f76f9, type: 2}
@@ -10037,7 +10037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2085178438
 MonoBehaviour:
   m_ObjectHideFlags: 0

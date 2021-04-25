@@ -63,3 +63,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   initialTimeDelay: 0
+  changeDifficultyEvent: {fileID: 11400000, guid: 6a3071e2158ebb44fa80629814864222, type: 2}
