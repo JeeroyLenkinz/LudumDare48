@@ -57,6 +57,9 @@ TagManager:
   - name: ChuteBody
     uniqueID: 2365634469
     locked: 0
+  - name: LaserBeam
+    uniqueID: 4167014589
+    locked: 0
   - name: Tool
     uniqueID: 2290403637
     locked: 0

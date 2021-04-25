@@ -11,6 +11,15 @@ public class NarrativeManager : MonoBehaviour
     private float initialTimeDelay;
     [SerializeField]
     private IntGameEvent changeDifficultyEvent;
+    [SerializeField]
+    private BoolGameEvent EmergencySirenEvent;
+    [SerializeField]
+    private IntGameEvent CameraShakeEvent;
+    [SerializeField]
+    private GameEvent FlickerOn;
+    [SerializeField]
+    private GameEvent FlickerOff;
+
     private enum difficulty {Deepest, Deep, Normal, Quick};
 
     private int currentIndex;
@@ -113,6 +122,7 @@ public class NarrativeManager : MonoBehaviour
             case 10:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 10;
+                //CameraShakeEvent.Raise(ShakeType.Medium);
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
@@ -126,6 +136,8 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
                 changeDifficulty(difficulty.Quick);
+                FlickerOff.Raise();
+                EmergencySirenEvent.Raise(true);
                 break;
             //Oh no Pirates are attacking - everyone panic and breathe quickly! Intern help me EEK! 
             //Breath QUICKLY
@@ -133,6 +145,8 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 9;
                 timeBetweenSteps = 10;
                 changeDifficulty(difficulty.Normal);
+                FlickerOn.Raise();
+                EmergencySirenEvent.Raise(false);
                 break;
             //Crisis solved - Not today matey! Breath normally. Onwards to Deepest Space! Expect a lot of aliens...
             //Breath NORMAL
