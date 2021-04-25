@@ -14,6 +14,8 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField]
     private IntReference currentActiveAliensSO;
     private float timeUntilSpawn;
+    private float spawnMultiplier;
+    private bool dontSpawn;
     
     public float minAngle;
     public float maxAngle;
@@ -22,6 +24,7 @@ public class AlienSpawner : MonoBehaviour
     public float minSpawnCooldown;
     public float maxSpawnCooldown;
     public int maxAllowableAliens;
+    public float groupSpawnDelay;
 
     
    public void e_alienDropped() {
@@ -33,23 +36,30 @@ public class AlienSpawner : MonoBehaviour
     void Start()
     {
         currentActiveAliensSO.Value = 0;
+        spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
+        dontSpawn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         timeUntilSpawn -= Time.deltaTime;
-        if (timeUntilSpawn <= 0 && currentActiveAliensSO.Value < maxAllowableAliens) {
-            GameObject chosenAlienType = chooseAlienType();
+        if (timeUntilSpawn <= 0 && currentActiveAliensSO.Value < maxAllowableAliens && !dontSpawn) {
+            GameObject chosenAlienType = getRandomAlienType();
             spawnAlien(chosenAlienType);
-            timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
+            timeUntilSpawn = Random.Range(minSpawnCooldown*spawnMultiplier, maxSpawnCooldown*spawnMultiplier);
             currentActiveAliensSO.Value++;
         }
     }
 
-    private GameObject chooseAlienType() {
+    private GameObject getRandomAlienType() {
         GameObject chosenAlienPrefab = alienPrefabs[Random.Range(0, alienPrefabs.Length)];
+        return chosenAlienPrefab;
+    }
+
+    private GameObject getSpecificAlienType(int index) {
+        GameObject chosenAlienPrefab = alienPrefabs[index];
         return chosenAlienPrefab;
     }
 
@@ -68,5 +78,33 @@ public class AlienSpawner : MonoBehaviour
         GameObject spawnedAlien = Instantiate(chosenAlienPrefab, spawnPos, Quaternion.identity) as GameObject;
         Rigidbody2D spawnRb = spawnedAlien.GetComponent<Rigidbody2D>();
         spawnRb.velocity = spawnDir;
+    }
+
+    private IEnumerator spawnGroup(int typeIndex, int amount) {
+        GameObject alienType = getSpecificAlienType(typeIndex);
+        for (int i = 0; i < amount; i++) {
+            spawnAlien(alienType);
+            yield return new WaitForSeconds(groupSpawnDelay);
+        }
+    }
+
+    public void e_SetMaxAllowableAliens(int newMax) {
+        maxAllowableAliens = newMax;
+    }
+
+    public void e_SetSpawnMultiplier(float newMultiplier) {
+        if (newMultiplier == 0f) {
+            dontSpawn = true;
+        }
+        else {
+            spawnMultiplier = (1/newMultiplier);
+            dontSpawn = false;
+        }
+    }
+
+    public void e_fixedSpawn(Vector2 spawnInfo) {
+        int typeIndex = (int) spawnInfo.x;
+        int amount = (int) spawnInfo.y;
+        StartCoroutine(spawnGroup(typeIndex, amount));
     }
 }
