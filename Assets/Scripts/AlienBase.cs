@@ -45,7 +45,9 @@ public class AlienBase : MonoBehaviour, IUsable
     private bool isCrushed = false;
 
     [SerializeField]
-    private GameEvent incrementScore;
+    private GameEvent circleScored;
+    [SerializeField]
+    private GameEvent squareScored;
 
 
     void Start()
@@ -75,7 +77,12 @@ public class AlienBase : MonoBehaviour, IUsable
                 if (dropTag == shapeType) {
                     isOnTable = false;
                     if (!isHeld && !isAttached && !isDropping) {
-                        incrementScore.Raise();
+                        if (shapeType == "circleHole") {
+                            circleScored.Raise();
+                        }
+                        else if (shapeType == "squareHole") {
+                            squareScored.Raise();
+                        }
                         StartCoroutine(dropAlien());
                     }
                 }

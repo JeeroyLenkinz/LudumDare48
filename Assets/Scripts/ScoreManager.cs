@@ -8,14 +8,20 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private IntReference scoreSO;
     [SerializeField]
-    private int scoreIncrement;
+    private int circleScoreIncrement;
+    [SerializeField]
+    private int squareScoreIncrement;
 
     void Start()
     {
         scoreSO.Value = 0;
     }
 
-    public void e_incrementScore() {
-        scoreSO.Value += scoreIncrement;
+    public void e_CircleScored() {
+        scoreSO.Value += circleScoreIncrement;
+    }
+
+    public void e_SquareScored() {
+        scoreSO.Value += squareScoreIncrement;
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5872714565228856350}
   - component: {fileID: 5872714565228856337}
   - component: {fileID: 2111241688}
+  - component: {fileID: 127866097}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -48,7 +49,8 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: b76585c8909e7364e9f018680cd40e4f, type: 2}
-  scoreIncrement: 1
+  circleScoreIncrement: 1
+  squareScoreIncrement: 1
 --- !u!114 &2111241688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +73,39 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5872714565228856337}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
-        m_MethodName: e_incrementScore
+        m_MethodName: e_CircleScored
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &127866097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872714565228856336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 549fa551382611349a7c6607ab65f617, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5872714565228856337}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: e_SquareScored
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

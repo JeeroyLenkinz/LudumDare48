@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543699156548098922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.375, y: 0, z: 0}
+  m_LocalPosition: {x: 9.95, y: -2.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8543699156295275000}
@@ -341,7 +341,8 @@ MonoBehaviour:
   squeezeHitbox: {x: 1.5, y: 1.75}
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
   shapeType: squareHole
-  incrementScore: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
+  circleScored: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
+  squareScored: {fileID: 11400000, guid: 549fa551382611349a7c6607ab65f617, type: 2}
 --- !u!70 &2520054362488814923
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
