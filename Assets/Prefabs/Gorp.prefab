@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 1282489137693663520}
   - component: {fileID: 2520054362488814922}
   - component: {fileID: 2520054362488814923}
+  - component: {fileID: 708280111}
   m_Layer: 8
   m_Name: Gorp
   m_TagString: alien
@@ -355,3 +356,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.75, y: 1.75}
   m_Direction: 1
+--- !u!114 &708280111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543699157188365545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15578360df5ebb4e946025f923a529a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetTrans: {fileID: 0}
+  animationSOs:
+  - {fileID: 11400000, guid: 87f2b55d105323c49a99cf7724b8144f, type: 2}

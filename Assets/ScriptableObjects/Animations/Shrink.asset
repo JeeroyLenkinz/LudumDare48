@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Shrink
   m_EditorClassIdentifier: 
   moveDuration: 1
-  startValue: 1
+  startValue: 0.75
   endValue: 0
-  moveEase: 4
+  moveEase: 18
   animationTweenType: 1
   overShoot: 0

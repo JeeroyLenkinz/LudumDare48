@@ -16,8 +16,6 @@ public class MultiMorp : MonoBehaviour
     private GameEvent alienDropped;
 
     private Animate_Basic animBasic;
-    [SerializeField]
-    private GameObject dummyFab;
 
     // Start is called before the first frame update
     void Start()
@@ -75,10 +73,6 @@ public class MultiMorp : MonoBehaviour
     }
 
     private IEnumerator dropMultiMorp() {
-        //GameObject dummy = Instantiate(dummyFab, null);
-        //dummy.transform.position = morpsConnected[0].transform.position;
-        //transform.parent = dummy.transform;
-
         Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
         yield return new WaitForSeconds(tweener.Duration());
         alienDropped.Raise();

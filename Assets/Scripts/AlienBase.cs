@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using DG.Tweening;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -36,12 +37,15 @@ public class AlienBase : MonoBehaviour, IUsable
     private bool isOnTable = true;
     private bool isHeld = false;
     private GameObject myParent;
+    private Animate_Basic animBasic;
+
 
     void Start()
     {
         hand = GameObject.FindGameObjectWithTag("hand");
 
         rb = GetComponent<Rigidbody2D>();
+        animBasic = GetComponent<Animate_Basic>();
 
         jointHand.enabled = false;
         jointHand.connectedBody = hand.GetComponent<Rigidbody2D>();
@@ -142,8 +146,9 @@ public class AlienBase : MonoBehaviour, IUsable
     }
 
     private IEnumerator dropAlien() {
+        Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
+        yield return new WaitForSeconds(tweener.Duration()/3);
         alienDropped.Raise();
         Destroy(gameObject);
-        yield return null;
     }
 }
