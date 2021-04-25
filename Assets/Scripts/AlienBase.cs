@@ -7,6 +7,10 @@ using DG.Tweening;
 public class AlienBase : MonoBehaviour, IUsable
 {
     private GameObject hand;
+    [SerializeField]
+    private GameObject GorpLong;
+    [SerializeField]
+    private GameObject GorpShort;
 
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
@@ -26,7 +30,7 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private GameEvent alienDropped;
 
-    private Sprite normalSprite;
+    private Sprite baseSprite;
     private Sprite grabSprite;
 
     private Vector2 releaseVel;
@@ -101,6 +105,18 @@ public class AlienBase : MonoBehaviour, IUsable
         }
     }
 
+    public void OnGorpSpawn(bool isLong)
+    {
+        //ShortBoit
+        if(!isLong)
+        {
+            isCrushed = true;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = true;
+            GorpLong.SetActive(false);
+            GorpShort.SetActive(true);
+        }
+    }
 
     public void OnUse()
     {
@@ -119,6 +135,7 @@ public class AlienBase : MonoBehaviour, IUsable
         transform.localScale = originalScale;
         jointHand.enabled = false;
         isHeld = false;
+        CrushAlign();
         triggerParentStatusCheck();
 
         rb.velocity = releaseVel;
@@ -141,8 +158,24 @@ public class AlienBase : MonoBehaviour, IUsable
 
         if(jointMorp.Length == 0)
         {
+            myParent = null;
             isAttached = false;
         }
+    }
+
+    private void CrushAlign()
+    {
+        if(shapeType == "squareHole" && !isCrushed)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Alignment"));
+            if(hit.collider != null)
+            {
+                transform.rotation = Quaternion.identity;
+                rb.velocity = Vector2.zero;
+            }
+
+        }
+
     }
 
     public bool GetAttached()
@@ -182,7 +215,7 @@ public class AlienBase : MonoBehaviour, IUsable
     // Returns true if long Gorp
     public bool Crushable()
     {
-        if(shapeType == "sqaureHole" && isCrushed)
+        if(shapeType == "squareHole" && !isCrushed)
         {
             return true;
         } else
@@ -194,5 +227,9 @@ public class AlienBase : MonoBehaviour, IUsable
     public void CrushMeDaddy()
     {
         isCrushed = true;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = true;
+        GorpLong.SetActive(false);
+        GorpShort.SetActive(true);
     }
 }

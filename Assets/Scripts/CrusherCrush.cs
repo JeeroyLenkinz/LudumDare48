@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CrusherCrush : MonoBehaviour
 {
+    private CircleCollider2D circCollider;
+
+    private GameObject collidingAlien;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        circCollider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -16,23 +20,26 @@ public class CrusherCrush : MonoBehaviour
         
     }
 
+    // Called by CrusherHandle
     public void CrushAlien()
     {
-
-        GameObject grabbedObj;
-        AlienBase alienLogic;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Interactable"));
-        if (hit.collider != null)
+        AlienBase alienLogic = collidingAlien.GetComponent<AlienBase>();
+        if (alienLogic.Crushable())
         {
-            grabbedObj = hit.collider.gameObject;
-            if (grabbedObj.CompareTag("alien"))
+            alienLogic.CrushMeDaddy();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform != null)
+        {
+            GameObject otherObj = collision.transform.gameObject;
+            if (otherObj.CompareTag("alien"))
             {
-                alienLogic = grabbedObj.GetComponent<AlienBase>();
-                if (alienLogic.Crushable())
-                {
-                    alienLogic.CrushMeDaddy();
-                }
+                collidingAlien = otherObj;
             }
         }
+
     }
 }

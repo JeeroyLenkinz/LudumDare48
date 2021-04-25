@@ -44,11 +44,45 @@ public class MultiMorp : MonoBehaviour
 
         // Detach Joint
         morpOne.GetComponent<AlienBase>().DetachJoint(morpTwo);
+        connectorList.Remove(connector);
+        bool morpOneDisconnected = true;
+        bool morpTwoDisconnected = true;
 
-        // Detach from parents (i.e. this)
-        morpOne.transform.parent = null;
-        morpTwo.transform.parent = null;
-        // TODO: Update the morpsConnectedList to remove any morps that are no longer part of the parent
+        foreach (GameObject remainingConnector in connectorList)
+        {
+            MorpConnector connectorLogic = remainingConnector.GetComponent<MorpConnector>();
+            GameObject[] connectorsConnectedMorps = connectorLogic.GetConnectedMorps();
+            if (connectorsConnectedMorps[0] == morpOne)
+            {
+                morpOneDisconnected = false;
+                continue;
+            } else if(connectorsConnectedMorps[1] == morpOne)
+            {
+                morpOneDisconnected = false;
+                continue;
+            }
+            if (connectorsConnectedMorps[0] == morpTwo)
+            {
+                morpTwoDisconnected = false;
+                continue;
+            }
+            else if (connectorsConnectedMorps[1] == morpTwo)
+            {
+                morpTwoDisconnected = false;
+                continue;
+            }
+        }
+
+        if (morpOneDisconnected)
+        {
+            morpOne.transform.parent = null;
+            morpsConnectedList.Remove(morpOne);
+        }
+        if (morpTwoDisconnected)
+        {
+            morpTwo.transform.parent = null;
+            morpsConnectedList.Remove(morpTwo);
+        }
 
         // Destroy this and the connector
         Destroy(connector);
