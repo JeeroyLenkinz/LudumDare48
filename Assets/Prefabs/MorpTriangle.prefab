@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560624329417910112}
   - component: {fileID: 6645721995339028236}
+  - component: {fileID: 272718959203352802}
   m_Layer: 0
   m_Name: MorpTriangle
   m_TagString: Untagged
@@ -57,6 +58,23 @@ MonoBehaviour:
   - {fileID: 7815011505348482314}
   - {fileID: 9222064618398201157}
   - {fileID: 6324023863907553127}
+  alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
+  dummyFab: {fileID: 8339274584733606241, guid: 738e07602b04b3448952a46fd6a8583f, type: 3}
+--- !u!114 &272718959203352802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392446363011541939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15578360df5ebb4e946025f923a529a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetTrans: {fileID: 0}
+  animationSOs:
+  - {fileID: 11400000, guid: 87f2b55d105323c49a99cf7724b8144f, type: 2}
 --- !u!255 &1348311082319997876
 FixedJoint2D:
   m_ObjectHideFlags: 0

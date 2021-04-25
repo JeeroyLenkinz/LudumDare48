@@ -6,6 +6,8 @@ TagManager:
   tags:
   - alien
   - hand
+  - Undefined
+  - handle
   layers:
   - Default
   - TransparentFX

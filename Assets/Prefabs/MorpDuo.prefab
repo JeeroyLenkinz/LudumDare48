@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7760761355072320685}
   - component: {fileID: 3480762989573932225}
+  - component: {fileID: 1690367518803675006}
   m_Layer: 0
   m_Name: MorpDuo
   m_TagString: Untagged
@@ -287,6 +288,21 @@ MonoBehaviour:
   - {fileID: 1526167028013333070}
   connectors: []
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
+--- !u!114 &1690367518803675006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7567807063699306622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15578360df5ebb4e946025f923a529a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetTrans: {fileID: 0}
+  animationSOs:
+  - {fileID: 11400000, guid: 87f2b55d105323c49a99cf7724b8144f, type: 2}
 --- !u!1001 &4703536857325621326
 PrefabInstance:
   m_ObjectHideFlags: 0

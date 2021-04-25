@@ -48,6 +48,9 @@ public class HandGrabber : MonoBehaviour
             if (grabbedObj.CompareTag("alien"))
             {
                 grabbedObj.GetComponent<AlienBase>().OnUse();
+            } else if (grabbedObj.CompareTag("handle"))
+            {
+                grabbedObj.GetComponent<CrusherHandle>().OnUse();
             }
         }
         //collider.isTrigger = false;
@@ -64,5 +67,10 @@ public class HandGrabber : MonoBehaviour
         {
             grabbedObj.GetComponent<AlienBase>().OnRelease();
         }
+        else if (grabbedObj.CompareTag("handle"))
+        {
+            grabbedObj.GetComponent<CrusherHandle>().OnRelease();
+        }
     }
 }
+
