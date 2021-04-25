@@ -33,6 +33,9 @@ public class AlienBase : MonoBehaviour, IUsable
     private List<GameObject> morpsConnected = new List<GameObject>();
 
     private bool isAttached = false;
+    private bool isOnTable = true;
+    private bool isHeld = false;
+    private GameObject myParent;
 
     void Start()
     {
@@ -45,6 +48,10 @@ public class AlienBase : MonoBehaviour, IUsable
         //handRB = hand.GetComponent<Rigidbody2D>();
 
         originalScale = transform.localScale;
+
+        if (transform.parent != null) {
+            myParent = transform.parent.gameObject;
+        }
     }
 
     void FixedUpdate() {
@@ -52,8 +59,15 @@ public class AlienBase : MonoBehaviour, IUsable
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Drop"));
             if(hit.collider != null)
             {
-                Destroy(gameObject);
-                alienDropped.Raise();
+                isOnTable = false;
+                triggerParentStatusCheck();
+                if (!isHeld && myParent == null) {
+                    StartCoroutine(dropAlien());
+                }
+            }
+            else {
+                isOnTable = true;
+                triggerParentStatusCheck();
             }
         }
     }
@@ -64,6 +78,8 @@ public class AlienBase : MonoBehaviour, IUsable
         transform.localScale = squeezeScale;
         // Change Art
         jointHand.enabled = true;
+        isHeld = true;
+        triggerParentStatusCheck();
 
         // Change hitbox
     }
@@ -73,6 +89,8 @@ public class AlienBase : MonoBehaviour, IUsable
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
+        isHeld = false;
+        triggerParentStatusCheck();
 
         rb.velocity = releaseVel;
 
@@ -109,4 +127,23 @@ public class AlienBase : MonoBehaviour, IUsable
         isAttached = true;
     }
 
+    public bool getIsHeld() {
+        return isHeld;
+    }
+
+    public bool getIsOnTable() {
+        return isOnTable;
+    }
+
+    private void triggerParentStatusCheck() {
+        if (myParent != null) {
+            myParent.GetComponent<MultiMorp>().checkChildStatuses();
+        }
+    }
+
+    private IEnumerator dropAlien() {
+        alienDropped.Raise();
+        Destroy(gameObject);
+        yield return null;
+    }
 }
