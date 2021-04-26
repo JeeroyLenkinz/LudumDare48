@@ -249,6 +249,7 @@ public class AlienBase : MonoBehaviour, IUsable
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
         GorpShort.SetActive(true);
+        rb.velocity = Vector2.zero;
     }
 
     public void OnJointBreak2D(Joint2D joint)

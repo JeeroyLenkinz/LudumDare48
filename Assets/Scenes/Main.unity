@@ -148,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11842243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.62, y: 0.29, z: 0}
-  m_LocalScale: {x: 2.58, y: 2.06, z: 1}
+  m_LocalPosition: {x: 2.44, y: 0.32, z: 0}
+  m_LocalScale: {x: 5.08, y: 2.06, z: 1}
   m_Children: []
   m_Father: {fileID: 598269059}
   m_RootOrder: 2
@@ -1822,6 +1822,7 @@ GameObject:
   - component: {fileID: 1268407792}
   - component: {fileID: 1268407793}
   - component: {fileID: 1268407794}
+  - component: {fileID: 1268407795}
   m_Layer: 0
   m_Name: CrusherPiston
   m_TagString: Untagged
@@ -1837,7 +1838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268407789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.94, y: 0.37, z: 0}
+  m_LocalPosition: {x: -0.54, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 598269059}
@@ -1937,7 +1938,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.78, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1954,8 +1955,8 @@ PolygonCollider2D:
       - {x: 0.3515625, y: 0.3671875}
       - {x: 0.34375, y: 0.25}
       - {x: 0.3671875, y: 0.046875}
-      - {x: -0.8046875, y: 0.046875}
-      - {x: -0.8046875, y: -0.0703125}
+      - {x: -1.4146059, y: 0.028133743}
+      - {x: -1.4242778, y: -0.07995854}
       - {x: 0.375, y: -0.0703125}
       - {x: 0.3671875, y: -0.1015625}
       - {x: 0.390625, y: -0.453125}
@@ -1965,6 +1966,32 @@ PolygonCollider2D:
       - {x: 0.8046875, y: -0.4140625}
       - {x: 0.8046875, y: -0.234375}
       - {x: 0.734375, y: 0.5859375}
+--- !u!61 &1268407795
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268407789}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.3965313, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.203125, y: 1.3125}
+    newSize: {x: 1.1953125, y: 1.3125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4100623, y: 1.3125}
+  m_EdgeRadius: 0
 --- !u!1001 &1327693051
 PrefabInstance:
   m_ObjectHideFlags: 0

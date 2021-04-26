@@ -23,6 +23,10 @@ public class CrusherCrush : MonoBehaviour
     // Called by CrusherHandle
     public void CrushAlien()
     {
+        if (collidingAlien == null)
+        {
+            return;
+        }
         AlienBase alienLogic = collidingAlien.GetComponent<AlienBase>();
         if (alienLogic.Crushable())
         {
