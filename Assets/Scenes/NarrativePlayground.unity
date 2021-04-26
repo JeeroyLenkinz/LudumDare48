@@ -263,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 5104110365689582684, guid: 763700419da27c446ac4d150c7354e2d, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1966258041}
     - target: {fileID: 5104110365689582685, guid: 763700419da27c446ac4d150c7354e2d, type: 3}
       propertyPath: m_Name
       value: InputManager
@@ -1542,6 +1542,14 @@ PrefabInstance:
     - target: {fileID: 6069215279688856705, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633832811117618853, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633832811117618857, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
@@ -9258,6 +9266,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!20 &1966258041 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6633832811117618854, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
+  m_PrefabInstance: {fileID: 433121783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977351896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10352,7 +10365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7960565802240962110, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7960565802240962111, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
       propertyPath: m_Name
