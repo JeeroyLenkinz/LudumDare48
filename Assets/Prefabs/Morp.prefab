@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &656753322212061151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6605924389762355684}
+  - component: {fileID: 8875683665945240809}
+  m_Layer: 0
+  m_Name: SquishLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6605924389762355684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656753322212061151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5444704624814435076}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8875683665945240809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656753322212061151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 2
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000a5b7008d35c9848863a66bd9
+  m_LightCookieSprite: {fileID: 21300000, guid: fe628659a270f1c42bd86402539eeedc, type: 3}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.37
+  m_PointLightOuterRadius: 0.94
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1588347909983695355
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +266,7 @@ GameObject:
   - component: {fileID: 2532759231738433486}
   - component: {fileID: 7391312435266254819}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: NormalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 4183598220205092512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6082209198471129605}
   m_RootOrder: 1
@@ -226,14 +298,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LightType: 3
+  m_LightType: 2
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0.26666668, g: 0.16078432, b: 0.63529414, a: 1}
-  m_Intensity: 0.95
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000a5b7008d35c9848863a66bd9
-  m_LightCookieSprite: {fileID: 0}
+  m_LightCookieSprite: {fileID: 21300000, guid: 7ddd5cb06d8392245b60d21b5ac560e5, type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -450,6 +522,7 @@ Transform:
   m_Children:
   - {fileID: 7723274543501552598}
   - {fileID: 8305964571801440546}
+  - {fileID: 6605924389762355684}
   m_Father: {fileID: 6082209198471129605}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 31.62}
@@ -699,6 +772,16 @@ MonoBehaviour:
   circleScored: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
   squareScored: {fileID: 11400000, guid: 549fa551382611349a7c6607ab65f617, type: 2}
   smokePuff: {fileID: 0}
+  longLight: {fileID: 0}
+  crushLight: {fileID: 0}
+  longLightSquish: {fileID: 0}
+  crushLightSquish: {fileID: 0}
+  morpLight: {fileID: 4183598220205092512}
+  morpLightSquish: {fileID: 656753322212061151}
+  isDark:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: b8a7bbb1c4672f2468e2f89f07d98ccf, type: 2}
 --- !u!70 &849992610
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -750,17 +833,17 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4183598220205092512}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 849992611}
+        m_TargetAssemblyTypeName: AlienBase, Assembly-CSharp
+        m_MethodName: e_GlowOn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8733085610483270500
 MonoBehaviour:
@@ -782,10 +865,10 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4183598220205092512}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 849992611}
+        m_TargetAssemblyTypeName: AlienBase, Assembly-CSharp
+        m_MethodName: e_GlowOff
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -803,7 +886,7 @@ AudioSource:
   m_GameObject: {fileID: 6082209198471129600}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
   m_audioClip: {fileID: 8300000, guid: cf983cfd0bbd195469d9cd2e0d4aeca8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

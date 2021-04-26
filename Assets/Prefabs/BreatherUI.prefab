@@ -484,7 +484,7 @@ AudioSource:
   m_GameObject: {fileID: 2283855401392472360}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -619,7 +619,7 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 84a65de435305ff4aad3bec41fb61a16, type: 2}
   _event: {fileID: 11400000, guid: 84a65de435305ff4aad3bec41fb61a16, type: 2}
   _response:
     m_PersistentCalls:

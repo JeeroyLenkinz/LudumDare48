@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using DG.Tweening;
+using ScriptableObjectArchitecture;
 
 public class GlobalLightFX : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class GlobalLightFX : MonoBehaviour
     float intensityFloat;
     public bool isAnimating = false;
 
+    public BoolReference isDark;
+
     // Start is called before the first frame update
     void Start()
     {
         startIntensityFloat = globalLight.intensity;
         intensityFloat = globalLight.intensity;
+        isDark.Value = false;
     }
 
     // Update is called once per frame

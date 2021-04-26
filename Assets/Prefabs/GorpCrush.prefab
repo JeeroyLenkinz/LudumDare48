@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 7191449963558634783}
   - component: {fileID: 1267589264812919230}
   m_Layer: 8
-  m_Name: Gorp
+  m_Name: GorpCrush
   m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   squeezeHitbox: {x: 1.5, y: 1.75}
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
   shapeType: squareHole
-  isCrushed: 0
+  isCrushed: 1
   circleScored: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
   squareScored: {fileID: 11400000, guid: 549fa551382611349a7c6607ab65f617, type: 2}
   smokePuff: {fileID: 8684030968275483540}

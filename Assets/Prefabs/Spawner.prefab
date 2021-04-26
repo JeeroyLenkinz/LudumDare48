@@ -56,7 +56,7 @@ MonoBehaviour:
   rightBound: {fileID: 7960565802358152811}
   allAlienPrefabs:
   - {fileID: 6082209198471129600, guid: 30119ac1578442f4ebc684859414814f, type: 3}
-  - {fileID: 6002962826574840611, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+  - {fileID: 8543699157188365545, guid: f9931687a13a3bb428dcf2439ad28937, type: 3}
   - {fileID: 7567807063699306622, guid: 4e2f0309face43748a58c74735e66505, type: 3}
   - {fileID: 7567807063699306622, guid: dd6acc0ac3b1d1543a86227560251812, type: 3}
   - {fileID: 8543699157188365545, guid: 0b3bf57abc12c534b9ac418b0f1b9394, type: 3}
@@ -120,7 +120,7 @@ AudioSource:
   m_GameObject: {fileID: 7960565802240962111}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7466c92ce112cb14a89cda14eea96910, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.423

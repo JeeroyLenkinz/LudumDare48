@@ -79,6 +79,22 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private ParticleSystem smokePuff;
 
+    [SerializeField]
+    private GameObject longLight;
+    [SerializeField]
+    private GameObject crushLight;
+    [SerializeField]
+    private GameObject longLightSquish;
+    [SerializeField]
+    private GameObject crushLightSquish;
+
+    [SerializeField]
+    private GameObject morpLight;
+    [SerializeField]
+    private GameObject morpLightSquish;
+
+    [SerializeField]
+    private BoolReference isDark;
 
     void Start()
     {
@@ -113,6 +129,11 @@ public class AlienBase : MonoBehaviour, IUsable
         else if (shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpUncut;
+        }
+
+        if (isDark.Value == true)
+        {
+            e_GlowOn();
         }
     }
 
@@ -167,6 +188,7 @@ public class AlienBase : MonoBehaviour, IUsable
     {
         //transform.localScale = squeezeScale;
         ChangeArt(true);
+        ChangeLightOn();
         rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
@@ -179,6 +201,7 @@ public class AlienBase : MonoBehaviour, IUsable
     public void OnRelease()
     {
         ChangeArt(false);
+        ChangeLightOff();
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
@@ -285,12 +308,76 @@ public class AlienBase : MonoBehaviour, IUsable
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
         GorpShort.SetActive(true);
+        if(longLight.activeSelf == true)
+        {
+            longLight.SetActive(false);
+            crushLight.SetActive(true); ;
+        }
         rb.velocity = Vector2.zero;
     }
 
     public void OnJointBreak2D(Joint2D joint)
     {
         transform.parent.GetComponent<MultiMorp>().ForceBreak();
+    }
+
+    private void ChangeLightOn()
+    {
+        if(shapeType == "squareHole")
+        {
+            if(crushLight.activeSelf == true)
+            {
+                crushLight.SetActive(false);
+                crushLightSquish.SetActive(true);
+            }
+            else if (longLight.activeSelf == true)
+            {
+                longLight.SetActive(false);
+                longLightSquish.SetActive(true);
+            }
+
+        }
+        else if (shapeType == "circleHole")
+        {
+            if(morpLight.activeSelf == true)
+            {
+                morpLight.SetActive(false);
+                morpLightSquish.SetActive(true);
+            }
+            else if (morpLightSquish.activeSelf == true)
+            {
+                morpLight.SetActive(true);
+                morpLightSquish.SetActive(false);
+            }
+
+        }
+    }
+
+    private void ChangeLightOff()
+    {
+        if (shapeType == "squareHole")
+        {
+            if (crushLightSquish.activeSelf == true)
+            {
+                crushLight.SetActive(true);
+                crushLightSquish.SetActive(false);
+            }
+            else if (longLightSquish.activeSelf == true)
+            {
+                longLight.SetActive(true);
+                longLightSquish.SetActive(false);
+            }
+
+        }
+        else if (shapeType == "circleHole")
+        {
+            if (morpLightSquish.activeSelf == true)
+            {
+                morpLight.SetActive(true);
+                morpLightSquish.SetActive(false);
+            }
+
+        }
     }
 
     private void ChangeArt(bool isGrabbed)
@@ -341,5 +428,49 @@ public class AlienBase : MonoBehaviour, IUsable
                 GorpCrushSqueeze.SetActive(false);
             }
         }
+    }
+
+    public void e_GlowOn()
+    {
+        if(shapeType == "squareHole" && !isCrushed)
+        {
+            longLight.SetActive(true);
+        } else if(shapeType == "squareHole" && isCrushed)
+        {
+            crushLight.SetActive(true);
+        }
+        else if (shapeType == "squareHole" && !isCrushed && isHeld)
+        {
+            longLightSquish.SetActive(true);
+        }
+        else if (shapeType == "squareHole" && isCrushed && isHeld)
+        {
+            crushLightSquish.SetActive(true);
+        } else if(shapeType == "circleHole" && !isHeld)
+        {
+            morpLight.SetActive(true);
+        }
+        else if (shapeType == "circleHole" && isHeld)
+        {
+            morpLightSquish.SetActive(true);
+        }
+    }
+
+    public void e_GlowOff()
+    {
+        if(shapeType == "squareHole")
+        {
+            longLight.SetActive(false);
+            crushLight.SetActive(false);
+            longLightSquish.SetActive(false);
+            crushLightSquish.SetActive(false);
+        } else if (shapeType == "circleHole")
+        {
+            morpLight.SetActive(false);
+            morpLightSquish.SetActive(false);
+        }
+
+
+
     }
 }
