@@ -93,6 +93,8 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private GameObject morpLightSquish;
 
+    [SerializeField]
+    private BoolReference isDark;
 
     void Start()
     {
@@ -127,6 +129,11 @@ public class AlienBase : MonoBehaviour, IUsable
         else if (shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpUncut;
+        }
+
+        if (isDark.Value == true)
+        {
+            e_GlowOn();
         }
     }
 

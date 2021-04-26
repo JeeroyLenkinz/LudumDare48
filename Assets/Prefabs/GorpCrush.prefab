@@ -1998,6 +1998,10 @@ MonoBehaviour:
   crushLightSquish: {fileID: 7750968798587105235}
   morpLight: {fileID: 0}
   morpLightSquish: {fileID: 0}
+  isDark:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: b8a7bbb1c4672f2468e2f89f07d98ccf, type: 2}
 --- !u!70 &2520054362488814923
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
