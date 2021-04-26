@@ -12,6 +12,14 @@ public class NarrativeManager : MonoBehaviour
     [SerializeField]
     private IntGameEvent changeDifficultyEvent;
     [SerializeField]
+    private IntGameEvent setAlienLimitEvent;
+    [SerializeField]
+    private FloatGameEvent setSpawnMultiplierEvent;
+    [SerializeField]
+    private IntGameEvent addAlienTypeEvent;
+    [SerializeField]
+    private Vector2GameEvent spawnAlienEvent;
+    [SerializeField]
     private BoolGameEvent EmergencySirenEvent;
     [SerializeField]
     private IntGameEvent CameraShakeEvent;
@@ -21,6 +29,7 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent FlickerOff;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
+    private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
 
     private int currentIndex;
     private float timeBetweenSteps;
@@ -99,6 +108,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 20;
                 CameraShakeEvent.Raise(0);
                 EmergencySirenEvent.Raise(true);
+                spawnAlien(alienType.Circle, 3);
+                spawnAlien(alienType.CrushedSquare, 3);
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
             //Variable spawn rate of BlumbleB's and GrunksB's
@@ -114,7 +125,6 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
                 changeDifficulty(difficulty.Deep);
-
                 break;
             //Uhh sorry cadet! Our new intern broke our oxygen valve, breathe deeper while I fix this!
             //Breathe DEEP
@@ -208,6 +218,28 @@ public class NarrativeManager : MonoBehaviour
                 break;
         }
         changeDifficultyEvent.Raise(diffInt);
+    }
+
+    private void spawnAlien(alienType type, int amount) {
+        int typeInt = 0;
+        switch (type) {
+            case alienType.Circle:
+                typeInt = 0;
+                break;
+            case alienType.CrushedSquare:
+                typeInt = 1;
+                break;
+            case alienType.CirclePair:
+                typeInt = 2;
+                break;
+            case alienType.CircleTrio:
+                typeInt = 3;
+                break;
+            case alienType.LongSquare:
+                typeInt = 04;
+                break;
+        }
+        spawnAlienEvent.Raise(new Vector2(typeInt, amount));
     }
 
     private void displayStepText() {
