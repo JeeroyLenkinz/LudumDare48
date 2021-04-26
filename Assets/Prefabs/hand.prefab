@@ -136,7 +136,7 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: a2f9f7fcf8b6e184ab98fa399e47c44f, type: 2}
-  smoothing: 0.08
+  smoothing: 0.2
   maxSpeed: 0.1
 --- !u!50 &5368958259185361337
 Rigidbody2D:
