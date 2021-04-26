@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -2004563659
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 636cfaebdd879444480f9450e8414d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f0b4de7ec4a5064fbd56664d4310a5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,8 +101,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9765625, y: 2.0390625}
+    pivot: {x: 0.48808938, y: 0.34320098}
+    oldSize: {x: 0.953125, y: 1.6796875}
     newSize: {x: 0.9765625, y: 2.0390625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 8176021086833185945}
   m_LocalRotation: {x: -0, y: -0, z: 0.015358304, w: 0.9998821}
   m_LocalPosition: {x: -1.48, y: -0.1, z: 0}
-  m_LocalScale: {x: 1.85, y: 0.81, z: 1}
+  m_LocalScale: {x: 1.7112501, y: 0.941625, z: 1}
   m_Children: []
   m_Father: {fileID: 8176021086123528896}
   m_RootOrder: 1
@@ -1144,8 +1144,8 @@ MonoBehaviour:
   pistonInPoint: {fileID: 8176021086926821646}
   pistonOutPoint: {fileID: 8176021086442120041}
   light: {fileID: 8176021087735614122}
-  pullBackSFX: {fileID: 8300000, guid: f9785a15ff02851459c3fc6370ca3f27, type: 3}
-  pushForwardSFX: {fileID: 8300000, guid: ed3fc53c1ce61cd44bc1ea7434c36f37, type: 3}
+  pullBackSFX: {fileID: 8300000, guid: f75e495f1bc427045b79e5796b4f3560, type: 3}
+  pushForwardSFX: {fileID: 8300000, guid: 23e0772fb9537184a84890dadfea1860, type: 3}
   animBasicPistonA: {fileID: 8176021086895318520}
   animBasicPistonB: {fileID: 8176021086895318521}
   crusherCrushLogic: {fileID: 8176021087457616181}

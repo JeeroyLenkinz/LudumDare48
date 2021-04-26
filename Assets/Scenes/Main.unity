@@ -2990,26 +2990,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72523297}
     m_Modifications:
-    - target: {fileID: 8176021086123528897, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7f0b4de7ec4a5064fbd56664d4310a5d, type: 3}
-    - target: {fileID: 8176021086123528898, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.953125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176021086123528898, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.6796875
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176021086833185946, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7112501
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176021086833185946, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.941625
-      objectReference: {fileID: 0}
     - target: {fileID: 8176021087297156151, guid: 1a132c4f69df5334bbce29e3c92b31ff, type: 3}
       propertyPath: m_Name
       value: Crusher
