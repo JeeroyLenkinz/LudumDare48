@@ -18,6 +18,8 @@ public class CrusherHandle : MonoBehaviour, IUsable
     private GameObject pistonInPoint;
     [SerializeField]
     private GameObject pistonOutPoint;
+    [SerializeField]
+    private GameObject light;
 
     Animate_Basic animBasic;
     [SerializeField]
@@ -84,7 +86,9 @@ public class CrusherHandle : MonoBehaviour, IUsable
         yield return new WaitForSeconds(tweener.Duration()/2);
         outCollider.enabled = false;
         inCollider.enabled = true;
-        yield return new WaitForSeconds(tweener.Duration() / 2);
+        yield return new WaitForSeconds(tweener.Duration() / 4);
+        light.SetActive(true);
+        yield return new WaitForSeconds(tweener.Duration() / 4);
         isAnimating = false;
         isPrimed = true;
     }
@@ -95,6 +99,7 @@ public class CrusherHandle : MonoBehaviour, IUsable
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ2, Vector2.zero, Vector2.zero);
         animBasicPistonB.Animate(AnimationTweenType.EndMove, pistonInPoint.transform.position, pistonOutPoint.transform.position);
         yield return new WaitForSeconds(tweener.Duration()*0.1f);
+        light.SetActive(false);
         crusherCrushLogic.GetComponent<CrusherCrush>().CrushAlien();
         // PARTICLES HERE
         outCollider.enabled = false;
