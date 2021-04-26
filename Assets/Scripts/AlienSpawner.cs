@@ -101,7 +101,11 @@ public class AlienSpawner : MonoBehaviour
         Vector2 spawnDir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         spawnDir = spawnDir * Random.Range(minForce, maxForce);
 
-        GameObject spawnedAlien = Instantiate(chosenAlienPrefab, spawnPos, Quaternion.identity) as GameObject;
+        // Get a random rotation
+        Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
+        // Spawn the alien
+        GameObject spawnedAlien = Instantiate(chosenAlienPrefab, spawnPos, rotation) as GameObject;
         Rigidbody2D spawnRb;
         if (spawnedAlien.GetComponent<MultiMorp>() != null) {
             spawnRb = spawnedAlien.transform.GetChild(0).GetComponent<Rigidbody2D>();
