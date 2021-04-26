@@ -22,6 +22,14 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private GameObject MorpSqueeze;
 
+    [SerializeField]
+    private Sprite MorpUncut;
+    [SerializeField]
+    private Sprite MorpCut;
+
+    [SerializeField]
+    private SpriteRenderer MorpSpriteRend;
+
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
     [SerializeField]
@@ -96,6 +104,15 @@ public class AlienBase : MonoBehaviour, IUsable
 
         if (shapeType == "squareHole") {
             OnGorpSpawn(isCrushed);
+        }
+
+        if(myParent == null)
+        {
+            MorpSpriteRend.sprite = MorpCut;
+        }
+        else
+        {
+            MorpSpriteRend.sprite = MorpUncut;
         }
     }
 
@@ -216,6 +233,7 @@ public class AlienBase : MonoBehaviour, IUsable
     public void SetParentNull()
     {
         myParent = null;
+        MorpSpriteRend.sprite = MorpCut;
     }
 
     public bool getIsHeld() {

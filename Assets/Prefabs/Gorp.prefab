@@ -1581,6 +1581,9 @@ MonoBehaviour:
   GorpCrushSqueeze: {fileID: 5137509629157084816}
   MorpNormal: {fileID: 0}
   MorpSqueeze: {fileID: 0}
+  MorpUncut: {fileID: 0}
+  MorpCut: {fileID: 0}
+  MorpSpriteRend: {fileID: 0}
   jointHand: {fileID: 1282489137693663520}
   jointMorp: []
   squeezeScale: {x: 1.5, y: 0.75}
@@ -1698,7 +1701,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ce9a6b1fc49d2042895bd7712fd66b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a4af586cf490a642b8e7173ba6d17e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
