@@ -596,6 +596,9 @@ MonoBehaviour:
   GorpCrushSqueeze: {fileID: 7103168607904104794}
   MorpNormal: {fileID: 0}
   MorpSqueeze: {fileID: 0}
+  MorpUncut: {fileID: 0}
+  MorpCut: {fileID: 0}
+  MorpSpriteRend: {fileID: 0}
   jointHand: {fileID: 3752570428097113834}
   jointMorp: []
   squeezeScale: {x: 1.5, y: 0.75}
@@ -605,6 +608,7 @@ MonoBehaviour:
   isCrushed: 1
   circleScored: {fileID: 11400000, guid: 27b65522cadabbe438faf269ccaac291, type: 2}
   squareScored: {fileID: 11400000, guid: 549fa551382611349a7c6607ab65f617, type: 2}
+  smokePuff: {fileID: 0}
 --- !u!70 &515266230254023297
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -712,7 +716,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ce9a6b1fc49d2042895bd7712fd66b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a4af586cf490a642b8e7173ba6d17e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
