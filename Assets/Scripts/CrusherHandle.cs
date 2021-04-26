@@ -9,6 +9,7 @@ public class CrusherHandle : MonoBehaviour, IUsable
     private Vector3 startRot;
     private bool isAnimating = false;
     private bool isPrimed = false;
+    private AudioSource audioSource;
 
     [SerializeField]
     private GameObject hand;
@@ -20,6 +21,11 @@ public class CrusherHandle : MonoBehaviour, IUsable
     private GameObject pistonOutPoint;
     [SerializeField]
     private GameObject light;
+
+    [SerializeField]
+    private AudioClip pullBackSFX;
+    [SerializeField]
+    private AudioClip pushForwardSFX;
 
     Animate_Basic animBasic;
     [SerializeField]
@@ -43,6 +49,7 @@ public class CrusherHandle : MonoBehaviour, IUsable
         //animBasicPistonB = piston.GetComponent<Animate_Basic>();
         inCollider = piston.GetComponent<BoxCollider2D>();
         outCollider = piston.GetComponent<PolygonCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,6 +87,8 @@ public class CrusherHandle : MonoBehaviour, IUsable
 
     private IEnumerator pullBack()
     {
+        audioSource.clip = pullBackSFX;
+        audioSource.Play();
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ, Vector2.zero, Vector2.zero);
         animBasicPistonA.Animate(AnimationTweenType.Move, pistonOutPoint.transform.position, pistonInPoint.transform.position);
@@ -95,6 +104,8 @@ public class CrusherHandle : MonoBehaviour, IUsable
 
     private IEnumerator pushForward()
     {
+        audioSource.clip = pushForwardSFX;
+        audioSource.Play();
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ2, Vector2.zero, Vector2.zero);
         animBasicPistonB.Animate(AnimationTweenType.EndMove, pistonInPoint.transform.position, pistonOutPoint.transform.position);
