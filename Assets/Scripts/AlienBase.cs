@@ -106,11 +106,11 @@ public class AlienBase : MonoBehaviour, IUsable
             OnGorpSpawn(isCrushed);
         }
 
-        if(myParent == null)
+        if(myParent == null && shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpCut;
         }
-        else
+        else if (shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpUncut;
         }
