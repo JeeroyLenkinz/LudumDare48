@@ -37,4 +37,10 @@ public class HandMover : MonoBehaviour
         rb.MovePosition(goalPos);
 
     }
+
+    // Called by DeathFX
+    public void HandSpeed(float newSpeed)
+    {
+        smoothing = newSpeed;
+    }
 }
