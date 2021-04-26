@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7960565802644771738}
   - component: {fileID: 7960565802644771739}
   - component: {fileID: 7960565802644771740}
+  - component: {fileID: 6014591746672496909}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -53,8 +54,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBound: {fileID: 7960565803720862342}
   rightBound: {fileID: 7960565802358152811}
-  alienPrefabs:
+  allAlienPrefabs:
   - {fileID: 6082209198471129600, guid: 30119ac1578442f4ebc684859414814f, type: 3}
+  - {fileID: 4687124994488415406, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+  - {fileID: 7567807063699306622, guid: 4e2f0309face43748a58c74735e66505, type: 3}
+  - {fileID: 392446363011541939, guid: 6c077906ad1d5c041a8df5dc54b5afd2, type: 3}
   - {fileID: 8543699157188365545, guid: 0b3bf57abc12c534b9ac418b0f1b9394, type: 3}
   currentActiveAliensSO:
     _useConstant: 0
@@ -285,6 +289,39 @@ MonoBehaviour:
       - m_Target: {fileID: 7960565802240962110}
         m_TargetAssemblyTypeName: AlienSpawner, Assembly-CSharp
         m_MethodName: e_SetMaxAllowableAliens
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
+--- !u!114 &6014591746672496909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7960565802240962111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: f0d2c8db219afe24d82ac31a1ab323b2, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7960565802240962110}
+        m_TargetAssemblyTypeName: AlienSpawner, Assembly-CSharp
+        m_MethodName: e_addAlienType
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

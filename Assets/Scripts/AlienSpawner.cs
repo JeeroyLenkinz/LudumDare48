@@ -10,12 +10,13 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField]
     private Transform rightBound;
     [SerializeField]
-    private GameObject[] alienPrefabs;
+    private GameObject[] allAlienPrefabs;
     [SerializeField]
     private IntReference currentActiveAliensSO;
     private float timeUntilSpawn;
     private float spawnMultiplier;
     private bool dontSpawn;
+    private List<GameObject> activeAlienPrefabs = new List<GameObject>();
     
     public float minAngle;
     public float maxAngle;
@@ -25,12 +26,6 @@ public class AlienSpawner : MonoBehaviour
     public float maxSpawnCooldown;
     public int maxAllowableAliens;
     public float groupSpawnDelay;
-
-    
-   public void e_alienDropped() {
-       currentActiveAliensSO.Value--;
-       timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
-   }
    
     // Start is called before the first frame update
     void Start()
@@ -39,6 +34,8 @@ public class AlienSpawner : MonoBehaviour
         spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
         dontSpawn = false;
+        activeAlienPrefabs.Add(allAlienPrefabs[0]);
+        activeAlienPrefabs.Add(allAlienPrefabs[1]);
     }
 
     // Update is called once per frame
@@ -54,12 +51,12 @@ public class AlienSpawner : MonoBehaviour
     }
 
     private GameObject getRandomAlienType() {
-        GameObject chosenAlienPrefab = alienPrefabs[Random.Range(0, alienPrefabs.Length)];
+        GameObject chosenAlienPrefab = activeAlienPrefabs[Random.Range(0, activeAlienPrefabs.Count)];
         return chosenAlienPrefab;
     }
 
     private GameObject getSpecificAlienType(int index) {
-        GameObject chosenAlienPrefab = alienPrefabs[index];
+        GameObject chosenAlienPrefab = activeAlienPrefabs[index];
         return chosenAlienPrefab;
     }
 
@@ -76,7 +73,13 @@ public class AlienSpawner : MonoBehaviour
         spawnDir = spawnDir * Random.Range(minForce, maxForce);
 
         GameObject spawnedAlien = Instantiate(chosenAlienPrefab, spawnPos, Quaternion.identity) as GameObject;
-        Rigidbody2D spawnRb = spawnedAlien.GetComponent<Rigidbody2D>();
+        Rigidbody2D spawnRb;
+        if (spawnedAlien.GetComponent<MultiMorp>() != null) {
+            spawnRb = spawnedAlien.transform.GetChild(0).GetComponent<Rigidbody2D>();
+        }
+        else {
+            spawnRb = spawnedAlien.GetComponent<Rigidbody2D>();
+        }
         spawnRb.velocity = spawnDir;
     }
 
@@ -86,6 +89,11 @@ public class AlienSpawner : MonoBehaviour
             spawnAlien(alienType);
             yield return new WaitForSeconds(groupSpawnDelay);
         }
+    }
+
+    public void e_alienDropped() {
+       currentActiveAliensSO.Value--;
+       timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
     }
 
     public void e_SetMaxAllowableAliens(int newMax) {
@@ -100,6 +108,10 @@ public class AlienSpawner : MonoBehaviour
             spawnMultiplier = (1/newMultiplier);
             dontSpawn = false;
         }
+    }
+
+    public void e_addAlienType(int prefabIndex) {
+        activeAlienPrefabs.Add(allAlienPrefabs[prefabIndex]);
     }
 
     public void e_fixedSpawn(Vector2 spawnInfo) {
