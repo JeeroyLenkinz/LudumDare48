@@ -256,7 +256,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
-  m_ConnectedAnchor: {x: -1.7700001, y: 0}
+  m_ConnectedAnchor: {x: -1.7699999, y: 0}
   m_DampingRatio: 0
   m_Frequency: 3
 --- !u!255 &4639656777460386351
@@ -274,7 +274,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
-  m_ConnectedAnchor: {x: -1.77, y: 0}
+  m_ConnectedAnchor: {x: -1.7700001, y: 0}
   m_DampingRatio: 0
   m_Frequency: 3
 --- !u!1 &6116538982011366271
@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 849992611, guid: 30119ac1578442f4ebc684859414814f, type: 3}
       propertyPath: jointMorp.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 401127584352763369}
     - target: {fileID: 1692796399, guid: 30119ac1578442f4ebc684859414814f, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 2.3325

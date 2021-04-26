@@ -12,6 +12,10 @@ public class AlienBase : MonoBehaviour, IUsable
     private GameObject GorpLong;
     [SerializeField]
     private GameObject GorpShort;
+    [SerializeField]
+    private GameObject MorpNormal;
+    [SerializeField]
+    private GameObject MorpSqueeze;
 
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
@@ -126,8 +130,7 @@ public class AlienBase : MonoBehaviour, IUsable
     public void OnUse()
     {
         //transform.localScale = squeezeScale;
-        // Change Art
-        Debug.Log(transform.name + " was used.");
+        ChangeArt(true);
         rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
@@ -138,6 +141,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnRelease()
     {
+        ChangeArt(false);
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
@@ -241,5 +245,22 @@ public class AlienBase : MonoBehaviour, IUsable
     public void OnJointBreak2D(Joint2D joint)
     {
         transform.parent.GetComponent<MultiMorp>().ForceBreak();
+    }
+
+    private void ChangeArt(bool isGrabbed)
+    {
+        if(shapeType == "circleHole")
+        {
+            if (isGrabbed)
+            {
+                MorpNormal.SetActive(false);
+                MorpSqueeze.SetActive(true);
+            } else if (!isGrabbed)
+            {
+                MorpNormal.SetActive(true);
+                MorpSqueeze.SetActive(false);
+            }
+
+        }
     }
 }
