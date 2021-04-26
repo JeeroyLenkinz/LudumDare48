@@ -16,6 +16,8 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private GameObject GorpSqueeze;
     [SerializeField]
+    private GameObject GorpCrushSqueeze;
+    [SerializeField]
     private GameObject MorpNormal;
     [SerializeField]
     private GameObject MorpSqueeze;
@@ -63,6 +65,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     private CapsuleCollider2D capsuleColl;
     private PolygonCollider2D polyColl;
+    private BoxCollider2D boxColl;
 
 
     void Start()
@@ -87,6 +90,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
         capsuleColl = GetComponent<CapsuleCollider2D>();
         polyColl = GetComponent<PolygonCollider2D>();
+        boxColl = GetComponent<BoxCollider2D>();
     }
 
     void FixedUpdate() {
@@ -130,7 +134,7 @@ public class AlienBase : MonoBehaviour, IUsable
         {
             isCrushed = true;
             GetComponent<CapsuleCollider2D>().enabled = false;
-            GetComponent<BoxCollider2D>().enabled = true;
+            boxColl.enabled = true;
             GorpLong.SetActive(false);
             GorpShort.SetActive(true);
         }
@@ -289,6 +293,22 @@ public class AlienBase : MonoBehaviour, IUsable
                 polyColl.enabled = false;
                 GorpLong.SetActive(true);
                 GorpSqueeze.SetActive(false);
+            }
+        }
+        else if (shapeType == "squareHole" && isCrushed)
+        {
+            if (isGrabbed)
+            {
+                boxColl.offset = new Vector2(0.48f, 0.96f);
+                GorpShort.SetActive(false);
+                GorpCrushSqueeze.SetActive(true);
+
+            }
+            else if (!isGrabbed)
+            {
+                boxColl.offset = new Vector2(0.48f, -0.06f);
+                GorpShort.SetActive(true);
+                GorpCrushSqueeze.SetActive(false);
             }
         }
     }
