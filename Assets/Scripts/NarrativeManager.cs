@@ -239,7 +239,8 @@ public class NarrativeManager : MonoBehaviour
                 typeInt = 04;
                 break;
         }
-        spawnAlienEvent.Raise(new Vector2(typeInt, amount));
+        Vector2 spawnVector = new Vector2(typeInt, amount);
+        spawnAlienEvent.Raise(spawnVector);
     }
 
     private void displayStepText() {
