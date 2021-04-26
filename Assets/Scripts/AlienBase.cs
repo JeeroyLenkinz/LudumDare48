@@ -46,7 +46,8 @@ public class AlienBase : MonoBehaviour, IUsable
 
     [SerializeField]
     private string shapeType;
-    private bool isCrushed = false;
+    [SerializeField]
+    private bool isCrushed;
 
     [SerializeField]
     private GameEvent circleScored;
@@ -56,6 +57,9 @@ public class AlienBase : MonoBehaviour, IUsable
 
     void Start()
     {
+        if (shapeType == "squareHole") {
+            OnGorpSpawn(isCrushed);
+        }
         hand = GameObject.FindGameObjectWithTag("hand");
 
         rb = GetComponent<Rigidbody2D>();
@@ -83,11 +87,12 @@ public class AlienBase : MonoBehaviour, IUsable
                     if (!isHeld && myParent == null && !isDropping) {
                         if (shapeType == "circleHole") {
                             circleScored.Raise();
+                            StartCoroutine(dropAlien());
                         }
-                        else if (shapeType == "squareHole") {
+                        else if (shapeType == "squareHole" && isCrushed) {
                             squareScored.Raise();
+                            StartCoroutine(dropAlien());
                         }
-                        StartCoroutine(dropAlien());
                     }
                 }
                 else if (dropTag == "OutOfBounds") {
@@ -105,10 +110,10 @@ public class AlienBase : MonoBehaviour, IUsable
         }
     }
 
-    public void OnGorpSpawn(bool isLong)
+    public void OnGorpSpawn(bool isShort)
     {
         //ShortBoit
-        if(!isLong)
+        if(isShort)
         {
             isCrushed = true;
             GetComponent<CapsuleCollider2D>().enabled = false;

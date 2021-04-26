@@ -1052,7 +1052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1299334335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1857,6 +1857,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+--- !u!1001 &4007449699109958230
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415403, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687124994488415406, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
+      propertyPath: m_Name
+      value: GorpCrushed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75b45e96a6c67b543a84a392721ff597, type: 3}
 --- !u!1001 &4122905709534942234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2257,135 +2314,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7960565802240962110, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
-      propertyPath: groupSpawnDelay
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7960565802240962110, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
-      propertyPath: maxAllowableAliens
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7960565802240962111, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
---- !u!1 &7960565802644771736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7960565802240962111, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
-  m_PrefabInstance: {fileID: 7960565802644771735}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7960565802644771737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7960565802240962110, guid: a126d6e790077b144a3e119f2db9b3ad, type: 3}
-  m_PrefabInstance: {fileID: 7960565802644771735}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960565802644771736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c306599b734f3fc4abe512917255941e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7960565802644771738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960565802644771736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b54fa01acca67d41bb950e0d324bfcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 7731e76ea54de2c49b75e3b0d68a4357, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7960565802644771737}
-        m_TargetAssemblyTypeName: AlienSpawner, Assembly-CSharp
-        m_MethodName: e_fixedSpawn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: {x: 0, y: 0}
---- !u!114 &7960565802644771739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960565802644771736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d803b71d5100f2f43b3d93b8d7210303, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 905a633f40ba1884a947339cbc0a90d8, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7960565802644771737}
-        m_TargetAssemblyTypeName: AlienSpawner, Assembly-CSharp
-        m_MethodName: e_SetSpawnMultiplier
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: 0
---- !u!114 &7960565802644771740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960565802644771736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 266d4b278dd8bcd43a2e3c11804571b2, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7960565802644771737}
-        m_TargetAssemblyTypeName: AlienSpawner, Assembly-CSharp
-        m_MethodName: e_SetMaxAllowableAliens
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: 0
 --- !u!1001 &8795378222997820588
 PrefabInstance:
   m_ObjectHideFlags: 0

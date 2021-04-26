@@ -12,6 +12,14 @@ public class NarrativeManager : MonoBehaviour
     [SerializeField]
     private IntGameEvent changeDifficultyEvent;
     [SerializeField]
+    private IntGameEvent setAlienLimitEvent;
+    [SerializeField]
+    private FloatGameEvent setSpawnMultiplierEvent;
+    [SerializeField]
+    private IntGameEvent addAlienTypeEvent;
+    [SerializeField]
+    private Vector2GameEvent spawnAlienEvent;
+    [SerializeField]
     private BoolGameEvent EmergencySirenEvent;
     [SerializeField]
     private IntGameEvent CameraShakeEvent;
@@ -21,6 +29,7 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent FlickerOff;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
+    private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
 
     private int currentIndex;
     private float timeBetweenSteps;
@@ -97,14 +106,21 @@ public class NarrativeManager : MonoBehaviour
             case 6:
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
+                CameraShakeEvent.Raise(0);
+                EmergencySirenEvent.Raise(true);
+                spawnAlien(alienType.Circle, 3);
+                spawnAlien(alienType.CrushedSquare, 3);
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
             //Variable spawn rate of BlumbleB's and GrunksB's
             case 7:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                EmergencySirenEvent.Raise(false);
+                CameraShakeEvent.Raise(3);
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
+            //Summon BlumbleA's
             case 8:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
@@ -122,7 +138,7 @@ public class NarrativeManager : MonoBehaviour
             case 10:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 10;
-                //CameraShakeEvent.Raise(ShakeType.Medium);
+                CameraShakeEvent.Raise(1);
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
@@ -147,6 +163,7 @@ public class NarrativeManager : MonoBehaviour
                 changeDifficulty(difficulty.Normal);
                 FlickerOn.Raise();
                 EmergencySirenEvent.Raise(false);
+                CameraShakeEvent.Raise(2);
                 break;
             //Crisis solved - Not today matey! Breath normally. Onwards to Deepest Space! Expect a lot of aliens...
             //Breath NORMAL
@@ -201,6 +218,29 @@ public class NarrativeManager : MonoBehaviour
                 break;
         }
         changeDifficultyEvent.Raise(diffInt);
+    }
+
+    private void spawnAlien(alienType type, int amount) {
+        int typeInt = 0;
+        switch (type) {
+            case alienType.Circle:
+                typeInt = 0;
+                break;
+            case alienType.CrushedSquare:
+                typeInt = 1;
+                break;
+            case alienType.CirclePair:
+                typeInt = 2;
+                break;
+            case alienType.CircleTrio:
+                typeInt = 3;
+                break;
+            case alienType.LongSquare:
+                typeInt = 04;
+                break;
+        }
+        Vector2 spawnVector = new Vector2(typeInt, amount);
+        spawnAlienEvent.Raise(spawnVector);
     }
 
     private void displayStepText() {
