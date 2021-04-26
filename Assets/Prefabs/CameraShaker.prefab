@@ -118,7 +118,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6633832811117618856}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &6633832811117618852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 202982fb9fbdae54ebb32b0673df37a1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f148882fe35789644936b068820c151c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.48
   m_Pitch: 1

@@ -133,8 +133,8 @@ public class NarrativeManager : MonoBehaviour
 
                 playSFX(sfx.Siren);
 
-                spawnAlien(alienType.Circle, 3);
-                spawnAlien(alienType.CrushedSquare, 3);
+                spawnAlien(alienType.Circle, 2);
+                spawnAlien(alienType.CrushedSquare, 2);
                 setAlienLimitEvent.Raise(10);
                 setSpawnMultiplierEvent.Raise(1f);
                 break;

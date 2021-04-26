@@ -68,8 +68,8 @@ MonoBehaviour:
   maxAngle: 295
   minForce: 8
   maxForce: 20
-  minSpawnCooldown: 1
-  maxSpawnCooldown: 3
+  minSpawnCooldown: 1.5
+  maxSpawnCooldown: 3.5
   maxAllowableAliens: 20
   groupSpawnDelay: 0.3
 --- !u!114 &947027370
