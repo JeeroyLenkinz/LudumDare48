@@ -22,12 +22,12 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             inhaleCtrl.Raise();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             exhaleCtrl.Raise();
         }

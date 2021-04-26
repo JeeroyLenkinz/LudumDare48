@@ -280,7 +280,7 @@ public class AlienBase : MonoBehaviour, IUsable
     private IEnumerator dropAlien(bool isOffScreen) {
         isDropping = true;
         if (!isOffScreen) {
-            rb.drag = 8;
+            rb.drag = 40;
             Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
             yield return new WaitForSeconds(tweener.Duration()/3);
         }
