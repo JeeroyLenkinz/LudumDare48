@@ -14,7 +14,7 @@ public class HandMover : MonoBehaviour
     [SerializeField]
     private Vector2Reference mousePos;
 
-    [SerializeField, Range(0.01f, 0.1f)]
+    [SerializeField, Range(0.01f, 0.2f)]
     private float smoothing;
 
     [SerializeField]
