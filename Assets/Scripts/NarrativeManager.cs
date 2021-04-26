@@ -54,7 +54,7 @@ public class NarrativeManager : MonoBehaviour
         hyperSpaceAudioSource = gameObject.transform.Find("HyperSpaceSFX").GetComponent<AudioSource>();
         pirateBattleAudioSource = gameObject.transform.Find("PirateBattleSFX").GetComponent<AudioSource>();
         timeBetweenSteps = initialTimeDelay;
-        currentIndex = 6;
+        currentIndex = 13;
         displayingText = false;
         narrativeComplete = false;
         gameEndTriggered = false;
@@ -201,6 +201,7 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 20;
                 changeBreathDifficulty(difficulty.Quick);
                 playSFX(sfx.Siren);
+                playSFX(sfx.PirateBattle);
                 CameraShakeEvent.Raise(1);
                 FlickerOff.Raise();
                 EmergencySirenEvent.Raise(true);
@@ -218,6 +219,7 @@ public class NarrativeManager : MonoBehaviour
                 playSFX(sfx.HyperSpace);
                 setAlienLimitEvent.Raise(30);
                 setSpawnMultiplierEvent.Raise(2f);
+                stopSFX(sfx.PirateBattle);
                 break;
             //Let's get out of here! Onwards to Deepest Space! Breath normally but Expect a lot of aliens...
             //Breath NORMAL
