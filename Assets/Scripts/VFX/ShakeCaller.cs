@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
 
-public enum ShakeType { Soft = 0, Medium, Hard, SoftLong};
+public enum ShakeType { Soft = 0, Medium, Hard, SoftLong, Custom};
 
 public class ShakeCaller : MonoBehaviour
 {
@@ -49,6 +49,12 @@ public class ShakeCaller : MonoBehaviour
                 CameraShakeInstance instance4 = CameraShaker.Instance.StartShake(1.5f, 1f, 1f);
                 yield return new WaitForSeconds(4f);
                 instance4.StartFadeOut(1f);
+                break;
+
+            case ShakeType.Custom:
+                CameraShakeInstance instance5 = CameraShaker.Instance.StartShake(3f, 3f, 1f);
+                yield return new WaitForSeconds(1.1f);
+                instance5.StartFadeOut(0f);
                 break;
 
             default:

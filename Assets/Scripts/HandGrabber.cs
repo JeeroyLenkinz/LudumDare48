@@ -23,6 +23,8 @@ public class HandGrabber : MonoBehaviour
     private Sprite openHand;
     [SerializeField]
     private Sprite closedHand;
+    [SerializeField]
+    private GameObject thumb;
 
     private void Start()
     {
@@ -48,6 +50,7 @@ public class HandGrabber : MonoBehaviour
     private void Grab()
     {
         sr.sprite = closedHand;
+        thumb.SetActive(true);
 
         grabbedObj = null;
 
@@ -76,7 +79,8 @@ public class HandGrabber : MonoBehaviour
     private void Release()
     {
         sr.sprite = openHand;
-        if(grabbedObj == null)
+        thumb.SetActive(false);
+        if (grabbedObj == null)
         {
             return;
         }
