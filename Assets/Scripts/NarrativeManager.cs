@@ -27,19 +27,31 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent FlickerOn;
     [SerializeField]
     private GameEvent FlickerOff;
+    [SerializeField]
+    private AudioClip intercomSFX;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
     private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
+    private enum sfx {Siren, Oxygen, HyperSpace, Intercom};
 
     private int currentIndex;
     private float timeBetweenSteps;
     private float textDisplayDuration;
     private bool displayingText;
+    private bool playInterComSound = true;
+    private AudioSource intercomAudioSource;
+    private AudioSource sirenAudioSource;
+    private AudioSource oxygenAudioSource;
+    private AudioSource hyperSpaceAudioSource;
     // Start is called before the first frame update
     void Start()
     {
+        intercomAudioSource = GetComponent<AudioSource>();
+        sirenAudioSource = gameObject.transform.Find("SirenSFX").GetComponent<AudioSource>();
+        oxygenAudioSource = gameObject.transform.Find("OxygenSFX").GetComponent<AudioSource>();
+        hyperSpaceAudioSource = gameObject.transform.Find("HyperSpaceSFX").GetComponent<AudioSource>();
         timeBetweenSteps = initialTimeDelay;
-        currentIndex = 0;
+        currentIndex = 1;
         displayingText = false;
         foreach(GameObject narrativeObject in narrativeObjects) {
             narrativeObject.SetActive(false);
@@ -65,6 +77,7 @@ public class NarrativeManager : MonoBehaviour
 
     // HERE JAMES
     private IEnumerator NarrativeSteps() {
+        playInterComSound = true;
         displayStepText();
         switch (currentIndex)
         {
@@ -99,6 +112,7 @@ public class NarrativeManager : MonoBehaviour
             case 5:
                 textDisplayDuration = 5;
                 timeBetweenSteps = 0;
+                playInterComSound = false;
                 break;
             //Remember if you fail to breathe properly you will pass out - be careful!
             //Spawn 3 Blumbles & 3 Grunks
@@ -106,10 +120,16 @@ public class NarrativeManager : MonoBehaviour
             case 6:
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
+
                 CameraShakeEvent.Raise(0);
                 EmergencySirenEvent.Raise(true);
+
+                playSFX(sfx.Siren);
+
                 spawnAlien(alienType.Circle, 3);
                 spawnAlien(alienType.CrushedSquare, 3);
+                setAlienLimitEvent.Raise(10);
+                setSpawnMultiplierEvent.Raise(1f);
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
             //Variable spawn rate of BlumbleB's and GrunksB's
@@ -118,6 +138,7 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 15;
                 EmergencySirenEvent.Raise(false);
                 CameraShakeEvent.Raise(3);
+                stopSFX(sfx.Siren);
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
             //Summon BlumbleA's
@@ -194,6 +215,9 @@ public class NarrativeManager : MonoBehaviour
                 break;
             //Great work cadet! We ventured to deepest space and cleansed the galaxy! Great job!
         }
+        if (playInterComSound) {
+            playSFX(sfx.Intercom);
+        }
         yield return null;
     }
 
@@ -241,6 +265,40 @@ public class NarrativeManager : MonoBehaviour
         }
         Vector2 spawnVector = new Vector2(typeInt, amount);
         spawnAlienEvent.Raise(spawnVector);
+    }
+
+    private void playSFX(sfx sfxType) {
+        switch (sfxType) {
+            case sfx.Intercom:
+                intercomAudioSource.Play();
+                break;
+            case sfx.Oxygen:
+                oxygenAudioSource.Play();
+                break;
+            case sfx.Siren:
+                sirenAudioSource.Play();
+                break;
+            case sfx.HyperSpace:
+                hyperSpaceAudioSource.Play();
+                break;
+        }
+    }
+
+        private void stopSFX(sfx sfxType) {
+        switch (sfxType) {
+            case sfx.Intercom:
+                intercomAudioSource.Stop();
+                break;
+            case sfx.Oxygen:
+                oxygenAudioSource.Stop();
+                break;
+            case sfx.Siren:
+                sirenAudioSource.Stop();
+                break;
+            case sfx.HyperSpace:
+                hyperSpaceAudioSource.Stop();
+                break;
+        }
     }
 
     private void displayStepText() {
