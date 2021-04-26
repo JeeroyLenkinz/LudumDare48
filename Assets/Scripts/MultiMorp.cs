@@ -116,4 +116,20 @@ public class MultiMorp : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+    public void ForceBreak()
+    {
+        foreach(GameObject childMorp in morpsConnectedList)
+        {
+            childMorp.GetComponent<AlienBase>().ForceBreak();
+            childMorp.transform.parent = null;
+        }
+
+        foreach (GameObject childConnector in connectorList)
+        {
+            Destroy(childConnector);
+        }
+
+        Destroy(this.transform.gameObject);
+    }
 }

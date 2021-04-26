@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using DG.Tweening;
+using System;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -11,6 +12,10 @@ public class AlienBase : MonoBehaviour, IUsable
     private GameObject GorpLong;
     [SerializeField]
     private GameObject GorpShort;
+    [SerializeField]
+    private GameObject MorpNormal;
+    [SerializeField]
+    private GameObject MorpSqueeze;
 
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
@@ -124,8 +129,9 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnUse()
     {
-        transform.localScale = squeezeScale;
-        // Change Art
+        //transform.localScale = squeezeScale;
+        ChangeArt(true);
+        rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
         triggerParentStatusCheck();
@@ -135,6 +141,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnRelease()
     {
+        ChangeArt(false);
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
@@ -144,6 +151,14 @@ public class AlienBase : MonoBehaviour, IUsable
 
         rb.velocity = releaseVel;
 
+    }
+
+    internal void ForceBreak()
+    {
+        foreach (FixedJoint2D joint in jointMorp)
+        {
+            joint.enabled = false;
+        }
     }
 
     // Called by MultiMorp
@@ -225,5 +240,27 @@ public class AlienBase : MonoBehaviour, IUsable
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
         GorpShort.SetActive(true);
+    }
+
+    public void OnJointBreak2D(Joint2D joint)
+    {
+        transform.parent.GetComponent<MultiMorp>().ForceBreak();
+    }
+
+    private void ChangeArt(bool isGrabbed)
+    {
+        if(shapeType == "circleHole")
+        {
+            if (isGrabbed)
+            {
+                MorpNormal.SetActive(false);
+                MorpSqueeze.SetActive(true);
+            } else if (!isGrabbed)
+            {
+                MorpNormal.SetActive(true);
+                MorpSqueeze.SetActive(false);
+            }
+
+        }
     }
 }

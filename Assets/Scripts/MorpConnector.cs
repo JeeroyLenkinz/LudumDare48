@@ -8,20 +8,40 @@ public class MorpConnector : MonoBehaviour
     public GameObject morpOne;
     public GameObject morpTwo;
 
-    private LineRenderer lr;
+    private LineRenderer lRenderer;
+    EdgeCollider2D edgeCollider2D;
+
+    private List<Vector2> lrPoints = new List<Vector2>();
 
     // Start is called before the first frame update
     void Start()
     {
-        lr = GetComponent<LineRenderer>();
+        lRenderer = GetComponent<LineRenderer>();
+        edgeCollider2D = GetComponent<EdgeCollider2D>();
+        lrPoints.Add(morpOne.transform.position);
+        lrPoints.Add(morpTwo.transform.position);
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        lr.SetPosition(0, morpOne.transform.position);
-        lr.SetPosition(1, morpTwo.transform.position);
+        lrPoints[0] = morpOne.transform.position;
+        lrPoints[1] = morpTwo.transform.position;
+
+
+        //position
+        lRenderer.SetPosition(0, morpOne.transform.position);
+        lRenderer.SetPosition(1, morpTwo.transform.position);
+
+        Vector2[] points = new Vector2[2]
+        {
+            morpOne.transform.localPosition,
+            morpTwo.transform.localPosition
+        };
+
+        //update the edge colliders points
+        //edgeCollider2D.points = points;
 
         // Use Raycast not edge collider and check for collision
         float distance = (morpTwo.transform.position - morpOne.transform.position).magnitude;
@@ -40,7 +60,7 @@ public class MorpConnector : MonoBehaviour
     private void NotifyMultiMorp()
     {
         GetComponentInParent<MultiMorp>().SeperateMorps(morpOne, morpTwo, this.gameObject);
-        lr.enabled = false;
+        lRenderer.enabled = false;
         //Destroy(this.gameObject);
     }
 

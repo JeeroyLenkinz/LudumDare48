@@ -33,7 +33,7 @@ public class AlienSpawner : MonoBehaviour
         currentActiveAliensSO.Value = 0;
         spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
-        dontSpawn = false;
+        dontSpawn = true;
         activeAlienPrefabs.Add(allAlienPrefabs[0]);
         activeAlienPrefabs.Add(allAlienPrefabs[1]);
     }

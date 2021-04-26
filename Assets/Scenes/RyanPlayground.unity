@@ -2242,23 +2242,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: changeDifficultyEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a3071e2158ebb44fa80629814864222, type: 2}
-    - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: narrativeObjects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: narrativeObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1638151876}
     - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: narrativeObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1235780292}
-    - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: narrativeObjects.Array.data[2]
       value: 
       objectReference: {fileID: 1235780292}
     m_RemovedComponents: []

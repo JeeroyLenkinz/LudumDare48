@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: a08857b76d0ca8548a25fba8cb96dd87
   - enabled: 0
     path: Assets/Scenes/BubbaPlayground.unity
     guid: b4724d3eaa8fc614e87dff6b963a3d84
   - enabled: 1
     path: Assets/Scenes/JamesTitlePlayground.unity
     guid: 513e2810f1bf33f46a0d5782ea9a8d76
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: a08857b76d0ca8548a25fba8cb96dd87
   m_configObjects: {}
