@@ -56,11 +56,6 @@ public class HandGrabber : MonoBehaviour
 
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero, 1f, 1 << LayerMask.NameToLayer("Interactable"));
         grabbedObj = CalculateClosestObj();
-        if(grabbedObj != null)
-        {
-            Debug.Log("Closest Object: " + grabbedObj.name.ToString());
-        }
-
         
         if(grabbedObj != null)
         {
