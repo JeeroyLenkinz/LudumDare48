@@ -61,6 +61,9 @@ public class AlienBase : MonoBehaviour, IUsable
     [SerializeField]
     private GameEvent squareScored;
 
+    private CapsuleCollider2D capsuleColl;
+    private PolygonCollider2D polyColl;
+
 
     void Start()
     {
@@ -81,6 +84,9 @@ public class AlienBase : MonoBehaviour, IUsable
         if (transform.parent != null) {
             myParent = transform.parent.gameObject;
         }
+
+        capsuleColl = GetComponent<CapsuleCollider2D>();
+        polyColl = GetComponent<PolygonCollider2D>();
     }
 
     void FixedUpdate() {
@@ -268,11 +274,16 @@ public class AlienBase : MonoBehaviour, IUsable
         {
             if (isGrabbed)
             {
+                capsuleColl.enabled = false;
+                polyColl.enabled = true;
                 GorpLong.SetActive(false);
                 GorpSqueeze.SetActive(true);
+
             }
             else if (!isGrabbed)
             {
+                capsuleColl.enabled = true;
+                polyColl.enabled = false;
                 GorpLong.SetActive(true);
                 GorpSqueeze.SetActive(false);
             }
