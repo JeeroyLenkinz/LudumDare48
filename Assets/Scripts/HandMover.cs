@@ -17,6 +17,9 @@ public class HandMover : MonoBehaviour
     [SerializeField, Range(0.01f, 0.1f)]
     private float smoothing;
 
+    [SerializeField]
+    private float maxSpeed;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,5 +35,6 @@ public class HandMover : MonoBehaviour
     {
         goalPos = Vector2.Lerp(transform.position, mousePos.Value, smoothing);
         rb.MovePosition(goalPos);
+
     }
 }

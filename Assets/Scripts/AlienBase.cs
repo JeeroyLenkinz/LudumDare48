@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using DG.Tweening;
+using System;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -119,8 +120,10 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnUse()
     {
-        transform.localScale = squeezeScale;
+        //transform.localScale = squeezeScale;
         // Change Art
+        Debug.Log(transform.name + " was used.");
+        rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
         triggerParentStatusCheck();
@@ -139,6 +142,14 @@ public class AlienBase : MonoBehaviour, IUsable
 
         rb.velocity = releaseVel;
 
+    }
+
+    internal void ForceBreak()
+    {
+        foreach (FixedJoint2D joint in jointMorp)
+        {
+            joint.enabled = false;
+        }
     }
 
     // Called by MultiMorp
@@ -220,5 +231,10 @@ public class AlienBase : MonoBehaviour, IUsable
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
         GorpShort.SetActive(true);
+    }
+
+    public void OnJointBreak2D(Joint2D joint)
+    {
+        transform.parent.GetComponent<MultiMorp>().ForceBreak();
     }
 }
