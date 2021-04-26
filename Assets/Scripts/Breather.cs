@@ -65,8 +65,8 @@ public class Breather : MonoBehaviour
         difficultyChanging = false;
         fullyMissed = false;
         inactive = false;
-        breathMarkerPosition = breathZoneRT.position.x - breathZoneRT.rect.width;
-        startOffset = (breathMarkerRT.rect.width/2) + breathCapRT.rect.width;
+        breathMarkerPosition = 0;
+        startOffset = breathZoneRT.position.x - (breathZoneRT.rect.width/2) + (breathMarkerRT.rect.width/2) + breathCapRT.rect.width;
         displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width - (breathCapRT.rect.width*2);
         breathMarkerRT.position = new Vector2(breathMarkerPosition + startOffset, breathMarkerRT.position.y);
         e_changeBreathBands(2);
