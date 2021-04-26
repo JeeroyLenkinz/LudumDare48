@@ -52,7 +52,7 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: b76585c8909e7364e9f018680cd40e4f, type: 2}
   circleScoreIncrement: 1
   squareScoreIncrement: 1
-  circleSFX: {fileID: 8300000, guid: c62f990bab62ad8458de750accf07a93, type: 3}
+  circleSFX: {fileID: 8300000, guid: 685c741d499fa7b4e86ed9da27d9e2cf, type: 3}
   squareSFX: {fileID: 8300000, guid: c2e704c76c96eeb4eb737997b9181c3a, type: 3}
 --- !u!114 &2111241688
 MonoBehaviour:
