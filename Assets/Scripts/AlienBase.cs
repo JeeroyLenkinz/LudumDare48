@@ -106,11 +106,11 @@ public class AlienBase : MonoBehaviour, IUsable
             OnGorpSpawn(isCrushed);
         }
 
-        if(myParent == null)
+        if(myParent == null && shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpCut;
         }
-        else
+        else if (shapeType == "circleHole")
         {
             MorpSpriteRend.sprite = MorpUncut;
         }
@@ -182,6 +182,10 @@ public class AlienBase : MonoBehaviour, IUsable
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
+        if (shapeType == "squareHole" && isCrushed)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.89f);
+        }
         isHeld = false;
         CrushAlign();
         triggerParentStatusCheck();

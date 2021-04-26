@@ -44,6 +44,8 @@ public class NarrativeManager : MonoBehaviour
     private bool playInterComSound = true;
     private bool narrativeComplete = false;
     private bool gameEndTriggered = false;
+    private bool noDisplayRaise = false;
+    private bool noHideRaise = false;
     private AudioSource intercomAudioSource;
     private AudioSource sirenAudioSource;
     private AudioSource oxygenAudioSource;
@@ -62,6 +64,7 @@ public class NarrativeManager : MonoBehaviour
         displayingText = false;
         narrativeComplete = false;
         gameEndTriggered = false;
+        noDisplayRaise = false;
         foreach(GameObject narrativeObject in narrativeObjects) {
             narrativeObject.SetActive(false);
         }
@@ -98,34 +101,46 @@ public class NarrativeManager : MonoBehaviour
             case 0:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //Hello Cadet! Welcome aboard the SS Junk! I’m Captain Von Droop!”
 
             case 1:
                 textDisplayDuration = 13;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //We travel deep into space to process aliens like Blumps and Grunks. They’re valuale and pretty cute! The deeper we go, the more we’ll find!
 
             case 2:
                 textDisplayDuration = 9;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //Your job is to receive Blumps and Grumps from the chute, process them and sort them into these bins.
             case 3:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //Air circulation is very important on this ship. You remember how to breathe right? 
             case 4:
                 textDisplayDuration = 9;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //Watch the breath gauge! Use LEFT CTRL and RIGHT CTRL to inhale and exhale while in the Yellow zones
             //Breathe NORMAL
             case 5:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 0;
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //Remember if you fail to breathe properly you will pass out - be careful!
 
@@ -142,6 +157,8 @@ public class NarrativeManager : MonoBehaviour
                 spawnAlien(alienType.CrushedSquare, 2);
                 setAlienLimitEvent.Raise(10);
                 setSpawnMultiplierEvent.Raise(1f);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
             //Spawn 3 Blumbles & 3 Grunks
@@ -157,6 +174,8 @@ public class NarrativeManager : MonoBehaviour
                 addAlienTypeToSpawner(alienType.CircleTrio);
                 spawnAlien(alienType.CirclePair, 1);
                 spawnAlien(alienType.CircleTrio, 1);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
             //Summon BlumbleA's
@@ -167,6 +186,8 @@ public class NarrativeManager : MonoBehaviour
                 EmergencySirenEvent.Raise(true);
                 CameraShakeEvent.Raise(1);
                 changeBreathDifficulty(difficulty.Deep);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Uhh sorry cadet! Our new intern broke our oxygen valve, breathe deeper while I fix this!
             //Breathe DEEP
@@ -176,6 +197,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 0;
                 EmergencySirenEvent.Raise(false);
                 changeBreathDifficulty(difficulty.Normal);
+                noHideRaise = true;
+                noDisplayRaise = true;
                 break;
             //FIXED! You can breathe normally now - Ugh Interns are the worst sometimes.
             //Breath NORMAL
@@ -189,6 +212,8 @@ public class NarrativeManager : MonoBehaviour
                 setAlienLimitEvent.Raise(20);
                 setSpawnMultiplierEvent.Raise(1.5f);
                 stopSFX(sfx.Siren);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
@@ -197,6 +222,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 15;
                 addAlienTypeToSpawner(alienType.LongSquare);
                 spawnAlien(alienType.LongSquare, 3);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Ah! Those grunks are too big! Use the crusher!
             //Spawn GrunkA's
@@ -209,6 +236,8 @@ public class NarrativeManager : MonoBehaviour
                 CameraShakeEvent.Raise(1);
                 FlickerOff.Raise();
                 EmergencySirenEvent.Raise(true);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Oh no Pirates are attacking - everyone panic and breathe quickly! Intern help me EEK! 
             //Breath QUICKLY
@@ -224,6 +253,8 @@ public class NarrativeManager : MonoBehaviour
                 setAlienLimitEvent.Raise(30);
                 setSpawnMultiplierEvent.Raise(2f);
                 stopSFX(sfx.PirateBattle);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Let's get out of here! Onwards to Deepest Space! Breath normally but Expect a lot of aliens...
             //Breath NORMAL
@@ -231,6 +262,8 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
                 changeBreathDifficulty(difficulty.Deep);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Is that…a lavender scented candle? Nice! Everyone - Breath that in deeply!
             //Breath DEEPLY
@@ -239,6 +272,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 20;
                 changeBreathDifficulty(difficulty.Deepest);
                 CameraShakeEvent.Raise(3);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Whoa slow down - that’s not lavender - that’s eucalyptus - my favorite!! Breath as deep as you can!
             //Breath DEEPEST
@@ -246,7 +281,8 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 7;
                 timeBetweenSteps = 15;
                 changeBreathDifficulty(difficulty.Normal);
-                
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Ahh that was nice... Alright - Breath normally
             //Breath NORMAL
@@ -255,6 +291,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 2;
                 narrativeComplete = true;
                 setSpawnMultiplierEvent.Raise(0f);
+                noHideRaise = false;
+                noDisplayRaise = false;
                 break;
             //Great work cadet! We ventured to deepest space and cleansed the galaxy! Great job!
         }
@@ -373,13 +411,17 @@ public class NarrativeManager : MonoBehaviour
     }
 
     private void displayStepText() {
-        displayTextEvent.Raise();
+        if (!noDisplayRaise) {
+            displayTextEvent.Raise();
+        }
         narrativeObjects[currentIndex].SetActive(true);
         displayingText = true;
     }
 
     private void hideStepText() {
-        hideTextEvent.Raise();
+        if (!noHideRaise) {
+            hideTextEvent.Raise();
+        }
         narrativeObjects[currentIndex].SetActive(false);
         displayingText = false;
         currentIndex++;

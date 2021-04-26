@@ -16,7 +16,8 @@ public enum AnimationTweenType
     RotateZ,
     RotateZ2,
     FadeOutText,
-    EndMove
+    EndMove,
+    FadeRadio
 }
 
 public class Animate_Basic : MonoBehaviour
@@ -152,6 +153,15 @@ public class Animate_Basic : MonoBehaviour
             case AnimationTweenType.EndMove:
                 //startPoint = checkVectVals(startPoint);
                 return transform.DOMove(endPoint, animSO.moveDuration).SetEase(animSO.moveEase, overShoot);
+                break;
+
+            case AnimationTweenType.FadeRadio:
+                foreach(Transform child in transform)
+                {
+                    SpriteRenderer sr = child.gameObject.GetComponent<SpriteRenderer>();
+                    sr.DOFade(0f, animSO.moveDuration).SetEase(animSO.moveEase);
+                }
+                return null;
                 break;
 
             default:

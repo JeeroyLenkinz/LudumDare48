@@ -60,7 +60,7 @@ public class GooglyEye : MonoBehaviour
         position.z = Eye.localPosition.z;
         if(parentRB.velocity.magnitude < 0.20f)
         {
-            Debug.Log("zero Vel");
+            //Debug.Log("zero Vel");
             position = Vector2.Lerp(Eye.localPosition, _origin, Time.deltaTime*2);
         }
         Eye.localPosition = position;
