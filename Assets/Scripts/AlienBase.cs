@@ -4,6 +4,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 using DG.Tweening;
 using System;
+using System.Collections.Specialized;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -12,6 +13,8 @@ public class AlienBase : MonoBehaviour, IUsable
     private GameObject GorpLong;
     [SerializeField]
     private GameObject GorpShort;
+    [SerializeField]
+    private GameObject GorpSqueeze;
     [SerializeField]
     private GameObject MorpNormal;
     [SerializeField]
@@ -261,6 +264,18 @@ public class AlienBase : MonoBehaviour, IUsable
                 MorpSqueeze.SetActive(false);
             }
 
+        } else if(shapeType == "squareHole" && !isCrushed)
+        {
+            if (isGrabbed)
+            {
+                GorpLong.SetActive(false);
+                GorpSqueeze.SetActive(true);
+            }
+            else if (!isGrabbed)
+            {
+                GorpLong.SetActive(true);
+                GorpSqueeze.SetActive(false);
+            }
         }
     }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea29b4887d65ef45a35c9c5add9005e, type: 3}
   m_Name: CameraShake
   m_EditorClassIdentifier: 
-  _debugValue: 3
+  _debugValue: 4
