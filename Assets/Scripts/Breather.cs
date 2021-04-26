@@ -96,6 +96,12 @@ public class Breather : MonoBehaviour
         }
     }
 
+    public void e_safetyStartInhale() {
+        if (!hasStarted) {
+            e_toggleInhale();
+        }
+    }
+
     public void e_changeBreathBands(int difficulty) {
         float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width - (2*breathCapRT.rect.width))/2;
         switch (difficulty) {

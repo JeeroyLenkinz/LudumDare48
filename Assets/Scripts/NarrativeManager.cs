@@ -32,6 +32,8 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent displayTextEvent;
     [SerializeField]
     private GameEvent hideTextEvent;
+    [SerializeField]
+    private GameEvent startInhaleEvent;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
     private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
@@ -141,6 +143,7 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 0;
                 noHideRaise = true;
                 noDisplayRaise = true;
+                startInhaleEvent.Raise();
                 break;
             //Remember if you fail to breathe properly you will pass out - be careful!
 
