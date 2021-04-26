@@ -49,7 +49,7 @@ public class NarrativeManager : MonoBehaviour
         oxygenAudioSource = gameObject.transform.Find("OxygenSFX").GetComponent<AudioSource>();
         hyperSpaceAudioSource = gameObject.transform.Find("HyperSpaceSFX").GetComponent<AudioSource>();
         timeBetweenSteps = initialTimeDelay;
-        currentIndex = 1;
+        currentIndex = 0;
         displayingText = false;
         foreach(GameObject narrativeObject in narrativeObjects) {
             narrativeObject.SetActive(false);
@@ -113,7 +113,6 @@ public class NarrativeManager : MonoBehaviour
                 playInterComSound = false;
                 break;
             //Remember if you fail to breathe properly you will pass out - be careful!
-            //Spawn 3 Blumbles & 3 Grunks
 
             case 6:
                 textDisplayDuration = 10;
@@ -130,6 +129,7 @@ public class NarrativeManager : MonoBehaviour
                 setSpawnMultiplierEvent.Raise(1f);
                 break;
             //Fresh Aliens incoming! Put the Purple Blumbles in the Purple Bin and the Orange Grunks in the orange bin.
+            //Spawn 3 Blumbles & 3 Grunks
             //Variable spawn rate of BlumbleB's and GrunksB's
             case 7:
                 textDisplayDuration = 6;
@@ -160,13 +160,16 @@ public class NarrativeManager : MonoBehaviour
             case 10:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 10;
-                CameraShakeEvent.Raise(1);
+                CameraShakeEvent.Raise(4);
+                playSFX(sfx.HyperSpace);
+
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
             case 11:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                addAlienTypeToSpawner(alienType.LongSquare);
                 break;
             //Ah! Those grunks are too big! Use the crusher!
             //Spawn GrunkA's

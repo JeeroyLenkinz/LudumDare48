@@ -53,8 +53,8 @@ public class ShakeCaller : MonoBehaviour
 
             case ShakeType.Custom:
                 CameraShakeInstance instance5 = CameraShaker.Instance.StartShake(3f, 3f, 1f);
-                yield return new WaitForSeconds(0.8f);
-                instance5.StartFadeOut(0.3f);
+                yield return new WaitForSeconds(2.4f);
+                instance5.StartFadeOut(0.2f);
                 break;
 
             default:
