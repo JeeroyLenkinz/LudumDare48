@@ -182,6 +182,10 @@ public class AlienBase : MonoBehaviour, IUsable
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
+        if (shapeType == "squareHole" && isCrushed)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.89f);
+        }
         isHeld = false;
         CrushAlign();
         triggerParentStatusCheck();
