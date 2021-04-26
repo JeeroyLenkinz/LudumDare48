@@ -46,6 +46,8 @@ public class Breather : MonoBehaviour
     private AudioClip inhaleSFX;
     [SerializeField]
     private AudioClip exhaleSFX;
+    [SerializeField]
+    private AudioClip gaspSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +75,6 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (exhaling) {
                 checkBreathHit();
-                audioSource.clip = inhaleSFX;
-                audioSource.Play();
             }
             hasStarted = true;
             inhaling = true;
@@ -87,8 +87,6 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (inhaling) {
                 checkBreathHit();
-                audioSource.clip = exhaleSFX;
-                audioSource.Play();
             }
             hasStarted = true;
             exhaling = true;
@@ -166,6 +164,8 @@ public class Breather : MonoBehaviour
 
     private void checkBreathHit() {
         if (fullyMissed) {
+            audioSource.clip = gaspSFX;
+            audioSource.Play();
             breathMissEvent.Raise();
             fullyMissed = false;
             return;
@@ -182,24 +182,30 @@ public class Breather : MonoBehaviour
         // Check the right target while inhaling (moving right)
         if (inhaling) {
             if (markerLeftBound <= rightTargetRightBound && markerRightBound >= rightTargetLeftBound) {
+                audioSource.clip = exhaleSFX;
                 breathHitEvent.Raise();
             }
             else {
+                audioSource.clip = gaspSFX;
+                
                 breathMissEvent.Raise();
             }
         }
         // Check the left target while exhaling (moving left)
         else if (exhaling) {
             if (markerLeftBound <= leftTargetRightBound && markerRightBound >= leftTargetLeftBound) {
-              breathHitEvent.Raise();
+                audioSource.clip = inhaleSFX;
+                breathHitEvent.Raise();
             }
             else {
+                audioSource.clip = gaspSFX;
                 breathMissEvent.Raise();
             }
         }
         else if (hasStarted) {
             Debug.LogError("You are neither exhaling nor inhaling!!!");
         }
+        audioSource.Play();
     }
 
     private void fullMiss() {
