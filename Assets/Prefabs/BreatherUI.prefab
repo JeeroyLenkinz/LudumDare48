@@ -253,8 +253,9 @@ MonoBehaviour:
   mediumMultiplier: 0.6
   fastMultiplier: 0.4
   bandChangeSmoothing: 0.02
-  inhaleSFX: {fileID: 8300000, guid: 90f37f6df4205dd4d9bb46fd7179b0da, type: 3}
-  exhaleSFX: {fileID: 8300000, guid: f73f20ce6be62c245b1781e6be1aef3c, type: 3}
+  inhaleSFX: {fileID: 8300000, guid: 6ce2377580a08c649a86a8c0cde563d3, type: 3}
+  exhaleSFX: {fileID: 8300000, guid: 55c9534558be595429cce35f1ea38f14, type: 3}
+  gaspSFX: {fileID: 8300000, guid: abf4ade6ecfd7db46ad0aa34d90e397c, type: 3}
 --- !u!114 &2283855401392472363
 MonoBehaviour:
   m_ObjectHideFlags: 0
