@@ -54,7 +54,7 @@ public class NarrativeManager : MonoBehaviour
         hyperSpaceAudioSource = gameObject.transform.Find("HyperSpaceSFX").GetComponent<AudioSource>();
         pirateBattleAudioSource = gameObject.transform.Find("PirateBattleSFX").GetComponent<AudioSource>();
         timeBetweenSteps = initialTimeDelay;
-        currentIndex = 13;
+        currentIndex = 0;
         displayingText = false;
         narrativeComplete = false;
         gameEndTriggered = false;
