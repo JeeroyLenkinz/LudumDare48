@@ -38,6 +38,7 @@ public class AlienSpawner : MonoBehaviour
         spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
         dontSpawn = true;
+        maxAllowableAliens = 0;
         activeAlienPrefabs.Add(allAlienPrefabs[0]);
         activeAlienPrefabs.Add(allAlienPrefabs[1]);
     }
