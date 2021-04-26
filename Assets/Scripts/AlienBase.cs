@@ -67,6 +67,9 @@ public class AlienBase : MonoBehaviour, IUsable
     private PolygonCollider2D polyColl;
     private BoxCollider2D boxColl;
 
+    [SerializeField]
+    private ParticleSystem smokePuff;
+
 
     void Start()
     {
@@ -252,6 +255,7 @@ public class AlienBase : MonoBehaviour, IUsable
     public void CrushMeDaddy()
     {
         isCrushed = true;
+        smokePuff.Play();
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
