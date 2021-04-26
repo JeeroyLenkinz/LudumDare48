@@ -223,6 +223,7 @@ public class NarrativeManager : MonoBehaviour
             case 11:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
+                EmergencySirenEvent.Raise(false);
                 addAlienTypeToSpawner(alienType.LongSquare);
                 spawnAlien(alienType.LongSquare, 3);
                 noHideRaise = false;

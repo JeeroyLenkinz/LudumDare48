@@ -276,7 +276,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'FIXED! You can breathe normally now - Ugh Interns are the worst sometimes.
+  m_text: 'FIXED! You can breathe normally now.
+
+    Ugh Interns are the worst sometimes.
 
 
 
@@ -1455,8 +1457,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fresh Aliens incoming! \nPut the Purple Blumbles in the Purple Bin and
-    the Orange Grunks in the orange bin.\n\n\n"
+  m_text: "Fresh Aliens incoming! \nThrow  the Purple Blumbles in the Purple Bin
+    and the Orange Grunks in the orange bin.\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
   m_sharedMaterial: {fileID: -6960759415546523176, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
@@ -2062,8 +2064,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Watch the breath gauge!\nUse LEFT CTRL and RIGHT CTRL to inhale and exhale
-    while in the yellow zones\r \n"
+  m_text: "Watch the breath gauge!\nUse Q and P to inhale and exhale while in the
+    yellow zones\r \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
   m_sharedMaterial: {fileID: -6960759415546523176, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
@@ -2554,7 +2556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your job is to receive Blumbles and Grumks from the chute, process them
+  m_text: 'Your job is to receive Blumbles and Grunks from the chute, process them
     and sort them into these bins.
 
 '
@@ -2965,7 +2967,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 7.84, y: 1.6477139}
+  m_SizeDelta: {x: 7.84, y: 1.7607491}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2019541473552896135
 CanvasRenderer:
@@ -3305,7 +3307,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 7.84, y: 1.1590149}
+  m_SizeDelta: {x: 7.84, y: 1.2345707}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2019541473693017074
 CanvasRenderer:
@@ -5248,8 +5250,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Crisis solved - Not today matey! Breath normally.\nOnwards to Deepest
-    Space! \nExpect a lot of alies...\n"
+  m_text: Let's get out of here! Onwards to Deepest Space! Breath normally but expect
+    a lot of aliens...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
   m_sharedMaterial: {fileID: -6960759415546523176, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
@@ -6041,7 +6043,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 7.84, y: 2.2101603}
+  m_SizeDelta: {x: 7.84, y: 1.8669677}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2019541474342952789
 CanvasRenderer:
