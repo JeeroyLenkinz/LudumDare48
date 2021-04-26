@@ -171,5 +171,5 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 1a7ac15176298694db1d59751452bb84, type: 2}
   vignetteMin: 0.25
   vignetteMax: 1
-  handSmoothStart: 0.08
+  handSmoothStart: 0.2
   handSmoothEnd: 0.03
