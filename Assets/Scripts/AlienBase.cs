@@ -100,11 +100,11 @@ public class AlienBase : MonoBehaviour, IUsable
                     if (!isHeld && myParent == null && !isDropping) {
                         if (shapeType == "circleHole") {
                             circleScored.Raise();
-                            StartCoroutine(dropAlien());
+                            StartCoroutine(dropAlien(false));
                         }
                         else if (shapeType == "squareHole" && isCrushed) {
                             squareScored.Raise();
-                            StartCoroutine(dropAlien());
+                            StartCoroutine(dropAlien(false));
                         }
                     }
                 }
@@ -112,7 +112,7 @@ public class AlienBase : MonoBehaviour, IUsable
                     isOnTable = false;
                     triggerParentStatusCheck();
                     if (!isHeld && myParent == null && !isDropping) {
-                        StartCoroutine(dropAlien());
+                        StartCoroutine(dropAlien(true));
                     }
                 }
             }
@@ -221,11 +221,13 @@ public class AlienBase : MonoBehaviour, IUsable
         }
     }
 
-    private IEnumerator dropAlien() {
+    private IEnumerator dropAlien(bool isOffScreen) {
         isDropping = true;
-        rb.drag = 8;
-        Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
-        yield return new WaitForSeconds(tweener.Duration()/3);
+        if (!isOffScreen) {
+            rb.drag = 8;
+            Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
+            yield return new WaitForSeconds(tweener.Duration()/3);
+        }
         alienDropped.Raise();
         Destroy(gameObject);
     }

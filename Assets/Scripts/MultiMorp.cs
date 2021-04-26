@@ -105,17 +105,18 @@ public class MultiMorp : MonoBehaviour
             }
         }
         if (dropAll) {
-            StartCoroutine(dropMultiMorp());
+            // StartCoroutine(dropMultiMorp());
+            alienDropped.Raise();
+            Destroy(gameObject);
         }
     }
 
-    private IEnumerator dropMultiMorp() {
-        Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
-        yield return new WaitForSeconds(tweener.Duration());
-        alienDropped.Raise();
-        Destroy(gameObject);
-
-    }
+    // private IEnumerator dropMultiMorp() {
+    //     Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
+    //     yield return new WaitForSeconds(tweener.Duration());
+    //     alienDropped.Raise();
+    //     Destroy(gameObject);
+    // }
 
     public void ForceBreak()
     {
