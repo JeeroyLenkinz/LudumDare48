@@ -14,6 +14,8 @@ public class MultiMorp : MonoBehaviour
     private List<GameObject> morpsConnectedList = new List<GameObject>();
     [SerializeField]
     private GameEvent alienDropped;
+    [SerializeField]
+    private GameEvent laserCut;
 
     private Animate_Basic animBasic;
 
@@ -41,6 +43,9 @@ public class MultiMorp : MonoBehaviour
     public void SeperateMorps(GameObject morpOne, GameObject morpTwo, GameObject connector)
     {
         // Trigger smoke cloud
+
+        // Trigger SFX
+        laserCut.Raise();
 
         // Detach Joint
         morpOne.GetComponent<AlienBase>().DetachJoint(morpTwo);

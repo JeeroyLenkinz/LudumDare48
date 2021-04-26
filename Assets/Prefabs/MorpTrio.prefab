@@ -575,6 +575,7 @@ MonoBehaviour:
   - {fileID: 254559943}
   - {fileID: 6116538982011366271}
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
+  laserCut: {fileID: 11400000, guid: e894d397e8fa69b42a364f190881a6b5, type: 2}
 --- !u!114 &1690367518803675006
 MonoBehaviour:
   m_ObjectHideFlags: 0

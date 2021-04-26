@@ -70,9 +70,6 @@ public class AlienBase : MonoBehaviour, IUsable
 
     void Start()
     {
-        if (shapeType == "squareHole") {
-            OnGorpSpawn(isCrushed);
-        }
         hand = GameObject.FindGameObjectWithTag("hand");
 
         rb = GetComponent<Rigidbody2D>();
@@ -91,6 +88,10 @@ public class AlienBase : MonoBehaviour, IUsable
         capsuleColl = GetComponent<CapsuleCollider2D>();
         polyColl = GetComponent<PolygonCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
+
+        if (shapeType == "squareHole") {
+            OnGorpSpawn(isCrushed);
+        }
     }
 
     void FixedUpdate() {
