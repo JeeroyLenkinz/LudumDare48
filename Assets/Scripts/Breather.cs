@@ -27,6 +27,8 @@ public class Breather : MonoBehaviour
     [SerializeField]
     private RectTransform breathZoneRT;
     [SerializeField]
+    private RectTransform breathCapRT;
+    [SerializeField]
     private RectTransform leftBreathBandRT;
     [SerializeField]
     private RectTransform rightBreathBandRT;
@@ -64,8 +66,8 @@ public class Breather : MonoBehaviour
         fullyMissed = false;
         inactive = false;
         breathMarkerPosition = breathZoneRT.position.x - breathZoneRT.rect.width;
-        startOffset = breathMarkerRT.rect.width/2;
-        displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width;
+        startOffset = (breathMarkerRT.rect.width/2) + breathCapRT.rect.width;
+        displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width - (breathCapRT.rect.width*2);
         breathMarkerRT.position = new Vector2(breathMarkerPosition + startOffset, breathMarkerRT.position.y);
         e_changeBreathBands(2);
     }
@@ -95,7 +97,7 @@ public class Breather : MonoBehaviour
     }
 
     public void e_changeBreathBands(int difficulty) {
-        float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width)/2;
+        float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width - (2*breathCapRT.rect.width))/2;
         switch (difficulty) {
             case 0: // Easiest/Deepest (aka long, slow breaths)
                 distance *= slowestMultiplier;
