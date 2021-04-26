@@ -38,7 +38,6 @@ public class AlienSpawner : MonoBehaviour
         spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
         dontSpawn = true;
-        Debug.Log("Size of activeAlienPrefabs at the start is: " + activeAlienPrefabs.Count);
         activeAlienPrefabs.Add(allAlienPrefabs[0]);
         activeAlienPrefabs.Add(allAlienPrefabs[1]);
     }
@@ -72,7 +71,6 @@ public class AlienSpawner : MonoBehaviour
             weightTotal += alienSpawnWeighting[i];
         }
         float randomNum = Random.value;
-        Debug.Log("Random generated num is: " + randomNum);
         float sum = 0f;
         int selectedIndex = 0;
         for (int j = 0; j < activeAlienPrefabs.Count; j++) {

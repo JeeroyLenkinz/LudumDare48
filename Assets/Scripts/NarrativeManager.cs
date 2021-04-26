@@ -31,7 +31,7 @@ public class NarrativeManager : MonoBehaviour
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
     private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
-    private enum sfx {Siren, Oxygen, HyperSpace, Intercom};
+    private enum sfx {Siren, Oxygen, HyperSpace, Intercom, PirateBattle};
 
     private int currentIndex;
     private float timeBetweenSteps;
@@ -44,6 +44,7 @@ public class NarrativeManager : MonoBehaviour
     private AudioSource sirenAudioSource;
     private AudioSource oxygenAudioSource;
     private AudioSource hyperSpaceAudioSource;
+    private AudioSource pirateBattleAudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,7 @@ public class NarrativeManager : MonoBehaviour
         sirenAudioSource = gameObject.transform.Find("SirenSFX").GetComponent<AudioSource>();
         oxygenAudioSource = gameObject.transform.Find("OxygenSFX").GetComponent<AudioSource>();
         hyperSpaceAudioSource = gameObject.transform.Find("HyperSpaceSFX").GetComponent<AudioSource>();
+        pirateBattleAudioSource = gameObject.transform.Find("PirateBattleSFX").GetComponent<AudioSource>();
         timeBetweenSteps = initialTimeDelay;
         currentIndex = 6;
         displayingText = false;
@@ -209,7 +211,7 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 9;
                 timeBetweenSteps = 10;
                 changeBreathDifficulty(difficulty.Normal);
-                StopSFX(sfx.Siren);
+                stopSFX(sfx.Siren);
                 FlickerOn.Raise();
                 EmergencySirenEvent.Raise(false);
                 CameraShakeEvent.Raise(4);
@@ -338,6 +340,9 @@ public class NarrativeManager : MonoBehaviour
             case sfx.HyperSpace:
                 hyperSpaceAudioSource.Play();
                 break;
+            case sfx.PirateBattle:
+                pirateBattleAudioSource.Play();
+                break;    
         }
     }
 
@@ -354,6 +359,9 @@ public class NarrativeManager : MonoBehaviour
                 break;
             case sfx.HyperSpace:
                 hyperSpaceAudioSource.Stop();
+                break;
+            case sfx.PirateBattle:
+                pirateBattleAudioSource.Stop();
                 break;
         }
     }

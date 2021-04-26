@@ -66,6 +66,7 @@ public class AlienBase : MonoBehaviour, IUsable
     private CapsuleCollider2D capsuleColl;
     private PolygonCollider2D polyColl;
     private BoxCollider2D boxColl;
+    private AudioSource audioSource;
 
     [SerializeField]
     private ParticleSystem smokePuff;
@@ -91,6 +92,7 @@ public class AlienBase : MonoBehaviour, IUsable
         capsuleColl = GetComponent<CapsuleCollider2D>();
         polyColl = GetComponent<PolygonCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
 
         if (shapeType == "squareHole") {
             OnGorpSpawn(isCrushed);
@@ -151,6 +153,7 @@ public class AlienBase : MonoBehaviour, IUsable
         rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
+        audioSource.Play();
         triggerParentStatusCheck();
 
         // Change hitbox
