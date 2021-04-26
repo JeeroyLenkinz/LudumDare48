@@ -18,6 +18,8 @@ public class CrusherHandle : MonoBehaviour, IUsable
     private GameObject pistonInPoint;
     [SerializeField]
     private GameObject pistonOutPoint;
+    [SerializeField]
+    private GameObject light;
 
     Animate_Basic animBasic;
     [SerializeField]
@@ -28,6 +30,9 @@ public class CrusherHandle : MonoBehaviour, IUsable
     [SerializeField]
     GameObject crusherCrushLogic;
 
+    BoxCollider2D inCollider;
+    PolygonCollider2D outCollider;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +41,8 @@ public class CrusherHandle : MonoBehaviour, IUsable
         animBasic = GetComponent<Animate_Basic>();
         //animBasicPistonA = piston.GetComponent<Animate_Basic>();
         //animBasicPistonB = piston.GetComponent<Animate_Basic>();
+        inCollider = piston.GetComponent<BoxCollider2D>();
+        outCollider = piston.GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -76,7 +83,12 @@ public class CrusherHandle : MonoBehaviour, IUsable
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ, Vector2.zero, Vector2.zero);
         animBasicPistonA.Animate(AnimationTweenType.Move, pistonOutPoint.transform.position, pistonInPoint.transform.position);
-        yield return new WaitForSeconds(tweener.Duration());
+        yield return new WaitForSeconds(tweener.Duration()/2);
+        outCollider.enabled = false;
+        inCollider.enabled = true;
+        yield return new WaitForSeconds(tweener.Duration() / 4);
+        light.SetActive(true);
+        yield return new WaitForSeconds(tweener.Duration() / 4);
         isAnimating = false;
         isPrimed = true;
     }
@@ -86,10 +98,14 @@ public class CrusherHandle : MonoBehaviour, IUsable
         isAnimating = true;
         Tween tweener = animBasic.Animate(AnimationTweenType.RotateZ2, Vector2.zero, Vector2.zero);
         animBasicPistonB.Animate(AnimationTweenType.EndMove, pistonInPoint.transform.position, pistonOutPoint.transform.position);
-        yield return new WaitForSeconds(tweener.Duration()*0.5f);
+        yield return new WaitForSeconds(tweener.Duration()*0.1f);
+        light.SetActive(false);
         crusherCrushLogic.GetComponent<CrusherCrush>().CrushAlien();
         // PARTICLES HERE
-        yield return new WaitForSeconds(tweener.Duration() * 0.5f);
+        outCollider.enabled = false;
+        inCollider.enabled = true;
+
+        yield return new WaitForSeconds(tweener.Duration() * 0.9f);
         isAnimating = false;
         isPrimed = false;
     }

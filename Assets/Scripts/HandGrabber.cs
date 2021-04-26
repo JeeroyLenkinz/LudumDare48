@@ -58,7 +58,7 @@ public class HandGrabber : MonoBehaviour
         grabbedObj = CalculateClosestObj();
         if(grabbedObj != null)
         {
-            //Debug.Log("Closest Object: " + grabbedObj.name.ToString());
+            Debug.Log("Closest Object: " + grabbedObj.name.ToString());
         }
 
         
@@ -96,7 +96,11 @@ public class HandGrabber : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collidingObjs.Add(collision.transform.gameObject);
+        if (collision.CompareTag("handle") || collision.CompareTag("alien"))
+        {
+            collidingObjs.Add(collision.transform.gameObject);
+        }
+
     }
 
     public void OnTriggerExit2D(Collider2D collision)
