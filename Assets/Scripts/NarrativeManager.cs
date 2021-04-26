@@ -27,8 +27,6 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent FlickerOn;
     [SerializeField]
     private GameEvent FlickerOff;
-    [SerializeField]
-    private AudioClip intercomSFX;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
     private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
@@ -139,20 +137,23 @@ public class NarrativeManager : MonoBehaviour
                 EmergencySirenEvent.Raise(false);
                 CameraShakeEvent.Raise(3);
                 stopSFX(sfx.Siren);
+
+                addAlienTypeToSpawner(alienType.CirclePair);
+                addAlienTypeToSpawner(alienType.CircleTrio);
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
             //Summon BlumbleA's
             case 8:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
-                changeDifficulty(difficulty.Deep);
+                changeBreathDifficulty(difficulty.Deep);
                 break;
             //Uhh sorry cadet! Our new intern broke our oxygen valve, breathe deeper while I fix this!
             //Breathe DEEP
             case 9:
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
-                changeDifficulty(difficulty.Normal);
+                changeBreathDifficulty(difficulty.Normal);
                 break;
             //FIXED! You can breathe normally now - Ugh Interns are the worst sometimes.
             //Breath NORMAL
@@ -172,7 +173,7 @@ public class NarrativeManager : MonoBehaviour
             case 12:
                 textDisplayDuration = 10;
                 timeBetweenSteps = 20;
-                changeDifficulty(difficulty.Quick);
+                changeBreathDifficulty(difficulty.Quick);
                 FlickerOff.Raise();
                 EmergencySirenEvent.Raise(true);
                 break;
@@ -181,7 +182,7 @@ public class NarrativeManager : MonoBehaviour
             case 13:
                 textDisplayDuration = 9;
                 timeBetweenSteps = 10;
-                changeDifficulty(difficulty.Normal);
+                changeBreathDifficulty(difficulty.Normal);
                 FlickerOn.Raise();
                 EmergencySirenEvent.Raise(false);
                 CameraShakeEvent.Raise(2);
@@ -191,21 +192,21 @@ public class NarrativeManager : MonoBehaviour
             case 14:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
-                changeDifficulty(difficulty.Deep);
+                changeBreathDifficulty(difficulty.Deep);
                 break;
             //Is that…a lavender scented candle? Nice! Everyone - Breath that in deeply!
             //Breath DEEPLY
             case 15:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
-                changeDifficulty(difficulty.Deepest);
+                changeBreathDifficulty(difficulty.Deepest);
                 break;
             //Whoa slow down - that’s not lavender - that’s eucalyptus - my favorite!! Breath as deep as you can!
             //Breath DEEPEST
             case 16:
                 textDisplayDuration = 7;
                 timeBetweenSteps = 20;
-                changeDifficulty(difficulty.Normal);
+                changeBreathDifficulty(difficulty.Normal);
                 break;
             //Ahh that was nice... Alright - Breath normally
             //Breath NORMAL
@@ -221,7 +222,7 @@ public class NarrativeManager : MonoBehaviour
         yield return null;
     }
 
-    private void changeDifficulty(difficulty diff) {
+    private void changeBreathDifficulty(difficulty diff) {
         // 0 = Slowest/Deepest, 1 = Slow/Deep, 2 = Medium, 3 = Fast/Shallow
         int diffInt;
         switch (diff) {
@@ -260,11 +261,33 @@ public class NarrativeManager : MonoBehaviour
                 typeInt = 3;
                 break;
             case alienType.LongSquare:
-                typeInt = 04;
+                typeInt = 4;
                 break;
         }
         Vector2 spawnVector = new Vector2(typeInt, amount);
         spawnAlienEvent.Raise(spawnVector);
+    }
+
+    private void addAlienTypeToSpawner(alienType type) {
+        int typeInt = 0;
+        switch (type) {
+            case alienType.Circle:
+                typeInt = 0;
+                break;
+            case alienType.CrushedSquare:
+                typeInt = 1;
+                break;
+            case alienType.CirclePair:
+                typeInt = 2;
+                break;
+            case alienType.CircleTrio:
+                typeInt = 3;
+                break;
+            case alienType.LongSquare:
+                typeInt = 4;
+                break;
+        }
+        addAlienTypeEvent.Raise(typeInt);
     }
 
     private void playSFX(sfx sfxType) {

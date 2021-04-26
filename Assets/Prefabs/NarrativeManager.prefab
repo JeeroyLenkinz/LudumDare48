@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8b862dafade91fe47b052695d60ab435, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0d0378cb9b4c65346a418f5f46653f0e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -168,7 +168,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6b6b0942bc873234d9b5465adb93e5b1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 517ab36a42899a94a8b064cffbf01184, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -457,7 +457,6 @@ MonoBehaviour:
   CameraShakeEvent: {fileID: 11400000, guid: 7c21744d43f964c4796cd1c068d50298, type: 2}
   FlickerOn: {fileID: 11400000, guid: 1123a023d00b3f6488ab2201571d5064, type: 2}
   FlickerOff: {fileID: 11400000, guid: 8bd644a43f0d895479b8fbb22a7d6c28, type: 2}
-  intercomSFX: {fileID: 8300000, guid: 3ee8e89c7873a214981a5b9b6d292293, type: 3}
 --- !u!82 &-2508620667214993466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -468,7 +467,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3ee8e89c7873a214981a5b9b6d292293, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0358e8421f9d38441946d81b48dfadbf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
