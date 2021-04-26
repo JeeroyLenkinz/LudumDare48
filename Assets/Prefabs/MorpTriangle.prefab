@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 9222064618398201157}
   - {fileID: 6324023863907553127}
   alienDropped: {fileID: 11400000, guid: e8def9f289fc1bf40bd19f1e5c984766, type: 2}
-  dummyFab: {fileID: 8339274584733606241, guid: 738e07602b04b3448952a46fd6a8583f, type: 3}
+  laserCut: {fileID: 11400000, guid: e894d397e8fa69b42a364f190881a6b5, type: 2}
 --- !u!114 &272718959203352802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ FixedJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 6178363686561371875}
-  m_BreakForce: Infinity
+  m_BreakForce: 10000
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
@@ -104,7 +104,7 @@ FixedJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3080586973594009474}
-  m_BreakForce: Infinity
+  m_BreakForce: 10000
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
@@ -122,7 +122,7 @@ FixedJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 4960339096265010492}
-  m_BreakForce: Infinity
+  m_BreakForce: 10000
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.63, y: 0}
@@ -142,7 +142,8 @@ GameObject:
   - component: {fileID: 7861234920977873663}
   - component: {fileID: 6077029101283867698}
   - component: {fileID: 1094510915195152187}
-  m_Layer: 0
+  - component: {fileID: 1540557982680901187}
+  m_Layer: 12
   m_Name: Connector31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 6324023863907553127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.12, y: 1.88, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560624329417910112}
   m_RootOrder: 5
@@ -347,6 +348,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morpOne: {fileID: 6178363686561371873}
   morpTwo: {fileID: 4960339096265010494}
+--- !u!68 &1540557982680901187
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324023863907553127}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.3
+  m_Points:
+  - {x: -0.15120518, y: 0.2808818}
+  - {x: -0.08377191, y: 0.60857713}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7815011505348482314
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +383,8 @@ GameObject:
   - component: {fileID: 7815011505348482308}
   - component: {fileID: 1365348352868724875}
   - component: {fileID: 6883972914890824113}
-  m_Layer: 0
+  - component: {fileID: 3140479308337825147}
+  m_Layer: 12
   m_Name: Connector12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 7815011505348482314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.12, y: 1.88, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560624329417910112}
   m_RootOrder: 3
@@ -565,6 +589,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morpOne: {fileID: 4960339096265010494}
   morpTwo: {fileID: 3080586973594009472}
+--- !u!68 &3140479308337825147
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815011505348482314}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.3
+  m_Points:
+  - {x: -0.07999999, y: 0}
+  - {x: 0.07999999, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &9222064618398201157
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +624,8 @@ GameObject:
   - component: {fileID: 8748275437611712374}
   - component: {fileID: 1547131415565226762}
   - component: {fileID: 8411622144230728040}
-  m_Layer: 0
+  - component: {fileID: 7188299108789332818}
+  m_Layer: 12
   m_Name: Connector23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 9222064618398201157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.12, y: 1.88, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560624329417910112}
   m_RootOrder: 4
@@ -783,6 +830,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morpOne: {fileID: 3080586973594009472}
   morpTwo: {fileID: 6178363686561371873}
+--- !u!68 &7188299108789332818
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222064618398201157}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.3
+  m_Points:
+  - {x: 0.14429644, y: 0.25747508}
+  - {x: 0.06575888, y: 0.5851705}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &132200894486150369
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using DG.Tweening;
+using System;
+using System.Collections.Specialized;
 
 public class AlienBase : MonoBehaviour, IUsable
 {
@@ -11,6 +13,14 @@ public class AlienBase : MonoBehaviour, IUsable
     private GameObject GorpLong;
     [SerializeField]
     private GameObject GorpShort;
+    [SerializeField]
+    private GameObject GorpSqueeze;
+    [SerializeField]
+    private GameObject GorpCrushSqueeze;
+    [SerializeField]
+    private GameObject MorpNormal;
+    [SerializeField]
+    private GameObject MorpSqueeze;
 
     private Rigidbody2D rb;
     private Rigidbody2D handRB;
@@ -45,12 +55,21 @@ public class AlienBase : MonoBehaviour, IUsable
 
     [SerializeField]
     private string shapeType;
-    private bool isCrushed = false;
+    [SerializeField]
+    private bool isCrushed;
 
     [SerializeField]
     private GameEvent circleScored;
     [SerializeField]
     private GameEvent squareScored;
+
+    private CapsuleCollider2D capsuleColl;
+    private PolygonCollider2D polyColl;
+    private BoxCollider2D boxColl;
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private ParticleSystem smokePuff;
 
 
     void Start()
@@ -69,6 +88,15 @@ public class AlienBase : MonoBehaviour, IUsable
         if (transform.parent != null) {
             myParent = transform.parent.gameObject;
         }
+
+        capsuleColl = GetComponent<CapsuleCollider2D>();
+        polyColl = GetComponent<PolygonCollider2D>();
+        boxColl = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (shapeType == "squareHole") {
+            OnGorpSpawn(isCrushed);
+        }
     }
 
     void FixedUpdate() {
@@ -82,18 +110,19 @@ public class AlienBase : MonoBehaviour, IUsable
                     if (!isHeld && myParent == null && !isDropping) {
                         if (shapeType == "circleHole") {
                             circleScored.Raise();
+                            StartCoroutine(dropAlien(false));
                         }
-                        else if (shapeType == "squareHole") {
+                        else if (shapeType == "squareHole" && isCrushed) {
                             squareScored.Raise();
+                            StartCoroutine(dropAlien(false));
                         }
-                        StartCoroutine(dropAlien());
                     }
                 }
                 else if (dropTag == "OutOfBounds") {
                     isOnTable = false;
                     triggerParentStatusCheck();
                     if (!isHeld && myParent == null && !isDropping) {
-                        StartCoroutine(dropAlien());
+                        StartCoroutine(dropAlien(true));
                     }
                 }
             }
@@ -104,14 +133,14 @@ public class AlienBase : MonoBehaviour, IUsable
         }
     }
 
-    public void OnGorpSpawn(bool isLong)
+    public void OnGorpSpawn(bool isShort)
     {
         //ShortBoit
-        if(!isLong)
+        if(isShort)
         {
             isCrushed = true;
             GetComponent<CapsuleCollider2D>().enabled = false;
-            GetComponent<BoxCollider2D>().enabled = true;
+            boxColl.enabled = true;
             GorpLong.SetActive(false);
             GorpShort.SetActive(true);
         }
@@ -119,10 +148,12 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnUse()
     {
-        transform.localScale = squeezeScale;
-        // Change Art
+        //transform.localScale = squeezeScale;
+        ChangeArt(true);
+        rb.rotation = 0f;
         jointHand.enabled = true;
         isHeld = true;
+        audioSource.Play();
         triggerParentStatusCheck();
 
         // Change hitbox
@@ -130,6 +161,7 @@ public class AlienBase : MonoBehaviour, IUsable
 
     public void OnRelease()
     {
+        ChangeArt(false);
         releaseVel = rb.velocity;
         transform.localScale = originalScale;
         jointHand.enabled = false;
@@ -139,6 +171,14 @@ public class AlienBase : MonoBehaviour, IUsable
 
         rb.velocity = releaseVel;
 
+    }
+
+    internal void ForceBreak()
+    {
+        foreach (FixedJoint2D joint in jointMorp)
+        {
+            joint.enabled = false;
+        }
     }
 
     // Called by MultiMorp
@@ -192,11 +232,13 @@ public class AlienBase : MonoBehaviour, IUsable
         }
     }
 
-    private IEnumerator dropAlien() {
+    private IEnumerator dropAlien(bool isOffScreen) {
         isDropping = true;
-        rb.drag = 8;
-        Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
-        yield return new WaitForSeconds(tweener.Duration()/3);
+        if (!isOffScreen) {
+            rb.drag = 8;
+            Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
+            yield return new WaitForSeconds(tweener.Duration()/3);
+        }
         alienDropped.Raise();
         Destroy(gameObject);
     }
@@ -216,9 +258,66 @@ public class AlienBase : MonoBehaviour, IUsable
     public void CrushMeDaddy()
     {
         isCrushed = true;
+        smokePuff.Play();
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = true;
         GorpLong.SetActive(false);
         GorpShort.SetActive(true);
+        rb.velocity = Vector2.zero;
+    }
+
+    public void OnJointBreak2D(Joint2D joint)
+    {
+        transform.parent.GetComponent<MultiMorp>().ForceBreak();
+    }
+
+    private void ChangeArt(bool isGrabbed)
+    {
+        if(shapeType == "circleHole")
+        {
+            if (isGrabbed)
+            {
+                MorpNormal.SetActive(false);
+                MorpSqueeze.SetActive(true);
+            } else if (!isGrabbed)
+            {
+                MorpNormal.SetActive(true);
+                MorpSqueeze.SetActive(false);
+            }
+
+        } else if(shapeType == "squareHole" && !isCrushed)
+        {
+            if (isGrabbed)
+            {
+                capsuleColl.enabled = false;
+                polyColl.enabled = true;
+                GorpLong.SetActive(false);
+                GorpSqueeze.SetActive(true);
+
+            }
+            else if (!isGrabbed)
+            {
+                capsuleColl.enabled = true;
+                polyColl.enabled = false;
+                GorpLong.SetActive(true);
+                GorpSqueeze.SetActive(false);
+            }
+        }
+        else if (shapeType == "squareHole" && isCrushed)
+        {
+            if (isGrabbed)
+            {
+                boxColl.offset = new Vector2(0.48f, 0.96f);
+                GorpShort.SetActive(false);
+                GorpCrushSqueeze.SetActive(true);
+
+            }
+            else if (!isGrabbed)
+            {
+                boxColl.offset = new Vector2(0.48f, -0.06f);
+                GorpShort.SetActive(true);
+                GorpCrushSqueeze.SetActive(false);
+            }
+        }
     }
 }

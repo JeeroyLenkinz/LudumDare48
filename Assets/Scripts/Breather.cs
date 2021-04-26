@@ -10,6 +10,7 @@ public class Breather : MonoBehaviour
     private bool hasStarted;
     private bool inactive;
     private bool difficultyChanging;
+    private bool fullyMissed;
     private float breathMarkerPosition;
     private float displayRangeScale;
     private float startOffset;
@@ -26,23 +27,29 @@ public class Breather : MonoBehaviour
     [SerializeField]
     private RectTransform breathZoneRT;
     [SerializeField]
+    private RectTransform breathCapRT;
+    [SerializeField]
     private RectTransform leftBreathBandRT;
     [SerializeField]
     private RectTransform rightBreathBandRT;
     [SerializeField]
     private float maxBreathSeconds;
     [SerializeField]
-    private float easyMultiplier;
+    private float slowestMultiplier;
+    [SerializeField]
+    private float slowMultiplier;
     [SerializeField]
     private float mediumMultiplier;
     [SerializeField]
-    private float hardMultiplier;
+    private float fastMultiplier;
     [SerializeField, Range(0.01f, 0.1f)]
     private float bandChangeSmoothing;
     [SerializeField]
     private AudioClip inhaleSFX;
     [SerializeField]
     private AudioClip exhaleSFX;
+    [SerializeField]
+    private AudioClip gaspSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -56,10 +63,13 @@ public class Breather : MonoBehaviour
         exhaling = false;
         hasStarted = false;
         difficultyChanging = false;
+        fullyMissed = false;
+        inactive = false;
         breathMarkerPosition = breathZoneRT.position.x - breathZoneRT.rect.width;
-        startOffset = breathMarkerRT.rect.width/2;
-        displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width;
+        startOffset = (breathMarkerRT.rect.width/2) + breathCapRT.rect.width;
+        displayRangeScale = breathZoneRT.rect.width - breathMarkerRT.rect.width - (breathCapRT.rect.width*2);
         breathMarkerRT.position = new Vector2(breathMarkerPosition + startOffset, breathMarkerRT.position.y);
+        e_changeBreathBands(2);
     }
 
     // Raised by InputManager.cs
@@ -67,8 +77,6 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (exhaling) {
                 checkBreathHit();
-                audioSource.clip = inhaleSFX;
-                audioSource.Play();
             }
             hasStarted = true;
             inhaling = true;
@@ -81,8 +89,6 @@ public class Breather : MonoBehaviour
         if (!inactive) {
             if (inhaling) {
                 checkBreathHit();
-                audioSource.clip = exhaleSFX;
-                audioSource.Play();
             }
             hasStarted = true;
             exhaling = true;
@@ -91,16 +97,19 @@ public class Breather : MonoBehaviour
     }
 
     public void e_changeBreathBands(int difficulty) {
-        float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width)/2;
+        float distance = (breathZoneRT.rect.width - leftBreathBandRT.rect.width - (2*breathCapRT.rect.width))/2;
         switch (difficulty) {
-            case 0: // Easy (aka long, slow breaths)
-                distance *= easyMultiplier;
+            case 0: // Easiest/Deepest (aka long, slow breaths)
+                distance *= slowestMultiplier;
                 break;
-            case 1: // Medium
+            case 1: // Easy/Deep
+                distance *= slowMultiplier;
+                break;
+            case 2: // Medium
                 distance *= mediumMultiplier;
                 break;
-            case 2: // Hard (aka short, fast breaths)
-                distance *= hardMultiplier;
+            case 3: // Hard (aka short, fast breaths)
+                distance *= fastMultiplier;
                 break;
             default:
                 return;
@@ -156,6 +165,13 @@ public class Breather : MonoBehaviour
     }
 
     private void checkBreathHit() {
+        if (fullyMissed) {
+            audioSource.clip = gaspSFX;
+            audioSource.Play();
+            breathMissEvent.Raise();
+            fullyMissed = false;
+            return;
+        }
         float markerLeftBound = breathMarkerRT.position.x - (breathMarkerRT.rect.width/2);
         float markerRightBound = breathMarkerRT.position.x + (breathMarkerRT.rect.width/2);
 
@@ -168,35 +184,39 @@ public class Breather : MonoBehaviour
         // Check the right target while inhaling (moving right)
         if (inhaling) {
             if (markerLeftBound <= rightTargetRightBound && markerRightBound >= rightTargetLeftBound) {
-                Debug.Log("Score! You got in the right target!");
+                audioSource.clip = exhaleSFX;
                 breathHitEvent.Raise();
             }
             else {
-                Debug.Log("Uh oh you missed the right target!");
+                audioSource.clip = gaspSFX;
+                
                 breathMissEvent.Raise();
             }
         }
         // Check the left target while exhaling (moving left)
         else if (exhaling) {
             if (markerLeftBound <= leftTargetRightBound && markerRightBound >= leftTargetLeftBound) {
-              Debug.Log("Score! You got in the left target!");
-              breathHitEvent.Raise();
+                audioSource.clip = inhaleSFX;
+                breathHitEvent.Raise();
             }
             else {
-                Debug.Log("Uh oh you missed the left target!");
+                audioSource.clip = gaspSFX;
                 breathMissEvent.Raise();
             }
         }
         else if (hasStarted) {
             Debug.LogError("You are neither exhaling nor inhaling!!!");
         }
+        audioSource.Play();
     }
 
     private void fullMiss() {
         if (inhaling) {
+            fullyMissed = true;
             e_toggleExhale();
         }
         else if (exhaling) {
+            fullyMissed = true;
             e_toggleInhale();
         }
         else {

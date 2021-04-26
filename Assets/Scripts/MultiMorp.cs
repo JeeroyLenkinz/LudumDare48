@@ -14,6 +14,8 @@ public class MultiMorp : MonoBehaviour
     private List<GameObject> morpsConnectedList = new List<GameObject>();
     [SerializeField]
     private GameEvent alienDropped;
+    [SerializeField]
+    private GameEvent laserCut;
 
     private Animate_Basic animBasic;
 
@@ -41,6 +43,9 @@ public class MultiMorp : MonoBehaviour
     public void SeperateMorps(GameObject morpOne, GameObject morpTwo, GameObject connector)
     {
         // Trigger smoke cloud
+
+        // Trigger SFX
+        laserCut.Raise();
 
         // Detach Joint
         morpOne.GetComponent<AlienBase>().DetachJoint(morpTwo);
@@ -105,15 +110,32 @@ public class MultiMorp : MonoBehaviour
             }
         }
         if (dropAll) {
-            StartCoroutine(dropMultiMorp());
+            // StartCoroutine(dropMultiMorp());
+            alienDropped.Raise();
+            Destroy(gameObject);
         }
     }
 
-    private IEnumerator dropMultiMorp() {
-        Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
-        yield return new WaitForSeconds(tweener.Duration());
-        alienDropped.Raise();
-        Destroy(gameObject);
+    // private IEnumerator dropMultiMorp() {
+    //     Tweener tweener = animBasic.Animate(AnimationTweenType.Scale, Vector2.zero, Vector2.zero);
+    //     yield return new WaitForSeconds(tweener.Duration());
+    //     alienDropped.Raise();
+    //     Destroy(gameObject);
+    // }
 
+    public void ForceBreak()
+    {
+        foreach(GameObject childMorp in morpsConnectedList)
+        {
+            childMorp.GetComponent<AlienBase>().ForceBreak();
+            childMorp.transform.parent = null;
+        }
+
+        foreach (GameObject childConnector in connectorList)
+        {
+            Destroy(childConnector);
+        }
+
+        Destroy(this.transform.gameObject);
     }
 }

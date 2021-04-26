@@ -24,8 +24,8 @@ TagManager:
   - Laser
   - Drop
   - Alignment
-  - 
-  - 
+  - Connector
+  - EyeBall
   - 
   - 
   - 
@@ -51,14 +51,17 @@ TagManager:
   - name: Morp
     uniqueID: 3647710819
     locked: 0
+  - name: LaserBeam
+    uniqueID: 4167014589
+    locked: 0
+  - name: Tool
+    uniqueID: 2290403637
+    locked: 0
   - name: Hand
     uniqueID: 4036791185
     locked: 0
   - name: ChuteBody
     uniqueID: 2365634469
-    locked: 0
-  - name: Tool
-    uniqueID: 2290403637
     locked: 0
   - name: UINarrative
     uniqueID: 2594386051
