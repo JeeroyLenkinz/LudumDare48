@@ -894,6 +894,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98872882, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c7e1dac2e441fea45b9a9950c5125be7, type: 3}
+    - target: {fileID: 1551841190, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551841190, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: m_Pitch
+      value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551841190, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: m_Volume
+      value: 0.979
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551841190, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e35d6114ce7ae746afbbb7eae0b08bd, type: 3}
     - target: {fileID: 7307496251171205736, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: m_Name
       value: NarrativeManager
