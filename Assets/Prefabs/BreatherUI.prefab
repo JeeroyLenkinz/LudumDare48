@@ -247,7 +247,7 @@ MonoBehaviour:
   breathZoneRT: {fileID: 2283855401277631196}
   leftBreathBandRT: {fileID: 2283855401020190403}
   rightBreathBandRT: {fileID: 2283855402111057209}
-  maxBreathSeconds: 4
+  maxBreathSeconds: 5
   slowestMultiplier: 1
   slowMultiplier: 0.8
   mediumMultiplier: 0.6

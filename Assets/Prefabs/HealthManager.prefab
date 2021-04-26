@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8795378222933340404}
   - component: {fileID: 8795378222933340407}
   - component: {fileID: 8795378222933340406}
+  - component: {fileID: 612910105}
+  - component: {fileID: 612910106}
   m_Layer: 0
   m_Name: HealthManager
   m_TagString: Untagged
@@ -116,3 +118,58 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &612910105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795378222933340411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1a7ac15176298694db1d59751452bb84, type: 2}
+  _event: {fileID: 11400000, guid: 1a7ac15176298694db1d59751452bb84, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 612910106}
+        m_TargetAssemblyTypeName: DeathFX, Assembly-CSharp
+        m_MethodName: e_healthChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &612910106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795378222933340411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f0bc0339f7bf048be802486ad407c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOut: {fileID: 11400000, guid: 28e65a8624c1534408f4a3c337087b3e, type: 2}
+  vigScript: {fileID: 0}
+  handMover: {fileID: 0}
+  health:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 1a7ac15176298694db1d59751452bb84, type: 2}
+  vignetteMin: 0.25
+  vignetteMax: 1
+  handSmoothStart: 0.08
+  handSmoothEnd: 0.03
