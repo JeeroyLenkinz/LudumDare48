@@ -1688,6 +1688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2085178441}
     m_Modifications:
+    - target: {fileID: 2283855401020190403, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -265.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2283855401485322536, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
       propertyPath: m_Name
       value: BreatherUI
@@ -1775,6 +1779,10 @@ PrefabInstance:
     - target: {fileID: 2283855401485322537, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283855402111057209, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 265.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143c7354d0405df49ac1ddf80fc70f80, type: 3}

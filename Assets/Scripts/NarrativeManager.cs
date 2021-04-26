@@ -28,6 +28,10 @@ public class NarrativeManager : MonoBehaviour
     private GameEvent FlickerOn;
     [SerializeField]
     private GameEvent FlickerOff;
+    [SerializeField]
+    private GameEvent displayTextEvent;
+    [SerializeField]
+    private GameEvent hideTextEvent;
 
     private enum difficulty {Deepest, Deep, Normal, Quick};
     private enum alienType {Circle, CrushedSquare, CirclePair, CircleTrio, LongSquare};
@@ -369,11 +373,13 @@ public class NarrativeManager : MonoBehaviour
     }
 
     private void displayStepText() {
+        displayTextEvent.Raise();
         narrativeObjects[currentIndex].SetActive(true);
         displayingText = true;
     }
 
     private void hideStepText() {
+        hideTextEvent.Raise();
         narrativeObjects[currentIndex].SetActive(false);
         displayingText = false;
         currentIndex++;

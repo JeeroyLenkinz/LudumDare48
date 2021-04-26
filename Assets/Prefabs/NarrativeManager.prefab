@@ -585,6 +585,8 @@ MonoBehaviour:
   CameraShakeEvent: {fileID: 11400000, guid: 7c21744d43f964c4796cd1c068d50298, type: 2}
   FlickerOn: {fileID: 11400000, guid: 1123a023d00b3f6488ab2201571d5064, type: 2}
   FlickerOff: {fileID: 11400000, guid: 8bd644a43f0d895479b8fbb22a7d6c28, type: 2}
+  displayTextEvent: {fileID: 11400000, guid: 745bfd0135fb8ae449e09761488b6974, type: 2}
+  hideTextEvent: {fileID: 11400000, guid: 935952e81c4621040a25b982b022cefe, type: 2}
 --- !u!82 &-2508620667214993466
 AudioSource:
   m_ObjectHideFlags: 0
