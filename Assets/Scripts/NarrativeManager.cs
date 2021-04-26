@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using UnityEngine.SceneManagement;
 
 public class NarrativeManager : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class NarrativeManager : MonoBehaviour
     private float textDisplayDuration;
     private bool displayingText;
     private bool playInterComSound = true;
+    private bool narrativeComplete = false;
+    private bool gameEndTriggered = false;
     private AudioSource intercomAudioSource;
     private AudioSource sirenAudioSource;
     private AudioSource oxygenAudioSource;
@@ -51,6 +54,8 @@ public class NarrativeManager : MonoBehaviour
         timeBetweenSteps = initialTimeDelay;
         currentIndex = 0;
         displayingText = false;
+        narrativeComplete = false;
+        gameEndTriggered = false;
         foreach(GameObject narrativeObject in narrativeObjects) {
             narrativeObject.SetActive(false);
         }
@@ -59,16 +64,21 @@ public class NarrativeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!displayingText) {
-            timeBetweenSteps -= Time.deltaTime;
-            if (timeBetweenSteps <= 0 && currentIndex < narrativeObjects.Length) {
-                StartCoroutine(NarrativeSteps());
+        if (!gameEndTriggered) {
+            if (!displayingText) {
+                timeBetweenSteps -= Time.deltaTime;
+                if (timeBetweenSteps <= 0 && narrativeComplete) {
+                    StartCoroutine(gameComplete());
+                }
+                else if (timeBetweenSteps <= 0 && currentIndex < narrativeObjects.Length) {
+                    StartCoroutine(NarrativeSteps());
+                }
             }
-        }
-        else {
-            textDisplayDuration -= Time.deltaTime;
-            if (textDisplayDuration <= 0) {
-                hideStepText();
+            else {
+                textDisplayDuration -= Time.deltaTime;
+                if (textDisplayDuration <= 0) {
+                    hideStepText();
+                }
             }
         }
     }
@@ -140,6 +150,8 @@ public class NarrativeManager : MonoBehaviour
 
                 addAlienTypeToSpawner(alienType.CirclePair);
                 addAlienTypeToSpawner(alienType.CircleTrio);
+                spawnAlien(alienType.CirclePair, 1);
+                spawnAlien(alienType.CircleTrio, 1);
                 break;
             //Whoa those Blumbles need to be cut! Use the laser!
             //Summon BlumbleA's
@@ -162,7 +174,8 @@ public class NarrativeManager : MonoBehaviour
                 timeBetweenSteps = 10;
                 CameraShakeEvent.Raise(4);
                 playSFX(sfx.HyperSpace);
-
+                setAlienLimitEvent.Raise(20);
+                setSpawnMultiplierEvent.Raise(1.5f);
                 break;
             //Alright let’s go DEEPER INTO SPACE! Watch out for more aliens!
            //Increase spawn rate after transition
@@ -170,6 +183,7 @@ public class NarrativeManager : MonoBehaviour
                 textDisplayDuration = 6;
                 timeBetweenSteps = 15;
                 addAlienTypeToSpawner(alienType.LongSquare);
+                spawnAlien(alienType.LongSquare, 3);
                 break;
             //Ah! Those grunks are too big! Use the crusher!
             //Spawn GrunkA's
@@ -189,6 +203,8 @@ public class NarrativeManager : MonoBehaviour
                 FlickerOn.Raise();
                 EmergencySirenEvent.Raise(false);
                 CameraShakeEvent.Raise(2);
+                setAlienLimitEvent.Raise(30);
+                setSpawnMultiplierEvent.Raise(2f);
                 break;
             //Crisis solved - Not today matey! Breath normally. Onwards to Deepest Space! Expect a lot of aliens...
             //Breath NORMAL
@@ -215,7 +231,9 @@ public class NarrativeManager : MonoBehaviour
             //Breath NORMAL
             case 17:
                 textDisplayDuration = 7;
-                timeBetweenSteps = 20;
+                timeBetweenSteps = 2;
+                narrativeComplete = true;
+                setSpawnMultiplierEvent.Raise(0f);
                 break;
             //Great work cadet! We ventured to deepest space and cleansed the galaxy! Great job!
         }
@@ -336,5 +354,11 @@ public class NarrativeManager : MonoBehaviour
         narrativeObjects[currentIndex].SetActive(false);
         displayingText = false;
         currentIndex++;
+    }
+
+    private IEnumerator gameComplete() {
+        gameEndTriggered = true;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Victory");
     }
 }
