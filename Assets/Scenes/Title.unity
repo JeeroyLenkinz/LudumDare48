@@ -325,14 +325,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
-  m_HorizontalAlignment: 1
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -409,8 +409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 380, y: -305}
-  m_SizeDelta: {x: -780, y: -620}
+  m_AnchoredPosition: {x: -4.9993896, y: -342.7}
+  m_SizeDelta: {x: -9.998657, y: -695.40454}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233157578
 MonoBehaviour:
@@ -432,9 +432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bilth Studios
-
-    Ludum Dare 48'
+  m_text: Bilth Studios | Ludum Dare 48
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
   m_sharedMaterial: {fileID: -6960759415546523176, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
@@ -448,8 +446,8 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
-    topRight: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -461,14 +459,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
-  m_fontSizeBase: 33
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -497,7 +495,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 17.308105, y: 0, z: -2.5280762, w: -1.9742737}
+  m_margin: {x: 13.837901, y: 0, z: -2.5280762, w: -1.9742737}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -647,8 +645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -9, y: -2}
+  m_SizeDelta: {x: 18, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &700563786
 MonoBehaviour:
@@ -688,7 +686,7 @@ MonoBehaviour:
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 11400000, guid: ce4483be72391864186d2e7d99ede743, type: 2}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 24f676876a05d0849aadadec6305b5ce, type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
@@ -704,7 +702,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -733,7 +731,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 17.308105, y: 0, z: -2.5280762, w: -1.9742737}
+  m_margin: {x: 17.308105, y: 0, z: -13.57779, w: -1.9742737}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -949,7 +947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89, y: 261}
+  m_AnchoredPosition: {x: 122, y: 174}
   m_SizeDelta: {x: -320, y: -594.2122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042187270
@@ -972,10 +970,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TITLE: Reveangance'
+  m_text: 'Play me HARD. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
+  m_sharedMaterial: {fileID: -6960759415546523176, guid: 4d2e6749c6cfdd740b2c33d56d665407, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -999,14 +997,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1035,7 +1033,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -30.529327, y: 0, z: -211.93213, w: -1.9742737}
+  m_margin: {x: -30.529327, y: 0, z: 205.19933, w: -1.9742737}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1086,8 +1084,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -431.9, y: -111.2}
-  m_SizeDelta: {x: 178.12393, y: 68.4803}
+  m_AnchoredPosition: {x: -15.87, y: -231.26}
+  m_SizeDelta: {x: 332.23663, y: 65.07451}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182974892
 MonoBehaviour:
@@ -1110,8 +1108,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.7176471, g: 0.9254902, b: 0.79607844, a: 1}
-    m_PressedColor: {r: 0.101960786, g: 0.34117648, b: 0.20784314, a: 1}
+    m_HighlightedColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+    m_PressedColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1240,7 +1238,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b18aa7c5394e2784183eb2fa03c85c37, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.812
+  m_Volume: 0.19
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1367,7 +1365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 26a24b8654e9c5c40a5d3d6101894233, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.252
+  m_Volume: 0.17
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1503,8 +1501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354.6, y: 30.9}
-  m_SizeDelta: {x: 354.85718, y: 117.90561}
+  m_AnchoredPosition: {x: -16.64, y: -156.11}
+  m_SizeDelta: {x: 330.2782, y: 63.998955}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486690161
 MonoBehaviour:
@@ -1527,8 +1525,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.7195621, g: 0.9245283, b: 0.7958286, a: 1}
-    m_PressedColor: {r: 0.10092559, g: 0.33962262, b: 0.20872426, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6179246, b: 0.8194187, a: 1}
+    m_PressedColor: {r: 0.3584906, g: 0.18093629, b: 0.31225234, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1850,7 +1848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c739b748fe5336f428b3455b9f588767, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a1527bc71ccf8f41a3b9f5e52bb9f9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
