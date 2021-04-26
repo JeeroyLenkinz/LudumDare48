@@ -12,6 +12,8 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] allAlienPrefabs;
     [SerializeField]
+    private float[] alienSpawnWeighting;
+    [SerializeField]
     private IntReference currentActiveAliensSO;
     private float timeUntilSpawn;
     private float spawnMultiplier;
@@ -24,7 +26,9 @@ public class AlienSpawner : MonoBehaviour
     public float maxForce;
     public float minSpawnCooldown;
     public float maxSpawnCooldown;
-    public int maxAllowableAliens;
+    public float variableSpawnActivatePercentage;
+    public float variableSpawnMultiplier;
+    private int maxAllowableAliens;
     public float groupSpawnDelay;
    
     // Start is called before the first frame update
@@ -34,6 +38,7 @@ public class AlienSpawner : MonoBehaviour
         spawnMultiplier = 1;
         timeUntilSpawn = minSpawnCooldown;
         dontSpawn = true;
+        Debug.Log("Size of activeAlienPrefabs at the start is: " + activeAlienPrefabs.Count);
         activeAlienPrefabs.Add(allAlienPrefabs[0]);
         activeAlienPrefabs.Add(allAlienPrefabs[1]);
     }
@@ -45,13 +50,39 @@ public class AlienSpawner : MonoBehaviour
         if (timeUntilSpawn <= 0 && currentActiveAliensSO.Value < maxAllowableAliens && !dontSpawn) {
             GameObject chosenAlienType = getRandomAlienType();
             spawnAlien(chosenAlienType);
-            timeUntilSpawn = Random.Range(minSpawnCooldown*spawnMultiplier, maxSpawnCooldown*spawnMultiplier);
-            currentActiveAliensSO.Value++;
+            timeUntilSpawn = getSpawnTime();
         }
     }
 
+    private float getSpawnTime() {
+        float multiplier = spawnMultiplier;
+        float rateIncreasePoint = (float)maxAllowableAliens * variableSpawnActivatePercentage;
+        if ((float)currentActiveAliensSO.Value < rateIncreasePoint && variableSpawnMultiplier > 0) {
+            multiplier *= (1/variableSpawnMultiplier);
+        }
+        float minTime = minSpawnCooldown*multiplier;
+        float maxTime = maxSpawnCooldown*multiplier;
+        float spawnTime = Random.Range(minTime, maxTime);
+        return spawnTime;
+    }
+
     private GameObject getRandomAlienType() {
-        GameObject chosenAlienPrefab = activeAlienPrefabs[Random.Range(0, activeAlienPrefabs.Count)];
+        float weightTotal = 0;
+        for (int i = 0; i < activeAlienPrefabs.Count; i++) {
+            weightTotal += alienSpawnWeighting[i];
+        }
+        float randomNum = Random.value;
+        Debug.Log("Random generated num is: " + randomNum);
+        float sum = 0f;
+        int selectedIndex = 0;
+        for (int j = 0; j < activeAlienPrefabs.Count; j++) {
+            sum += (alienSpawnWeighting[j]/weightTotal);
+            if (sum >= randomNum) {
+                selectedIndex = j;
+                break;
+            }
+        }
+        GameObject chosenAlienPrefab = activeAlienPrefabs[selectedIndex];
         return chosenAlienPrefab;
     }
 
@@ -76,9 +107,12 @@ public class AlienSpawner : MonoBehaviour
         Rigidbody2D spawnRb;
         if (spawnedAlien.GetComponent<MultiMorp>() != null) {
             spawnRb = spawnedAlien.transform.GetChild(0).GetComponent<Rigidbody2D>();
+            spawnDir *= 2;
+            currentActiveAliensSO.Value += spawnedAlien.GetComponent<MultiMorp>().morpsConnected.Length;
         }
         else {
             spawnRb = spawnedAlien.GetComponent<Rigidbody2D>();
+            currentActiveAliensSO.Value++;
         }
         spawnRb.velocity = spawnDir;
     }
@@ -92,8 +126,10 @@ public class AlienSpawner : MonoBehaviour
     }
 
     public void e_alienDropped() {
-       currentActiveAliensSO.Value--;
-       timeUntilSpawn = Random.Range(minSpawnCooldown, maxSpawnCooldown);
+        if (currentActiveAliensSO.Value == maxAllowableAliens) {
+            timeUntilSpawn = getSpawnTime();
+        }
+        currentActiveAliensSO.Value--;
     }
 
     public void e_SetMaxAllowableAliens(int newMax) {

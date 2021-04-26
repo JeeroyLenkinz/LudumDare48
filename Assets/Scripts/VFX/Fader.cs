@@ -21,6 +21,7 @@ public class Fader : MonoBehaviour
     void Start()
     {
         image = GetComponent<Image>();
+        e_FadeIn();
     }
 
     private IEnumerator fadeAnimateIn()

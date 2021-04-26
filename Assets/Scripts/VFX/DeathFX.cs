@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-
-
+using UnityEngine.SceneManagement;
 
 public class DeathFX : MonoBehaviour
 {
+    [SerializeField]
+    private GameEvent fadeOut;
+
     [SerializeField]
     private VignetteGet vigScript;
 
@@ -71,5 +73,19 @@ public class DeathFX : MonoBehaviour
     {
         DoVignette();
         DoHand();
+
+        if(health.Value <= 0)
+        {
+            StartCoroutine(Die());
+        }
+    }
+
+    private IEnumerator Die()
+    {
+        fadeOut.Raise();
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("GameOver");
     }
 }

@@ -60,17 +60,24 @@ MonoBehaviour:
   - {fileID: 7567807063699306622, guid: 4e2f0309face43748a58c74735e66505, type: 3}
   - {fileID: 7567807063699306622, guid: dd6acc0ac3b1d1543a86227560251812, type: 3}
   - {fileID: 8543699157188365545, guid: 0b3bf57abc12c534b9ac418b0f1b9394, type: 3}
+  alienSpawnWeighting:
+  - 30
+  - 30
+  - 15
+  - 10
+  - 15
   currentActiveAliensSO:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 0e0e49e1d7884ef4f992e719a9a127c8, type: 2}
   minAngle: 245
   maxAngle: 295
-  minForce: 8
-  maxForce: 20
+  minForce: 12
+  maxForce: 22
   minSpawnCooldown: 1.5
   maxSpawnCooldown: 3.5
-  maxAllowableAliens: 20
+  variableSpawnActivatePercentage: 0.3
+  variableSpawnMultiplier: 4
   groupSpawnDelay: 0.3
 --- !u!114 &947027370
 MonoBehaviour:
