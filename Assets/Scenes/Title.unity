@@ -807,9 +807,9 @@ RectTransform:
   - {fileID: 1024370610}
   - {fileID: 117914212}
   - {fileID: 1918227125}
-  - {fileID: 1095586825}
   - {fileID: 1897857593}
   - {fileID: 1202168802}
+  - {fileID: 1095586825}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1625,7 +1625,7 @@ RectTransform:
   m_Children:
   - {fileID: 1499399858}
   m_Father: {fileID: 408023418}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2561,6 +2561,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676817414}
   m_CullTransparentMesh: 0
+--- !u!1 &1725274325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5118411891155363241, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
+  m_PrefabInstance: {fileID: 1912648244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1780143601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2722,7 +2727,7 @@ RectTransform:
   m_Children:
   - {fileID: 511993547}
   m_Father: {fileID: 408023418}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2772,18 +2777,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1024370611}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1227075433}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -2795,6 +2788,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1725274325}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1897857595
 MonoBehaviour:
@@ -2988,7 +2993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5118411891155363242, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5118411891155363242, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
       propertyPath: m_AnchorMax.x
