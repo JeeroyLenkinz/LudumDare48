@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class NarrativeManager : MonoBehaviour
 {
     [SerializeField]
+    GameEvent fadeOut;
+    [SerializeField]
     private GameObject[] narrativeObjects;
     [SerializeField]
     private float initialTimeDelay;
@@ -433,7 +435,8 @@ public class NarrativeManager : MonoBehaviour
 
     private IEnumerator gameComplete() {
         gameEndTriggered = true;
-        yield return new WaitForSeconds(2f);
+        fadeOut.Raise();
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Victory");
     }
 }

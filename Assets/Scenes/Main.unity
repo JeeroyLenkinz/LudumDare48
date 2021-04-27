@@ -250,16 +250,16 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 88d26a3172dfc2f48b4e99398d50e878, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: 391aa577e65704ca99104f7020292d64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.5625, y: 3.90625}
+  m_Size: {x: 8.4375, y: 5.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &72523297
@@ -353,7 +353,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 757d0ea8435124e2e89643818e4d7c6d, type: 3}
   m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
@@ -494,7 +494,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c2ea5e31331d164ba40aee05a9a9bcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44c3bccd18a863745be1b58794d64d4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -502,7 +502,7 @@ SpriteRenderer:
   m_Size: {x: 1.734375, y: 2.6328125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &285247969
@@ -1019,7 +1019,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 927f90a617260ba4f9d9b08e66aa9235, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0246b21185afd654e8b172d99d08877b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1027,7 +1027,7 @@ SpriteRenderer:
   m_Size: {x: 1.9765625, y: 0.3984375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &700635217
@@ -1101,7 +1101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 927f90a617260ba4f9d9b08e66aa9235, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0246b21185afd654e8b172d99d08877b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1109,7 +1109,7 @@ SpriteRenderer:
   m_Size: {x: 1.9765625, y: 0.3984375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &862501847
@@ -1167,6 +1167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: fadeOut
+      value: 
+      objectReference: {fileID: 11400000, guid: 28e65a8624c1534408f4a3c337087b3e, type: 2}
     - target: {fileID: 7307496251171205751, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: narrativeObjects.Array.data[0]
       value: 
@@ -1417,8 +1421,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2373984ecb06c204dbdda6e843e9bdce, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 3933fb5a4c775754db22e381a999ff31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1426,7 +1430,7 @@ SpriteRenderer:
   m_Size: {x: 0.78125, y: 0.78125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &938003760
@@ -2317,7 +2321,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c2ea5e31331d164ba40aee05a9a9bcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44c3bccd18a863745be1b58794d64d4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2325,7 +2329,7 @@ SpriteRenderer:
   m_Size: {x: 1.734375, y: 2.6328125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2026101158 stripped
@@ -2775,9 +2779,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2428317652331237884, guid: bafb093446c43b44f909bc96054ee45e, type: 3}
+      propertyPath: m_Size.x
+      value: 4.6015625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428317652331237884, guid: bafb093446c43b44f909bc96054ee45e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428317652331237884, guid: bafb093446c43b44f909bc96054ee45e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: be8ab8ae249d76e47b2163158f816455, type: 3}
+      objectReference: {fileID: 21300000, guid: 25e66855fc0a5e549837f20621ad7e8f, type: 3}
+    - target: {fileID: 2428317652331237884, guid: bafb093446c43b44f909bc96054ee45e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2428317652348483200, guid: bafb093446c43b44f909bc96054ee45e, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -3106,6 +3122,18 @@ PrefabInstance:
     - target: {fileID: 7381076742615172751, guid: 8a34fc150b3034f4690f7e1314ac43a4, type: 3}
       propertyPath: m_Name
       value: Laserbody
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837639044835847960, guid: 8a34fc150b3034f4690f7e1314ac43a4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837639044835847960, guid: 8a34fc150b3034f4690f7e1314ac43a4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837639044835847960, guid: 8a34fc150b3034f4690f7e1314ac43a4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a34fc150b3034f4690f7e1314ac43a4, type: 3}
