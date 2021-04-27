@@ -27,6 +27,11 @@ public class Fader : MonoBehaviour
             e_FadeIn();
         }
 
+        if(SceneManager.GetActiveScene().name == "Title")
+        {
+            e_FadeOut();
+        }
+
     }
 
     private IEnumerator fadeAnimateIn()
