@@ -251,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 391aa577e65704ca99104f7020292d64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c8967477c95527468cc13e877155847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1119,6 +1119,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98872882, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
+    - target: {fileID: 1152584240, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
+    - target: {fileID: 1454718539, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
+    - target: {fileID: 1551841190, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 256a56c64ae7bcf47adf24f4b8e010de, type: 2}
     - target: {fileID: 7307496251171205736, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: m_Name
       value: NarrativeManager
@@ -2508,10 +2524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

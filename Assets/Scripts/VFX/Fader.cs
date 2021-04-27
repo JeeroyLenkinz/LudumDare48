@@ -59,6 +59,11 @@ public class Fader : MonoBehaviour
         yield return null;
         isAnimating = false;
 
+        if(SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Victory")
+        {
+            this.gameObject.SetActive(false);
+        }
+
     }
 
     private IEnumerator fadeAnimateOut()
