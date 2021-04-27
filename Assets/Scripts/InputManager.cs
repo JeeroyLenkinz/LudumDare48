@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             lClick.Value = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
         }
 
         mousePos.Value = cam.ScreenToWorldPoint(Input.mousePosition);
