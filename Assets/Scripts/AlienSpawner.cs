@@ -112,6 +112,8 @@ public class AlienSpawner : MonoBehaviour
             spawnRb = spawnedAlien.transform.GetChild(0).GetComponent<Rigidbody2D>();
             spawnDir *= 2;
             currentActiveAliensSO.Value += spawnedAlien.GetComponent<MultiMorp>().morpsConnected.Length;
+            spawnRb.position = new Vector3((xMax - xMin)/2, yPos, 0);
+            spawnedAlien.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         else {
             spawnRb = spawnedAlien.GetComponent<Rigidbody2D>();
