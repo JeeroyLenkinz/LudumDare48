@@ -1119,18 +1119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2508620667214993466, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: m_Volume
-      value: 0.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 98872882, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: m_Volume
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1152584240, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
-      propertyPath: m_Volume
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 7307496251171205736, guid: e9645bc845f8fbc43bd8bbadad7d63b5, type: 3}
       propertyPath: m_Name
       value: NarrativeManager
@@ -1744,6 +1732,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 407106858}
     m_Modifications:
+    - target: {fileID: 2019541473284343277, guid: 35c212f610e4ddb4d8312557e18441eb, type: 3}
+      propertyPath: m_text
+      value: "Watch the breath gauge!\nUse Q and P to inhale and exhale while in
+        the orange zones\r \n"
+      objectReference: {fileID: 0}
     - target: {fileID: 2019541473981095372, guid: 35c212f610e4ddb4d8312557e18441eb, type: 3}
       propertyPath: m_Name
       value: NarrativeSteps
@@ -2991,14 +2984,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6633832811117618853, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
-      propertyPath: m_Volume
-      value: 0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633832811117618853, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f148882fe35789644936b068820c151c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a65cc62f7c68e408bd966dd9e2e0d0, type: 3}
 --- !u!1001 &7309325872383233417
