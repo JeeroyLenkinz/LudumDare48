@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
@@ -21,7 +22,11 @@ public class Fader : MonoBehaviour
     void Start()
     {
         image = GetComponent<Image>();
-        e_FadeIn();
+        if (SceneManager.GetActiveScene().name != "Title")
+        {
+            e_FadeIn();
+        }
+
     }
 
     private IEnumerator fadeAnimateIn()
@@ -74,6 +79,11 @@ public class Fader : MonoBehaviour
 
         yield return null;
         isAnimating = false;
+
+        if(SceneManager.GetActiveScene().name == "Title")
+        {
+            SceneManager.LoadScene("Main");
+        }
 
     }
 
