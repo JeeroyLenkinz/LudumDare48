@@ -225,7 +225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 316.50034, y: -43}
+  m_AnchoredPosition: {x: 316.50034, y: -30.7}
   m_SizeDelta: {x: -10.999329, y: -695.40454}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117914213
@@ -2973,6 +2973,10 @@ PrefabInstance:
     - target: {fileID: 5118411891155363241, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
       propertyPath: m_Name
       value: Fader
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118411891155363241, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5118411891155363242, guid: 5a1e5829c7cfcdc4c89a5f072ac9488b, type: 3}
       propertyPath: m_Pivot.x
